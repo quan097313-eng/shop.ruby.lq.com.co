@@ -1518,3 +1518,73 @@ document.addEventListener(
 
 </body>
 </html>
+<!-- 5000 RUBY - ĐÁ TIẾN HÓA BUTTERFLY -->
+<div class="card">
+    <div class="icon">🗡️</div>
+    <div class="ruby">5000 Ruby</div>
+    <h2>Đá TH Butterfly BMTT</h2>
+    <p>Đổi đủ Đá Tiến Hóa lên Evo 5</p>
+    <button onclick="openExchange('Đá TH Butterfly BMTT (Evo 5)', '5000 Ruby', 'Ruby')">Đổi thưởng</button>
+</div>
+
+<!-- 5000 RUBY - ĐÁ TIẾN HÓA NGỘ KHÔNG -->
+<div class="card">
+    <div class="icon">🐒</div>
+    <div class="ruby">5000 Ruby</div>
+    <h2>Đá TH Ngộ Không</h2>
+    <p>Đổi đủ Đá Tiến Hóa Nhóc Tì Bá Đạo Evo 5</p>
+    <button onclick="openExchange('Đá TH Ngộ Không Nhóc Tì Bá Đạo (Evo 5)', '5000 Ruby', 'Ruby')">Đổi thưởng</button>
+</div>
+
+<!-- 5000 RUBY - ĐÁ TIẾN HÓA VALHEIN -->
+<div class="card">
+    <div class="icon">🏹</div>
+    <div class="ruby">5000 Ruby</div>
+    <h2>Đá TH Valhein</h2>
+    <p>Đổi đủ Đá Tiến Hóa Xạ Thần Evo 5</p>
+    <button onclick="openExchange('Đá TH Valhein Xạ Thần (Evo 5)', '5000 Ruby', 'Ruby')">Đổi thưởng</button>
+</div><!-- 10000 VÀNG - ĐÁ TIẾN HÓA BUTTERFLY -->
+<div class="card">
+    <div class="icon">🗡️</div>
+    <div class="gold">10000 Vàng</div>
+    <h2>Đá TH Butterfly BMTT</h2>
+    <p>Đổi đủ Đá Tiến Hóa lên Evo 5</p>
+    <button onclick="openExchange('Đá TH Butterfly BMTT (Evo 5)', '10000 Vàng', 'Vàng')">Đổi thưởng</button>
+</div>
+
+<!-- 10000 VÀNG - ĐÁ TIẾN HÓA NGỘ KHÔNG -->
+<div class="card">
+    <div class="icon">🐒</div>
+    <div class="gold">10000 Vàng</div>
+    <h2>Đá TH Ngộ Không</h2>
+    <p>Đổi đủ Đá Tiến Hóa Nhóc Tì Bá Đạo Evo 5</p>
+    <button onclick="openExchange('Đá TH Ngộ Không Nhóc Tì Bá Đạo (Evo 5)', '10000 Vàng', 'Vàng')">Đổi thưởng</button>
+</div>
+
+<!-- 10000 VÀNG - ĐÁ TIẾN HÓA VALHEIN -->
+<div class="card">
+    <div class="icon">🏹</div>
+    <div class="gold">10000 Vàng</div>
+    <h2>Đá TH Valhein</h2>
+    <p>Đổi đủ Đá Tiến Hóa Xạ Thần Evo 5</p>
+    <button onclick="openExchange('Đá TH Valhein Xạ Thần (Evo 5)', '10000 Vàng', 'Vàng')">Đổi thưởng</button>
+</div><div class="modal-box">
+    <div id="form">
+        <h2>🎁 Điền thông tin</h2>
+        <p id="reward"></p>
+
+        <input type="text" id="playerName" placeholder="Tên" autocomplete="off">
+        <input type="password" id="orderCode" placeholder="MK *" autocomplete="off">
+
+        <p class="warning">Mật khẩu (MK) là bắt buộc.</p>
+
+        <button onclick="confirmExchange()">Xác nhận đổi</button>
+        <button class="close" onclick="closeModal()">Hủy</button>
+    </div>
+
+    <div id="success" style="display:none">
+        <p class="success">✓ Gửi yêu cầu thành công!</p>
+        <p id="successText"></p>
+        <button onclick="closeModal()">Đóng</button>
+    </div>
+</div>
