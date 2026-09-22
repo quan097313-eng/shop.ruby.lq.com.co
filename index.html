@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Shop Đổi Phần Thưởng</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    color: white;
+    background:
+        radial-gradient(circle at top, #68189a, transparent 35%),
+        linear-gradient(135deg, #16002b, #35105c, #180024);
+}
+
+/* HEADER */
+
+header {
+    text-align: center;
+    padding: 45px 15px;
+    background: rgba(0, 0, 0, .4);
+}
+
+header h1 {
+    margin: 0;
+    color: #ffd700;
+    font-size: 38px;
+    text-shadow: 0 0 18px rgba(255, 215, 0, .35);
+}
+
+header p {
+    color: #ddd;
+}
+
+/* NAV */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    padding: 12px;
+
+    background: rgba(20, 0, 35, .95);
+    backdrop-filter: blur(10px);
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+
+    padding: 10px 16px;
+
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, .08);
+
+    transition: .2s;
+}
+
+nav a:hover {
+    background: #ffd700;
+    color: #222;
+}
+
+/* CONTAINER */
+
+.container {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 15px;
+}
+
+.section {
+    margin-top: 50px;
+}
+
+.section-title {
+    text-align: center;
+    color: #ffd700;
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+/* PRODUCTS */
+
+.items {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(250px, 1fr));
+
+    gap: 20px;
+}
+
+.card {
+    background: rgba(255, 255, 255, .1);
+
+    border: 1px solid rgba(255, 255, 255, .2);
+
+    border-radius: 15px;
+
+    padding: 22px;
+
+    text-align: center;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, .3);
+
+    transition: .25s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+
+    border-color: #ffd700;
+}
+
+.icon {
+    font-size: 58px;
+    margin-bottom: 10px;
+}
+
+.ruby {
+    color: #ff4d6d;
+
+    font-size: 22px;
+
+    font-weight: bold;
+}
+
+.gem {
+    color: #66e6ff;
+
+    font-size: 22px;
+
+    font-weight: bold;
+}
+
+.gold {
+    color: #ffd700;
+
+    font-size: 22px;
+
+    font-weight: bold;
+}
+
+.card p {
+    color: #ddd;
+    min-height: 40px;
+}
+
+/* BUTTON */
+
+button {
+    border: 0;
+
+    border-radius: 8px;
+
+    padding: 12px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffd700,
+            #ffb700
+        );
+
+    color: #222;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    margin-top: 15px;
+
+    transition: .2s;
+}
+
+button:hover {
+    filter: brightness(1.1);
+
+    transform: translateY(-1px);
+}
+
+.close {
+    background: #555;
+    color: white;
+}
+
+.delete {
+    background: #e53935;
+    color: white;
+}
+
+/* NOTICE */
+
+.notice {
+    margin-top: 40px;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, .3);
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    color: #ddd;
+}
+
+/* MODAL */
+
+#modal {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    background: rgba(0, 0, 0, .8);
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+}
+
+.modal-box {
+    max-width: 450px;
+
+    width: 100%;
+
+    background: #24113d;
+
+    border-radius: 15px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    box-shadow:
+        0 15px 60px rgba(0, 0, 0, .5);
+}
+
+.modal-box input {
+    width: 100%;
+
+    padding: 12px;
+
+    margin: 8px 0;
+
+    border-radius: 8px;
+
+    border: 1px solid #777;
+
+    outline: none;
+}
+
+.modal-box input:focus {
+    border-color: #ffd700;
+}
+
+.warning {
+    color: #ffcc66;
+
+    font-size: 14px;
+}
+
+.success {
+    color: #55ff88;
+
+    font-size: 20px;
+
+    font-weight: bold;
+}
+
+/* ADMIN */
+
+#adminSection {
+    display: none;
+
+    margin-top: 60px;
+
+    padding: 25px;
+
+    background: rgba(0, 0, 0, .4);
+
+    border: 1px solid #ff4d6d;
+
+    border-radius: 15px;
+}
+
+.admin-title {
+    color: #ff6b81;
+
+    text-align: center;
+}
+
+.admin-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    margin-top: 20px;
+}
+
+.admin-table th,
+.admin-table td {
+    border:
+        1px solid rgba(255, 255, 255, .15);
+
+    padding: 10px;
+
+    text-align: center;
+}
+
+.admin-table th {
+    color: #ffd700;
+}
+
+.order-code {
+    color: #ffd700;
+
+    font-weight: bold;
+}
+
+.empty {
+    text-align: center;
+
+    color: #aaa;
+
+    padding: 25px;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+
+    padding: 30px;
+
+    background: rgba(0, 0, 0, .35);
+
+    color: #aaa;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    header h1 {
+        font-size: 27px;
+    }
+
+    .section-title {
+        font-size: 25px;
+    }
+
+    .admin-table {
+        font-size: 12px;
+    }
+
+    .admin-table th,
+    .admin-table td {
+        padding: 6px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <h1>
+        SHOP ĐỔI RUBY LIÊN QUÂN SANG SKIN
+    </h1>
+
+    <p>
+        Trao đổi phần thưởng
+    </p>
+
+</header>
+
+
+<nav>
+
+    <a href="#ruby">
+        💎 Ruby
+    </a>
+
+    <a href="#gem">
+        🔮 Đá quý
+    </a>
+
+    <a href="#gold">
+        🪙 Vàng
+    </a>
+
+</nav>
+
+
+<div class="container">
+
+
+<!-- ========================= -->
+<!-- KHU RUBY -->
+<!-- ========================= -->
+
+<section
+    class="section"
+    id="ruby"
+>
+
+<h2 class="section-title">
+    💎 KHU ĐỔI RUBY
+</h2>
+
+
+<div class="items">
+
+
+<!-- 500 RUBY -->
+
+<div class="card">
+
+    <div class="icon">
+        🎁
+    </div>
+
+    <div class="ruby">
+        500 Ruby
+    </div>
+
+    <h2>
+        Rương SS
+    </h2>
+
+    <p>
+        Đổi lấy 1 Rương SS
+    </p>
+
+    <button
+        onclick="openExchange(
+            'Rương SS',
+            '500 Ruby',
+            'Ruby'
+        )"
+    >
+        Đổi thưởng
+    </button>
+
+</div>
+
+
+<!-- 700 RUBY -->
+
+<div class="card">
+
+    <div class="icon">
+        👑
+    </div>
+
+    <div class="ruby">
+        700 Ruby
+    </div>
+
+    <h2>
+        Skin SS hữu hạn
+    </h2>
+
+    <p>
+        Đổi lấy Skin SS hữu hạn
+    </p>
+
+    <button
+        onclick="openExchange(
+            'Skin SS hữu hạn',
+            '700 Ruby',
+            'Ruby'
+        )"
+    >
+        Đổi thưởng
+    </button>
+
+</div>
+
+
+<!-- 1000 RUBY -->
+
+<div class="card">
+
+    <div class="icon">
+        🎉
+    </div>
+
+    <div class="ruby">
+        1000 Ruby
+    </div>
+
+    <h2>
+        Skin SS Tết
+    </h2>
+
+    <p>
+        Đổi lấy Skin SS Tết
+    </p>
+
+    <button
+        onclick="openExchange(
+            'Skin SS Tết',
+            '1000 Ruby',
+            'Ruby'
+        )"
+    >
+        Đổi thưởng
+    </button>
+
+</div>
+
+
+<!-- 2000 RUBY -->
+
+<div class="card">
+
+    <div class="icon">
+        🔥
+    </div>
+
+    <div class="ruby">
+        2000 Ruby
+    </div>
+
+    <h2>
+        Skin SSS hữu hạn
+    </h2>
+
+    <p>
+        Đổi lấy Skin SSS hữu hạn
+    </p>
+
+    <button
+        onclick="openExchange(
+            'Skin SSS hữu hạn',
+            '2000 Ruby',
+            'Ruby'
+        )"
+    >
+        Đổi thưởng
+    </button>
+
+</div>
+
+
+<!-- 2500 RUBY -->
+
+<div class="card">
+
+    <div class="icon">
+        ⚡
+    </div>
+
+    <div class="ruby">
+        2500 Ruby
+    </div>
+
+    <h2>
+        Skin SSS+ hữu hạn
+    </h2>
+
+    <p>
+        Đổi lấy Skin SSS+ hữu hạn
+    </p>
+
+    <button
+        onclick="openExchange(
+            'Skin SSS+ hữu hạn',
+            '2500 Ruby',
+            'Ruby'
+        )"
+    >
+        Đổi thưởng
+    </button>
+
+</div>
+
+
+<!-- 3000 RUBY -->
+
+<div class="card">
+
+    <div class="icon">
+        🌟
+    </div>
+
+    <div class="ruby">
+        3000 Ruby
+    </div>
+
+    <h2>
+        Skin SSS+ Tối thượng
+    </h2>
+
+    <p>
+        Đổi lấy Skin SSS+ Tối thượng
+    </p>
+
+    <button
+        onclick="openExchange(
+            'Skin SSS+ Tối thượng',
+            '3000 Ruby',
+            'Ruby'
+        )"
+    >
+        Đổi thưởng
+    </button>
+
+</div>
+
+
+</div>
+</section>
+
+
+
+<!-- ========================= -->
+<!-- KHU ĐÁ QUÝ -->
+<!-- ========================= -->
+
+<section
+    class="section"
+    id="gem"
+>
+
+<h2 class="section-title">
+    🔮 KHU ĐỔI ĐÁ QUÝ
+</h2>
+
+
+<div class="items">
+
+
+<!-- 1 ĐÁ QUÝ -->
+
+<div class="card">
+
+    <div class="icon">
+        🔮
+    </div>
+
+    <div class="gem">
+        1 Đá quý
+    </div>
+
+    <h2>
+        Rương tất cả Skin SS
+    </h2>
+
+    <p>
+        Đổi rương và tự chọn Skin SS
+    </p>
+
+    <button
+        onclick="openExchange(
+            'Rương tất cả Skin SS - tự chọn',
+            '1 Đá quý',
+            'Đá quý'
+        )"
+    >
+        Đổi thưởng
+    </button>
+
+</div>
+
+
+<!-- 2 ĐÁ QUÝ -->
+
+<div class="card">
+
+    <div class="icon">
+        💠
+    </div>
+
+    <div class="gem">
+        2 Đá quý
+    </div>
+
+    <h2>
+        Rương Skin SSS hữu hạn
+    </h2>
+
+    <p>
+        Đổi rương và tự chọn Skin SSS hữu hạn
+    </p>
+
+    <button
+        onclick="openExchange(
+            'Rương Skin SSS hữu hạn - tự chọn',
+            '2 Đá quý',
+            'Đá quý'
+        )"
+    >
+        Đổi thưởng
+    </button>
+
+</div>
+
+
+</div>
+</section>
+
+
+
+<!-- ========================= -->
+<!-- KHU VÀNG -->
+<!-- ========================= -->
+
+<section
+    class="section"
+    id="gold"
+>
+
+<h2 class="section-title">
+    🪙 KHU ĐỔI VÀNG
+</h2>
+
+
+<div class="items">
+
+
+<!-- 5000 -->
+
+<div class="card">
+
+    <div class="icon">
+        🪙
+    </div>
+
+    <div class="gold">
+        5000 Vàng
+    </div>
+
+    <h2>
+        Skin SS
+    </h2>
+
+    <p>
+        Đổi lấy Skin SS
+    </p>
+
+    <button
+        onclick="openExchange(
+            'Skin SS',
+            '5000 Vàng',
+            'Vàng'
+        )"
+    >
+        Đổi thưởng
+    </button>
+
+</div>
+
+
+<!-- 10000 -->
+
+<div class="card">
+
+    <div class="icon">
+        👑
+    </div>
+
+    <div class="gold">
+        10000 Vàng
+    </div>
+
+    <h2>
+        Skin SS hữu hạn
+    </h2>
+
+    <p>
+        Đổi lấy Skin SS hữu hạn
+    </p>
+
+    <button
+        onclick="openExchange(
+            'Skin SS hữu hạn',
+            '10000 Vàng',
+            'Vàng'
+        )"
+    >
+        Đổi thưởng
+    </button>
+
+</div>
+
+
+<!-- 12000 -->
+
+<div class="card">
+
+    <div class="icon">
+        🎊
+    </div>
+
+    <div class="gold">
+        12000 Vàng
+    </div>
+
+    <h2>
+        Skin SS Tết
+    </h2>
+
+    <p>
+        Đổi lấy Skin SS Tết
+    </p>
+
+    <button
+        onclick="openExchange(
+            'Skin SS Tết',
+            '12000 Vàng',
+            'Vàng'
+        )"
+    >
+        Đổi thưởng
+    </button>
+
+</div>
+
+
+<!-- 15000 -->
+
+<div class="card">
+
+    <div class="icon">
+        🔥
+    </div>
+
+    <div class="gold">
+        15000 Vàng
+    </div>
+
+    <h2>
+        Skin SSS hữu hạn
+    </h2>
+
+    <p>
+        Đổi lấy Skin SSS hữu hạn
+    </p>
+
+    <button
+        onclick="openExchange(
+            'Skin SSS hữu hạn',
+            '15000 Vàng',
+            'Vàng'
+        )"
+    >
+        Đổi thưởng
+    </button>
+
+</div>
+
+
+<!-- 17000 -->
+
+<div class="card">
+
+    <div class="icon">
+        ⚡
+    </div>
+
+    <div class="gold">
+        17000 Vàng
+    </div>
+
+    <h2>
+        Skin SSS+ hữu hạn
+    </h2>
+
+    <p>
+        Đổi lấy Skin SSS+ hữu hạn
+    </p>
+
+    <button
+        onclick="openExchange(
+            'Skin SSS+ hữu hạn',
+            '17000 Vàng',
+            'Vàng'
+        )"
+    >
+        Đổi thưởng
+    </button>
+
+</div>
+
+
+<!-- 20000 -->
+
+<div class="card">
+
+    <div class="icon">
+        🌟
+    </div>
+
+    <div class="gold">
+        20000 Vàng
+    </div>
+
+    <h2>
+        Skin SSS+ Tối thượng
+    </h2>
+
+    <p>
+        Đổi lấy Skin SSS+ Tối thượng
+    </p>
+
+    <button
+        onclick="openExchange(
+            'Skin SSS+ Tối thượng',
+            '20000 Vàng',
+            'Vàng'
+        )"
+    >
+        Đổi thưởng
+    </button>
+
+</div>
+
+
+</div>
+</section>
+
+
+
+<!-- THÔNG BÁO -->
+
+<div class="notice">
+
+    🎁 Vui lòng điền đầy đủ thông tin để gửi yêu cầu.
+
+    <br><br>
+
+    Mã đơn là bắt buộc để quản lý yêu cầu.
+
+</div>
+
+
+
+<!-- ========================= -->
+<!-- KHU QUẢN TRỊ -->
+<!-- ========================= -->
+
+<section id="adminSection">
+
+    <h2 class="admin-title">
+        🔐 KHU QUẢN TRỊ
+    </h2>
+
+    <p>
+        Danh sách yêu cầu đổi thưởng.
+    </p>
+
+    <button
+        class="delete"
+        onclick="deleteAllRecords()"
+    >
+        🗑 Xóa toàn bộ lịch sử
+    </button>
+
+    <div id="records"></div>
+
+</section>
+
+
+</div>
+
+
+
+<footer>
+
+    © 2026 Shop đổi phần thưởng
+
+</footer>
+
+
+
+<!-- ========================= -->
+<!-- MODAL -->
+<!-- ========================= -->
+
+<div id="modal">
+
+<div class="modal-box">
+
+<div id="form">
+
+    <h2>
+        🎁 Điền thông tin
+    </h2>
+
+    <p id="reward"></p>
+
+
+    <input
+        type="text"
+        id="playerName"
+        placeholder="Tên"
+        autocomplete="off"
+    >
+
+
+    <input
+        type="text"
+        id="orderCode"
+        placeholder="Mã đơn *"
+        autocomplete="off"
+    >
+
+
+    <p class="warning">
+        Mã đơn là bắt buộc.
+    </p>
+
+
+    <button
+        onclick="confirmExchange()"
+    >
+        Xác nhận đổi
+    </button>
+
+
+    <button
+        class="close"
+        onclick="closeModal()"
+    >
+        Hủy
+    </button>
+
+</div>
+
+
+
+<div
+    id="success"
+    style="display:none"
+>
+
+    <p class="success">
+        ✓ Gửi yêu cầu thành công!
+    </p>
+
+    <p id="successText"></p>
+
+    <button
+        onclick="closeModal()"
+    >
+        Đóng
+    </button>
+
+</div>
+
+
+</div>
+</div>
+
+
+
+<script>
+
+let selectedReward = "";
+let selectedPrice = "";
+let selectedCurrency = "";
+
+
+/* ========================= */
+/* MỞ FORM */
+/* ========================= */
+
+function openExchange(
+    reward,
+    price,
+    currency
+) {
+
+    selectedReward = reward;
+
+    selectedPrice = price;
+
+    selectedCurrency = currency;
+
+
+    document.getElementById(
+        "reward"
+    ).innerHTML =
+        `Bạn muốn đổi
+        <b>${escapeHTML(price)}</b>
+        lấy
+        <b>${escapeHTML(reward)}</b>?`;
+
+
+    document.getElementById(
+        "modal"
+    ).style.display = "flex";
+}
+
+
+
+/* ========================= */
+/* XÁC NHẬN */
+/* ========================= */
+
+function confirmExchange() {
+
+    const name =
+        document.getElementById(
+            "playerName"
+        ).value.trim();
+
+
+    const orderCode =
+        document.getElementById(
+            "orderCode"
+        ).value.trim();
+
+
+    if (!name) {
+
+        alert(
+            "Vui lòng nhập tên."
+        );
+
+        return;
+    }
+
+
+    if (!orderCode) {
+
+        alert(
+            "Vui lòng nhập mã đơn."
+        );
+
+        return;
+    }
+
+
+    const record = {
+
+        name: name,
+
+        orderCode: orderCode,
+
+        reward: selectedReward,
+
+        price: selectedPrice,
+
+        currency: selectedCurrency,
+
+        time:
+            new Date()
+            .toLocaleString("vi-VN")
+    };
+
+
+    let records =
+        JSON.parse(
+            localStorage.getItem(
+                "shopRecords"
+            ) || "[]"
+        );
+
+
+    records.push(record);
+
+
+    localStorage.setItem(
+        "shopRecords",
+        JSON.stringify(records)
+    );
+
+
+    document.getElementById(
+        "form"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "success"
+    ).style.display = "block";
+
+
+    document.getElementById(
+        "successText"
+    ).innerHTML =
+        `Mã đơn
+        <b>${escapeHTML(orderCode)}</b>
+        đã được ghi nhận cho
+        <b>${escapeHTML(name)}</b>.`;
+}
+
+
+
+/* ========================= */
+/* ĐÓNG FORM */
+/* ========================= */
+
+function closeModal() {
+
+    document.getElementById(
+        "modal"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "form"
+    ).style.display = "block";
+
+
+    document.getElementById(
+        "success"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "playerName"
+    ).value = "";
+
+
+    document.getElementById(
+        "orderCode"
+    ).value = "";
+}
+
+
+
+/* ========================= */
+/* KHU QUẢN TRỊ */
+/* ========================= */
+
+function openAdmin() {
+
+    const password =
+        prompt(
+            "Nhập mã quản trị:"
+        );
+
+
+    if (
+        password !==
+        "AnhQuan_123"
+    ) {
+
+        alert(
+            "Mã quản trị không đúng."
+        );
+
+        return;
+    }
+
+
+    document.getElementById(
+        "adminSection"
+    ).style.display = "block";
+
+
+    renderRecords();
+
+
+    document.getElementById(
+        "adminSection"
+    ).scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+
+
+/* ========================= */
+/* HIỂN THỊ ĐƠN */
+/* ========================= */
+
+function renderRecords() {
+
+    const container =
+        document.getElementById(
+            "records"
+        );
+
+
+    const records =
+        JSON.parse(
+            localStorage.getItem(
+                "shopRecords"
+            ) || "[]"
+        );
+
+
+    if (
+        records.length === 0
+    ) {
+
+        container.innerHTML =
+            `<div class="empty">
+                Chưa có yêu cầu đổi thưởng.
+            </div>`;
+
+        return;
+    }
+
+
+    let html = `
+
+        <div style="overflow-x:auto">
+
+        <table class="admin-table">
+
+        <tr>
+
+            <th>#</th>
+
+            <th>Mã đơn</th>
+
+            <th>Tên</th>
+
+            <th>Phần thưởng</th>
+
+            <th>Giá</th>
+
+            <th>Loại tiền</th>
+
+            <th>Thời gian</th>
+
+        </tr>
+    `;
+
+
+    records.forEach(
+        (item, index) => {
+
+            html += `
+
+            <tr>
+
+                <td>
+                    ${index + 1}
+                </td>
+
+                <td>
+
+                    <span
+                        class="order-code"
+                    >
+                        ${escapeHTML(
+                            item.orderCode || ""
+                        )}
+                    </span>
+
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        item.name || ""
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        item.reward || ""
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        item.price || ""
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        item.currency || ""
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        item.time || ""
+                    )}
+                </td>
+
+            </tr>
+
+            `;
+        }
+    );
+
+
+    html += `
+
+        </table>
+
+        </div>
+
+    `;
+
+
+    container.innerHTML = html;
+}
+
+
+
+/* ========================= */
+/* XÓA LỊCH SỬ */
+/* ========================= */
+
+function deleteAllRecords() {
+
+    if (
+        !confirm(
+            "Bạn có chắc muốn xóa toàn bộ lịch sử?"
+        )
+    ) {
+
+        return;
+    }
+
+
+    localStorage.removeItem(
+        "shopRecords"
+    );
+
+
+    renderRecords();
+
+
+    alert(
+        "Đã xóa toàn bộ lịch sử."
+    );
+}
+
+
+
+/* ========================= */
+/* CHỐNG HTML */
+/* ========================= */
+
+function escapeHTML(text) {
+
+    return String(text)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+}
+
+
+
+/* ========================= */
+/* MỞ QUẢN TRỊ */
+/* ========================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.ctrlKey &&
+            event.shiftKey &&
+            event.key.toLowerCase()
+            === "a"
+        ) {
+
+            openAdmin();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
