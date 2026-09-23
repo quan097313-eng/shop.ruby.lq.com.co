@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -25,8 +24,6 @@ body {
         linear-gradient(135deg, #16002b, #35105c, #180024);
 }
 
-/* HEADER */
-
 header {
     text-align: center;
     padding: 45px 15px;
@@ -43,8 +40,6 @@ header h1 {
 header p {
     color: #ddd;
 }
-
-/* NAV */
 
 nav {
     position: sticky;
@@ -80,8 +75,6 @@ nav a:hover {
     color: #222;
 }
 
-/* CONTAINER */
-
 .container {
     max-width: 1100px;
     margin: 30px auto;
@@ -98,8 +91,6 @@ nav a:hover {
     font-size: 30px;
     margin-bottom: 25px;
 }
-
-/* PRODUCTS */
 
 .items {
     display: grid;
@@ -128,7 +119,6 @@ nav a:hover {
 
 .card:hover {
     transform: translateY(-6px);
-
     border-color: #ffd700;
 }
 
@@ -166,8 +156,6 @@ nav a:hover {
     min-height: 40px;
 }
 
-/* BUTTON */
-
 button {
     border: 0;
     border-radius: 8px;
@@ -202,8 +190,6 @@ button:hover {
     color: white;
 }
 
-/* NOTICE */
-
 .notice {
     margin-top: 40px;
 
@@ -216,6 +202,48 @@ button:hover {
     text-align: center;
 
     color: #ddd;
+}
+
+/* LỊCH SỬ */
+
+.history-box {
+    margin-top: 50px;
+
+    padding: 25px;
+
+    background: rgba(0, 0, 0, .35);
+
+    border: 1px solid rgba(255, 215, 0, .25);
+
+    border-radius: 15px;
+}
+
+.history-box h2 {
+    text-align: center;
+    color: #ffd700;
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.history-table th,
+.history-table td {
+    border: 1px solid rgba(255, 255, 255, .15);
+    padding: 10px;
+    text-align: center;
+}
+
+.history-table th {
+    color: #ffd700;
+}
+
+.history-empty {
+    text-align: center;
+    color: #aaa;
+    padding: 20px;
 }
 
 /* MODAL */
@@ -284,8 +312,6 @@ button:hover {
     font-weight: bold;
 }
 
-/* FOOTER */
-
 footer {
     text-align: center;
 
@@ -296,8 +322,6 @@ footer {
     color: #aaa;
 }
 
-/* MOBILE */
-
 @media (max-width: 600px) {
 
     header h1 {
@@ -306,6 +330,15 @@ footer {
 
     .section-title {
         font-size: 25px;
+    }
+
+    .history-table {
+        font-size: 12px;
+    }
+
+    .history-table th,
+    .history-table td {
+        padding: 6px;
     }
 }
 </style>
@@ -342,6 +375,10 @@ footer {
 
     <a href="#evo">
         ⚡ Đá Tiến Hóa
+    </a>
+
+    <a href="#history">
+        📜 Lịch sử đổi quà
     </a>
 
 </nav>
@@ -623,6 +660,214 @@ footer {
 
 </div>
 
+
+<!-- ========================= -->
+<!-- SKIN VỆ THẦN -->
+<!-- ========================= -->
+
+<div class="card">
+
+    <div class="icon">🛡️</div>
+
+    <div class="ruby">
+        5000 Ruby
+    </div>
+
+    <h2>
+        Violet Thứ Nguyên Vệ Thần
+    </h2>
+
+    <p>
+        Đổi Skin Violet Thứ Nguyên Vệ Thần
+    </p>
+
+    <button
+        onclick="openExchange(
+            'Skin Violet Thứ Nguyên Vệ Thần',
+            '5000 Ruby',
+            'Ruby'
+        )"
+    >
+        Đổi thưởng
+    </button>
+
+</div>
+
+
+<div class="card">
+
+    <div class="icon">🛡️</div>
+
+    <div class="ruby">
+        6000 Ruby
+    </div>
+
+    <h2>
+        Tel'Annas Thứ Nguyên Vệ Thần
+    </h2>
+
+    <p>
+        Đổi Skin Tel'Annas Thứ Nguyên Vệ Thần
+    </p>
+
+    <button
+        onclick="openExchange(
+            'Skin Tel\'Annas Thứ Nguyên Vệ Thần',
+            '6000 Ruby',
+            'Ruby'
+        )"
+    >
+        Đổi thưởng
+    </button>
+
+</div>
+
+
+<div class="card">
+
+    <div class="icon">🛡️</div>
+
+    <div class="ruby">
+        7000 Ruby
+    </div>
+
+    <h2>
+        Airi Thứ Nguyên Vệ Thần
+    </h2>
+
+    <p>
+        Đổi Skin Airi Thứ Nguyên Vệ Thần
+    </p>
+
+    <button
+        onclick="openExchange(
+            'Skin Airi Thứ Nguyên Vệ Thần',
+            '7000 Ruby',
+            'Ruby'
+        )"
+    >
+        Đổi thưởng
+    </button>
+
+</div>
+
+
+<div class="card">
+
+    <div class="icon">🛡️</div>
+
+    <div class="ruby">
+        8000 Ruby
+    </div>
+
+    <h2>
+        Lauriel Thứ Nguyên Vệ Thần
+    </h2>
+
+    <p>
+        Đổi Skin Lauriel Thứ Nguyên Vệ Thần
+    </p>
+
+    <button
+        onclick="openExchange(
+            'Skin Lauriel Thứ Nguyên Vệ Thần',
+            '8000 Ruby',
+            'Ruby'
+        )"
+    >
+        Đổi thưởng
+    </button>
+
+</div>
+
+
+<div class="card">
+
+    <div class="icon">🛡️</div>
+
+    <div class="ruby">
+        10000 Ruby
+    </div>
+
+    <h2>
+        Nakroth Thứ Nguyên Vệ Thần
+    </h2>
+
+    <p>
+        Đổi Skin Nakroth Thứ Nguyên Vệ Thần
+    </p>
+
+    <button
+        onclick="openExchange(
+            'Skin Nakroth Thứ Nguyên Vệ Thần',
+            '10000 Ruby',
+            'Ruby'
+        )"
+    >
+        Đổi thưởng
+    </button>
+
+</div>
+
+
+<div class="card">
+
+    <div class="icon">🛡️</div>
+
+    <div class="ruby">
+        10000 Ruby
+    </div>
+
+    <h2>
+        Valhein Thứ Nguyên Vệ Thần
+    </h2>
+
+    <p>
+        Đổi Skin Valhein Thứ Nguyên Vệ Thần
+    </p>
+
+    <button
+        onclick="openExchange(
+            'Skin Valhein Thứ Nguyên Vệ Thần',
+            '10000 Ruby',
+            'Ruby'
+        )"
+    >
+        Đổi thưởng
+    </button>
+
+</div>
+
+
+<div class="card">
+
+    <div class="icon">🛡️</div>
+
+    <div class="ruby">
+        12000 Ruby
+    </div>
+
+    <h2>
+        Hayate Thứ Nguyên Vệ Thần
+    </h2>
+
+    <p>
+        Đổi Skin Hayate Thứ Nguyên Vệ Thần
+    </p>
+
+    <button
+        onclick="openExchange(
+            'Skin Hayate Thứ Nguyên Vệ Thần',
+            '12000 Ruby',
+            'Ruby'
+        )"
+    >
+        Đổi thưởng
+    </button>
+
+</div>
+
+
 </div>
 </section>
 
@@ -638,7 +883,6 @@ footer {
 </h2>
 
 <div class="items">
-
 
 <div class="card">
 
@@ -712,7 +956,6 @@ footer {
 </h2>
 
 <div class="items">
-
 
 <div class="card">
 
@@ -903,7 +1146,6 @@ footer {
 
 <div class="items">
 
-
 <div class="card">
 
     <div class="icon">🗡️</div>
@@ -997,7 +1239,9 @@ footer {
 </section>
 
 
+<!-- ========================= -->
 <!-- THÔNG BÁO -->
+<!-- ========================= -->
 
 <div class="notice">
 
@@ -1008,6 +1252,22 @@ footer {
     Mã xác nhận là bắt buộc để xác nhận yêu cầu.
 
 </div>
+
+
+<!-- ========================= -->
+<!-- LỊCH SỬ ĐỔI QUÀ -->
+<!-- ========================= -->
+
+<section class="history-box" id="history">
+
+    <h2>
+        📜 LỊCH SỬ ĐỔI QUÀ
+    </h2>
+
+    <div id="historyRecords"></div>
+
+</section>
+
 
 </div>
 
@@ -1110,9 +1370,7 @@ function openExchange(
 ) {
 
     selectedReward = reward;
-
     selectedPrice = price;
-
     selectedCurrency = currency;
 
     document.getElementById(
@@ -1164,17 +1422,53 @@ function confirmExchange() {
     }
 
     /*
-     * Không lưu mã xác nhận,
-     * mật khẩu hoặc token đăng nhập.
+     * Không lưu mã xác nhận.
      */
+
+    const record = {
+
+        name: name,
+
+        reward: selectedReward,
+
+        price: selectedPrice,
+
+        currency: selectedCurrency,
+
+        time:
+            new Date().toLocaleString("vi-VN")
+    };
+
+
+    let history =
+        JSON.parse(
+            localStorage.getItem(
+                "exchangeHistory"
+            ) || "[]"
+        );
+
+
+    history.push(record);
+
+
+    localStorage.setItem(
+        "exchangeHistory",
+        JSON.stringify(history)
+    );
+
+
+    renderHistory();
+
 
     document.getElementById(
         "form"
     ).style.display = "none";
 
+
     document.getElementById(
         "success"
     ).style.display = "block";
+
 
     document.getElementById(
         "successText"
@@ -1196,21 +1490,144 @@ function closeModal() {
         "modal"
     ).style.display = "none";
 
+
     document.getElementById(
         "form"
     ).style.display = "block";
+
 
     document.getElementById(
         "success"
     ).style.display = "none";
 
+
     document.getElementById(
         "playerName"
     ).value = "";
 
+
     document.getElementById(
         "verificationCode"
     ).value = "";
+}
+
+
+/* ========================= */
+/* HIỂN THỊ LỊCH SỬ */
+/* ========================= */
+
+function renderHistory() {
+
+    const container =
+        document.getElementById(
+            "historyRecords"
+        );
+
+
+    const history =
+        JSON.parse(
+            localStorage.getItem(
+                "exchangeHistory"
+            ) || "[]"
+        );
+
+
+    if (history.length === 0) {
+
+        container.innerHTML =
+            `<div class="history-empty">
+                Chưa có lịch sử đổi quà.
+            </div>`;
+
+        return;
+    }
+
+
+    let html = `
+
+        <div style="overflow-x:auto">
+
+        <table class="history-table">
+
+        <tr>
+
+            <th>#</th>
+
+            <th>Tên</th>
+
+            <th>Phần thưởng</th>
+
+            <th>Giá</th>
+
+            <th>Loại tiền</th>
+
+            <th>Thời gian</th>
+
+        </tr>
+    `;
+
+
+    history
+        .slice()
+        .reverse()
+        .forEach(
+            (item, index) => {
+
+                html += `
+
+                <tr>
+
+                    <td>
+                        ${index + 1}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(
+                            item.name || ""
+                        )}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(
+                            item.reward || ""
+                        )}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(
+                            item.price || ""
+                        )}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(
+                            item.currency || ""
+                        )}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(
+                            item.time || ""
+                        )}
+                    </td>
+
+                </tr>
+
+                `;
+            }
+        );
+
+
+    html += `
+
+        </table>
+
+        </div>
+
+    `;
+
+
+    container.innerHTML = html;
 }
 
 
@@ -1247,6 +1664,20 @@ function escapeHTML(text) {
             "&#039;"
         );
 }
+
+
+/* ========================= */
+/* HIỂN THỊ LỊCH SỬ KHI MỞ */
+/* ========================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        renderHistory();
+
+    }
+);
 
 </script>
 
