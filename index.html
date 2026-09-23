@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -45,14 +46,11 @@ nav {
     position: sticky;
     top: 0;
     z-index: 50;
-
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 8px;
-
     padding: 12px;
-
     background: rgba(20, 0, 35, .95);
     backdrop-filter: blur(10px);
 }
@@ -60,13 +58,9 @@ nav {
 nav a {
     color: white;
     text-decoration: none;
-
     padding: 10px 16px;
-
     border-radius: 8px;
-
     background: rgba(255, 255, 255, .08);
-
     transition: .2s;
 }
 
@@ -94,26 +88,17 @@ nav a:hover {
 
 .items {
     display: grid;
-    grid-template-columns:
-        repeat(auto-fit, minmax(250px, 1fr));
-
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
 }
 
 .card {
     background: rgba(255, 255, 255, .1);
-
     border: 1px solid rgba(255, 255, 255, .2);
-
     border-radius: 15px;
-
     padding: 22px;
-
     text-align: center;
-
-    box-shadow:
-        0 8px 25px rgba(0, 0, 0, .3);
-
+    box-shadow: 0 8px 25px rgba(0, 0, 0, .3);
     transition: .25s;
 }
 
@@ -159,24 +144,12 @@ nav a:hover {
 button {
     border: 0;
     border-radius: 8px;
-
     padding: 12px 20px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ffd700,
-            #ffb700
-        );
-
+    background: linear-gradient(135deg, #ffd700, #ffb700);
     color: #222;
-
     font-weight: bold;
-
     cursor: pointer;
-
     margin-top: 15px;
-
     transition: .2s;
 }
 
@@ -192,29 +165,18 @@ button:hover {
 
 .notice {
     margin-top: 40px;
-
     padding: 20px;
-
     background: rgba(0, 0, 0, .3);
-
     border-radius: 12px;
-
     text-align: center;
-
     color: #ddd;
 }
 
-/* LỊCH SỬ */
-
 .history-box {
     margin-top: 50px;
-
     padding: 25px;
-
     background: rgba(0, 0, 0, .35);
-
     border: 1px solid rgba(255, 215, 0, .25);
-
     border-radius: 15px;
 }
 
@@ -246,54 +208,33 @@ button:hover {
     padding: 20px;
 }
 
-/* MODAL */
-
 #modal {
     display: none;
-
     position: fixed;
-
     inset: 0;
-
     z-index: 100;
-
     background: rgba(0, 0, 0, .8);
-
     justify-content: center;
-
     align-items: center;
-
     padding: 20px;
 }
 
 .modal-box {
     max-width: 450px;
-
     width: 100%;
-
     background: #24113d;
-
     border-radius: 15px;
-
     padding: 30px;
-
     text-align: center;
-
-    box-shadow:
-        0 15px 60px rgba(0, 0, 0, .5);
+    box-shadow: 0 15px 60px rgba(0, 0, 0, .5);
 }
 
 .modal-box input {
     width: 100%;
-
     padding: 12px;
-
     margin: 8px 0;
-
     border-radius: 8px;
-
     border: 1px solid #777;
-
     outline: none;
 }
 
@@ -314,16 +255,12 @@ button:hover {
 
 footer {
     text-align: center;
-
     padding: 30px;
-
     background: rgba(0, 0, 0, .35);
-
     color: #aaa;
 }
 
 @media (max-width: 600px) {
-
     header h1 {
         font-size: 27px;
     }
@@ -361,25 +298,11 @@ footer {
 
 <nav>
 
-    <a href="#ruby">
-        💎 Ruby
-    </a>
-
-    <a href="#gem">
-        🔮 Đá quý
-    </a>
-
-    <a href="#gold">
-        🪙 Vàng
-    </a>
-
-    <a href="#evo">
-        ⚡ Đá Tiến Hóa
-    </a>
-
-    <a href="#history">
-        📜 Lịch sử đổi quà
-    </a>
+    <a href="#ruby">💎 Ruby</a>
+    <a href="#gem">🔮 Đá quý</a>
+    <a href="#gold">🪙 Vàng</a>
+    <a href="#evo">⚡ Đá Tiến Hóa</a>
+    <a href="#history">📜 Lịch sử đổi quà</a>
 
 </nav>
 
@@ -401,470 +324,194 @@ footer {
 
 
 <div class="card">
-
     <div class="icon">🎁</div>
+    <div class="ruby">500 Ruby</div>
+    <h2>Rương SS</h2>
+    <p>Đổi lấy 1 Rương SS</p>
 
-    <div class="ruby">
-        500 Ruby
-    </div>
-
-    <h2>
-        Rương SS
-    </h2>
-
-    <p>
-        Đổi lấy 1 Rương SS
-    </p>
-
-    <button
-        onclick="openExchange(
-            'Rương SS',
-            '500 Ruby',
-            'Ruby'
-        )"
-    >
+    <button onclick="openExchange('Rương SS','500 Ruby','Ruby')">
         Đổi thưởng
     </button>
-
 </div>
 
 
 <div class="card">
-
     <div class="icon">👑</div>
+    <div class="ruby">700 Ruby</div>
+    <h2>Skin SS hữu hạn</h2>
+    <p>Đổi lấy Skin SS hữu hạn</p>
 
-    <div class="ruby">
-        700 Ruby
-    </div>
-
-    <h2>
-        Skin SS hữu hạn
-    </h2>
-
-    <p>
-        Đổi lấy Skin SS hữu hạn
-    </p>
-
-    <button
-        onclick="openExchange(
-            'Skin SS hữu hạn',
-            '700 Ruby',
-            'Ruby'
-        )"
-    >
+    <button onclick="openExchange('Skin SS hữu hạn','700 Ruby','Ruby')">
         Đổi thưởng
     </button>
-
 </div>
 
 
 <div class="card">
-
     <div class="icon">🎉</div>
+    <div class="ruby">1000 Ruby</div>
+    <h2>Skin SS Tết</h2>
+    <p>Đổi lấy Skin SS Tết</p>
 
-    <div class="ruby">
-        1000 Ruby
-    </div>
-
-    <h2>
-        Skin SS Tết
-    </h2>
-
-    <p>
-        Đổi lấy Skin SS Tết
-    </p>
-
-    <button
-        onclick="openExchange(
-            'Skin SS Tết',
-            '1000 Ruby',
-            'Ruby'
-        )"
-    >
+    <button onclick="openExchange('Skin SS Tết','1000 Ruby','Ruby')">
         Đổi thưởng
     </button>
-
 </div>
 
 
 <div class="card">
-
     <div class="icon">🔥</div>
+    <div class="ruby">2000 Ruby</div>
+    <h2>Skin SSS hữu hạn</h2>
+    <p>Đổi lấy Skin SSS hữu hạn</p>
 
-    <div class="ruby">
-        2000 Ruby
-    </div>
-
-    <h2>
-        Skin SSS hữu hạn
-    </h2>
-
-    <p>
-        Đổi lấy Skin SSS hữu hạn
-    </p>
-
-    <button
-        onclick="openExchange(
-            'Skin SSS hữu hạn',
-            '2000 Ruby',
-            'Ruby'
-        )"
-    >
+    <button onclick="openExchange('Skin SSS hữu hạn','2000 Ruby','Ruby')">
         Đổi thưởng
     </button>
-
 </div>
 
 
 <div class="card">
-
     <div class="icon">⚡</div>
+    <div class="ruby">2500 Ruby</div>
+    <h2>Skin SSS+ hữu hạn</h2>
+    <p>Đổi lấy Skin SSS+ hữu hạn</p>
 
-    <div class="ruby">
-        2500 Ruby
-    </div>
-
-    <h2>
-        Skin SSS+ hữu hạn
-    </h2>
-
-    <p>
-        Đổi lấy Skin SSS+ hữu hạn
-    </p>
-
-    <button
-        onclick="openExchange(
-            'Skin SSS+ hữu hạn',
-            '2500 Ruby',
-            'Ruby'
-        )"
-    >
+    <button onclick="openExchange('Skin SSS+ hữu hạn','2500 Ruby','Ruby')">
         Đổi thưởng
     </button>
-
 </div>
 
 
 <div class="card">
-
     <div class="icon">🌟</div>
+    <div class="ruby">3000 Ruby</div>
+    <h2>Skin SSS+ Tối thượng</h2>
+    <p>Đổi lấy Skin SSS+ Tối thượng</p>
 
-    <div class="ruby">
-        3000 Ruby
-    </div>
-
-    <h2>
-        Skin SSS+ Tối thượng
-    </h2>
-
-    <p>
-        Đổi lấy Skin SSS+ Tối thượng
-    </p>
-
-    <button
-        onclick="openExchange(
-            'Skin SSS+ Tối thượng',
-            '3000 Ruby',
-            'Ruby'
-        )"
-    >
+    <button onclick="openExchange('Skin SSS+ Tối thượng','3000 Ruby','Ruby')">
         Đổi thưởng
     </button>
-
 </div>
 
 
 <div class="card">
-
     <div class="icon">🗡️</div>
+    <div class="ruby">5000 Ruby</div>
+    <h2>Đá TH Butterfly BMTT</h2>
+    <p>Đủ Đá Tiến Hóa lên Evo 5</p>
 
-    <div class="ruby">
-        5000 Ruby
-    </div>
-
-    <h2>
-        Đá TH Butterfly BMTT
-    </h2>
-
-    <p>
-        Đủ Đá Tiến Hóa lên Evo 5
-    </p>
-
-    <button
-        onclick="openExchange(
-            'Đá TH Butterfly BMTT (Evo 5)',
-            '5000 Ruby',
-            'Ruby'
-        )"
-    >
+    <button onclick="openExchange('Đá TH Butterfly BMTT (Evo 5)','5000 Ruby','Ruby')">
         Đổi thưởng
     </button>
-
 </div>
 
 
 <div class="card">
-
     <div class="icon">🐒</div>
+    <div class="ruby">5000 Ruby</div>
+    <h2>Đá TH Ngộ Không</h2>
+    <p>Đủ Đá Tiến Hóa Nhóc Tì Bá Đạo Evo 5</p>
 
-    <div class="ruby">
-        5000 Ruby
-    </div>
-
-    <h2>
-        Đá TH Ngộ Không
-    </h2>
-
-    <p>
-        Đủ Đá Tiến Hóa Nhóc Tì Bá Đạo Evo 5
-    </p>
-
-    <button
-        onclick="openExchange(
-            'Đá TH Ngộ Không Nhóc Tì Bá Đạo (Evo 5)',
-            '5000 Ruby',
-            'Ruby'
-        )"
-    >
+    <button onclick="openExchange('Đá TH Ngộ Không Nhóc Tì Bá Đạo (Evo 5)','5000 Ruby','Ruby')">
         Đổi thưởng
     </button>
-
 </div>
 
 
 <div class="card">
-
     <div class="icon">🏹</div>
+    <div class="ruby">5000 Ruby</div>
+    <h2>Đá TH Valhein</h2>
+    <p>Đủ Đá Tiến Hóa Xạ Thần Evo 5</p>
 
-    <div class="ruby">
-        5000 Ruby
-    </div>
-
-    <h2>
-        Đá TH Valhein
-    </h2>
-
-    <p>
-        Đủ Đá Tiến Hóa Xạ Thần Evo 5
-    </p>
-
-    <button
-        onclick="openExchange(
-            'Đá TH Valhein Xạ Thần (Evo 5)',
-            '5000 Ruby',
-            'Ruby'
-        )"
-    >
+    <button onclick="openExchange('Đá TH Valhein Xạ Thần (Evo 5)','5000 Ruby','Ruby')">
         Đổi thưởng
     </button>
-
-</div>
-
-
-<!-- ========================= -->
-<!-- SKIN VỆ THẦN -->
-<!-- ========================= -->
-
-<div class="card">
-
-    <div class="icon">🛡️</div>
-
-    <div class="ruby">
-        5000 Ruby
-    </div>
-
-    <h2>
-        Violet Thứ Nguyên Vệ Thần
-    </h2>
-
-    <p>
-        Đổi Skin Violet Thứ Nguyên Vệ Thần
-    </p>
-
-    <button
-        onclick="openExchange(
-            'Skin Violet Thứ Nguyên Vệ Thần',
-            '5000 Ruby',
-            'Ruby'
-        )"
-    >
-        Đổi thưởng
-    </button>
-
 </div>
 
 
 <div class="card">
-
     <div class="icon">🛡️</div>
+    <div class="ruby">5000 Ruby</div>
+    <h2>Violet Thứ Nguyên Vệ Thần</h2>
+    <p>Đổi Skin Violet Thứ Nguyên Vệ Thần</p>
 
-    <div class="ruby">
-        6000 Ruby
-    </div>
-
-    <h2>
-        Tel'Annas Thứ Nguyên Vệ Thần
-    </h2>
-
-    <p>
-        Đổi Skin Tel'Annas Thứ Nguyên Vệ Thần
-    </p>
-
-    <button
-        onclick="openExchange(
-            'Skin Tel\'Annas Thứ Nguyên Vệ Thần',
-            '6000 Ruby',
-            'Ruby'
-        )"
-    >
+    <button onclick="openExchange('Skin Violet Thứ Nguyên Vệ Thần','5000 Ruby','Ruby')">
         Đổi thưởng
     </button>
-
 </div>
 
 
 <div class="card">
-
     <div class="icon">🛡️</div>
+    <div class="ruby">6000 Ruby</div>
+    <h2>Tel'Annas Thứ Nguyên Vệ Thần</h2>
+    <p>Đổi Skin Tel'Annas Thứ Nguyên Vệ Thần</p>
 
-    <div class="ruby">
-        7000 Ruby
-    </div>
-
-    <h2>
-        Airi Thứ Nguyên Vệ Thần
-    </h2>
-
-    <p>
-        Đổi Skin Airi Thứ Nguyên Vệ Thần
-    </p>
-
-    <button
-        onclick="openExchange(
-            'Skin Airi Thứ Nguyên Vệ Thần',
-            '7000 Ruby',
-            'Ruby'
-        )"
-    >
+    <button onclick="openExchange('Skin Tel\\'Annas Thứ Nguyên Vệ Thần','6000 Ruby','Ruby')">
         Đổi thưởng
     </button>
-
 </div>
 
 
 <div class="card">
-
     <div class="icon">🛡️</div>
+    <div class="ruby">7000 Ruby</div>
+    <h2>Airi Thứ Nguyên Vệ Thần</h2>
+    <p>Đổi Skin Airi Thứ Nguyên Vệ Thần</p>
 
-    <div class="ruby">
-        8000 Ruby
-    </div>
-
-    <h2>
-        Lauriel Thứ Nguyên Vệ Thần
-    </h2>
-
-    <p>
-        Đổi Skin Lauriel Thứ Nguyên Vệ Thần
-    </p>
-
-    <button
-        onclick="openExchange(
-            'Skin Lauriel Thứ Nguyên Vệ Thần',
-            '8000 Ruby',
-            'Ruby'
-        )"
-    >
+    <button onclick="openExchange('Skin Airi Thứ Nguyên Vệ Thần','7000 Ruby','Ruby')">
         Đổi thưởng
     </button>
-
 </div>
 
 
 <div class="card">
-
     <div class="icon">🛡️</div>
+    <div class="ruby">8000 Ruby</div>
+    <h2>Lauriel Thứ Nguyên Vệ Thần</h2>
+    <p>Đổi Skin Lauriel Thứ Nguyên Vệ Thần</p>
 
-    <div class="ruby">
-        10000 Ruby
-    </div>
-
-    <h2>
-        Nakroth Thứ Nguyên Vệ Thần
-    </h2>
-
-    <p>
-        Đổi Skin Nakroth Thứ Nguyên Vệ Thần
-    </p>
-
-    <button
-        onclick="openExchange(
-            'Skin Nakroth Thứ Nguyên Vệ Thần',
-            '10000 Ruby',
-            'Ruby'
-        )"
-    >
+    <button onclick="openExchange('Skin Lauriel Thứ Nguyên Vệ Thần','8000 Ruby','Ruby')">
         Đổi thưởng
     </button>
-
 </div>
 
 
 <div class="card">
-
     <div class="icon">🛡️</div>
+    <div class="ruby">10000 Ruby</div>
+    <h2>Nakroth Thứ Nguyên Vệ Thần</h2>
+    <p>Đổi Skin Nakroth Thứ Nguyên Vệ Thần</p>
 
-    <div class="ruby">
-        10000 Ruby
-    </div>
-
-    <h2>
-        Valhein Thứ Nguyên Vệ Thần
-    </h2>
-
-    <p>
-        Đổi Skin Valhein Thứ Nguyên Vệ Thần
-    </p>
-
-    <button
-        onclick="openExchange(
-            'Skin Valhein Thứ Nguyên Vệ Thần',
-            '10000 Ruby',
-            'Ruby'
-        )"
-    >
+    <button onclick="openExchange('Skin Nakroth Thứ Nguyên Vệ Thần','10000 Ruby','Ruby')">
         Đổi thưởng
     </button>
-
 </div>
 
 
 <div class="card">
-
     <div class="icon">🛡️</div>
+    <div class="ruby">10000 Ruby</div>
+    <h2>Valhein Thứ Nguyên Vệ Thần</h2>
+    <p>Đổi Skin Valhein Thứ Nguyên Vệ Thần</p>
 
-    <div class="ruby">
-        12000 Ruby
-    </div>
-
-    <h2>
-        Hayate Thứ Nguyên Vệ Thần
-    </h2>
-
-    <p>
-        Đổi Skin Hayate Thứ Nguyên Vệ Thần
-    </p>
-
-    <button
-        onclick="openExchange(
-            'Skin Hayate Thứ Nguyên Vệ Thần',
-            '12000 Ruby',
-            'Ruby'
-        )"
-    >
+    <button onclick="openExchange('Skin Valhein Thứ Nguyên Vệ Thần','10000 Ruby','Ruby')">
         Đổi thưởng
     </button>
+</div>
 
+
+<div class="card">
+    <div class="icon">🛡️</div>
+    <div class="ruby">12000 Ruby</div>
+    <h2>Hayate Thứ Nguyên Vệ Thần</h2>
+    <p>Đổi Skin Hayate Thứ Nguyên Vệ Thần</p>
+
+    <button onclick="openExchange('Skin Hayate Thứ Nguyên Vệ Thần','12000 Ruby','Ruby')">
+        Đổi thưởng
+    </button>
 </div>
 
 
@@ -885,60 +532,26 @@ footer {
 <div class="items">
 
 <div class="card">
-
     <div class="icon">🔮</div>
+    <div class="gem">1 Đá quý</div>
+    <h2>Rương tất cả Skin SS</h2>
+    <p>Đổi rương và tự chọn Skin SS</p>
 
-    <div class="gem">
-        1 Đá quý
-    </div>
-
-    <h2>
-        Rương tất cả Skin SS
-    </h2>
-
-    <p>
-        Đổi rương và tự chọn Skin SS
-    </p>
-
-    <button
-        onclick="openExchange(
-            'Rương tất cả Skin SS - tự chọn',
-            '1 Đá quý',
-            'Đá quý'
-        )"
-    >
+    <button onclick="openExchange('Rương tất cả Skin SS - tự chọn','1 Đá quý','Đá quý')">
         Đổi thưởng
     </button>
-
 </div>
 
 
 <div class="card">
-
     <div class="icon">💠</div>
+    <div class="gem">2 Đá quý</div>
+    <h2>Rương Skin SSS hữu hạn</h2>
+    <p>Đổi rương và tự chọn Skin SSS hữu hạn</p>
 
-    <div class="gem">
-        2 Đá quý
-    </div>
-
-    <h2>
-        Rương Skin SSS hữu hạn
-    </h2>
-
-    <p>
-        Đổi rương và tự chọn Skin SSS hữu hạn
-    </p>
-
-    <button
-        onclick="openExchange(
-            'Rương Skin SSS hữu hạn - tự chọn',
-            '2 Đá quý',
-            'Đá quý'
-        )"
-    >
+    <button onclick="openExchange('Rương Skin SSS hữu hạn - tự chọn','2 Đá quý','Đá quý')">
         Đổi thưởng
     </button>
-
 </div>
 
 </div>
@@ -958,176 +571,74 @@ footer {
 <div class="items">
 
 <div class="card">
-
     <div class="icon">🪙</div>
+    <div class="gold">5000 Vàng</div>
+    <h2>Skin SS</h2>
+    <p>Đổi lấy Skin SS</p>
 
-    <div class="gold">
-        5000 Vàng
-    </div>
-
-    <h2>
-        Skin SS
-    </h2>
-
-    <p>
-        Đổi lấy Skin SS
-    </p>
-
-    <button
-        onclick="openExchange(
-            'Skin SS',
-            '5000 Vàng',
-            'Vàng'
-        )"
-    >
+    <button onclick="openExchange('Skin SS','5000 Vàng','Vàng')">
         Đổi thưởng
     </button>
-
 </div>
 
 
 <div class="card">
-
     <div class="icon">👑</div>
+    <div class="gold">10000 Vàng</div>
+    <h2>Skin SS hữu hạn</h2>
+    <p>Đổi lấy Skin SS hữu hạn</p>
 
-    <div class="gold">
-        10000 Vàng
-    </div>
-
-    <h2>
-        Skin SS hữu hạn
-    </h2>
-
-    <p>
-        Đổi lấy Skin SS hữu hạn
-    </p>
-
-    <button
-        onclick="openExchange(
-            'Skin SS hữu hạn',
-            '10000 Vàng',
-            'Vàng'
-        )"
-    >
+    <button onclick="openExchange('Skin SS hữu hạn','10000 Vàng','Vàng')">
         Đổi thưởng
     </button>
-
 </div>
 
 
 <div class="card">
-
     <div class="icon">🎊</div>
+    <div class="gold">12000 Vàng</div>
+    <h2>Skin SS Tết</h2>
+    <p>Đổi lấy Skin SS Tết</p>
 
-    <div class="gold">
-        12000 Vàng
-    </div>
-
-    <h2>
-        Skin SS Tết
-    </h2>
-
-    <p>
-        Đổi lấy Skin SS Tết
-    </p>
-
-    <button
-        onclick="openExchange(
-            'Skin SS Tết',
-            '12000 Vàng',
-            'Vàng'
-        )"
-    >
+    <button onclick="openExchange('Skin SS Tết','12000 Vàng','Vàng')">
         Đổi thưởng
     </button>
-
 </div>
 
 
 <div class="card">
-
     <div class="icon">🔥</div>
+    <div class="gold">15000 Vàng</div>
+    <h2>Skin SSS hữu hạn</h2>
+    <p>Đổi lấy Skin SSS hữu hạn</p>
 
-    <div class="gold">
-        15000 Vàng
-    </div>
-
-    <h2>
-        Skin SSS hữu hạn
-    </h2>
-
-    <p>
-        Đổi lấy Skin SSS hữu hạn
-    </p>
-
-    <button
-        onclick="openExchange(
-            'Skin SSS hữu hạn',
-            '15000 Vàng',
-            'Vàng'
-        )"
-    >
+    <button onclick="openExchange('Skin SSS hữu hạn','15000 Vàng','Vàng')">
         Đổi thưởng
     </button>
-
 </div>
 
 
 <div class="card">
-
     <div class="icon">⚡</div>
+    <div class="gold">17000 Vàng</div>
+    <h2>Skin SSS+ hữu hạn</h2>
+    <p>Đổi lấy Skin SSS+ hữu hạn</p>
 
-    <div class="gold">
-        17000 Vàng
-    </div>
-
-    <h2>
-        Skin SSS+ hữu hạn
-    </h2>
-
-    <p>
-        Đổi lấy Skin SSS+ hữu hạn
-    </p>
-
-    <button
-        onclick="openExchange(
-            'Skin SSS+ hữu hạn',
-            '17000 Vàng',
-            'Vàng'
-        )"
-    >
+    <button onclick="openExchange('Skin SSS+ hữu hạn','17000 Vàng','Vàng')">
         Đổi thưởng
     </button>
-
 </div>
 
 
 <div class="card">
-
     <div class="icon">🌟</div>
+    <div class="gold">20000 Vàng</div>
+    <h2>Skin SSS+ Tối thượng</h2>
+    <p>Đổi lấy Skin SSS+ Tối thượng</p>
 
-    <div class="gold">
-        20000 Vàng
-    </div>
-
-    <h2>
-        Skin SSS+ Tối thượng
-    </h2>
-
-    <p>
-        Đổi lấy Skin SSS+ Tối thượng
-    </p>
-
-    <button
-        onclick="openExchange(
-            'Skin SSS+ Tối thượng',
-            '20000 Vàng',
-            'Vàng'
-        )"
-    >
+    <button onclick="openExchange('Skin SSS+ Tối thượng','20000 Vàng','Vàng')">
         Đổi thưởng
     </button>
-
 </div>
 
 </div>
@@ -1147,101 +658,52 @@ footer {
 <div class="items">
 
 <div class="card">
-
     <div class="icon">🗡️</div>
-
-    <div class="evo">
-        10000 Vàng
-    </div>
-
-    <h2>
-        Đá TH Butterfly BMTT
-    </h2>
-
+    <div class="evo">10000 Vàng</div>
+    <h2>Đá TH Butterfly BMTT</h2>
     <p>
         Đổi full đá nâng Cấp 5 (Evo 5)
         Butterfly Bình Minh Tận Thế
     </p>
 
-    <button
-        onclick="openExchange(
-            'Đá TH Butterfly BMTT (Evo 5)',
-            '10000 Vàng',
-            'Vàng'
-        )"
-    >
+    <button onclick="openExchange('Đá TH Butterfly BMTT (Evo 5)','10000 Vàng','Vàng')">
         Đổi thưởng
     </button>
-
 </div>
 
 
 <div class="card">
-
     <div class="icon">🐒</div>
-
-    <div class="evo">
-        10000 Vàng
-    </div>
-
-    <h2>
-        Đá TH Ngộ Không
-    </h2>
-
+    <div class="evo">10000 Vàng</div>
+    <h2>Đá TH Ngộ Không</h2>
     <p>
         Đổi full đá nâng Cấp 5 (Evo 5)
         Ngộ Không Nhóc Tì Bá Đạo
     </p>
 
-    <button
-        onclick="openExchange(
-            'Đá TH Ngộ Không Nhóc Tì Bá Đạo (Evo 5)',
-            '10000 Vàng',
-            'Vàng'
-        )"
-    >
+    <button onclick="openExchange('Đá TH Ngộ Không Nhóc Tì Bá Đạo (Evo 5)','10000 Vàng','Vàng')">
         Đổi thưởng
     </button>
-
 </div>
 
 
 <div class="card">
-
     <div class="icon">🏹</div>
-
-    <div class="evo">
-        10000 Vàng
-    </div>
-
-    <h2>
-        Đá TH Valhein Xạ Thần
-    </h2>
-
+    <div class="evo">10000 Vàng</div>
+    <h2>Đá TH Valhein Xạ Thần</h2>
     <p>
         Đổi full đá nâng Cấp 5 (Evo 5)
         Valhein Xạ Thần
     </p>
 
-    <button
-        onclick="openExchange(
-            'Đá TH Valhein Xạ Thần (Evo 5)',
-            '10000 Vàng',
-            'Vàng'
-        )"
-    >
+    <button onclick="openExchange('Đá TH Valhein Xạ Thần (Evo 5)','10000 Vàng','Vàng')">
         Đổi thưởng
     </button>
-
 </div>
 
 </div>
 </section>
 
-
-<!-- ========================= -->
-<!-- THÔNG BÁO -->
-<!-- ========================= -->
 
 <div class="notice">
 
@@ -1255,7 +717,7 @@ footer {
 
 
 <!-- ========================= -->
-<!-- LỊCH SỬ ĐỔI QUÀ -->
+<!-- LỊCH SỬ -->
 <!-- ========================= -->
 
 <section class="history-box" id="history">
@@ -1273,9 +735,7 @@ footer {
 
 
 <footer>
-
     © 2026 Shop đổi phần thưởng
-
 </footer>
 
 
@@ -1313,9 +773,7 @@ footer {
         Mã xác nhận là bắt buộc.
     </p>
 
-    <button
-        onclick="confirmExchange()"
-    >
+    <button onclick="confirmExchange()">
         Xác nhận đổi
     </button>
 
@@ -1329,10 +787,7 @@ footer {
 </div>
 
 
-<div
-    id="success"
-    style="display:none"
->
+<div id="success" style="display:none">
 
     <p class="success">
         ✓ Gửi yêu cầu thành công!
@@ -1340,9 +795,7 @@ footer {
 
     <p id="successText"></p>
 
-    <button
-        onclick="closeModal()"
-    >
+    <button onclick="closeModal()">
         Đóng
     </button>
 
@@ -1352,18 +805,79 @@ footer {
 </div>
 
 
-<script>
+<!-- ========================= -->
+<!-- FIREBASE + JAVASCRIPT -->
+<!-- ========================= -->
+
+<script type="module">
+
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    query,
+    orderBy,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+
+/* =========================
+   FIREBASE CONFIG
+========================= */
+
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyD28nAKhfVQHF_I134R0YyaWQuGw2FMliY",
+
+    authDomain:
+        "admin-shopcuaquan.firebaseapp.com",
+
+    projectId:
+        "admin-shopcuaquan",
+
+    storageBucket:
+        "admin-shopcuaquan.firebasestorage.app",
+
+    messagingSenderId:
+        "608228191463",
+
+    appId:
+        "1:608228191463:web:52298a53e0f0a829874642",
+
+    measurementId:
+        "G-M67P3RDCH1"
+};
+
+
+/* =========================
+   KHỞI TẠO FIREBASE
+========================= */
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+
+/* =========================
+   BIẾN
+========================= */
 
 let selectedReward = "";
 let selectedPrice = "";
 let selectedCurrency = "";
 
 
-/* ========================= */
-/* MỞ FORM */
-/* ========================= */
+/* =========================
+   MỞ FORM
+========================= */
 
-function openExchange(
+window.openExchange = function(
     reward,
     price,
     currency
@@ -1384,14 +898,14 @@ function openExchange(
     document.getElementById(
         "modal"
     ).style.display = "flex";
-}
+};
 
 
-/* ========================= */
-/* XÁC NHẬN */
-/* ========================= */
+/* =========================
+   GỬI YÊU CẦU LÊN FIREBASE
+========================= */
 
-function confirmExchange() {
+window.confirmExchange = async function() {
 
     const name =
         document.getElementById(
@@ -1403,6 +917,7 @@ function confirmExchange() {
             "verificationCode"
         ).value.trim();
 
+
     if (!name) {
 
         alert(
@@ -1411,6 +926,7 @@ function confirmExchange() {
 
         return;
     }
+
 
     if (!verificationCode) {
 
@@ -1421,70 +937,100 @@ function confirmExchange() {
         return;
     }
 
-    /*
-     * Không lưu mã xác nhận.
-     */
 
-    const record = {
+    const button =
+        document.querySelector(
+            "#form button"
+        );
 
-        name: name,
-
-        reward: selectedReward,
-
-        price: selectedPrice,
-
-        currency: selectedCurrency,
-
-        time:
-            new Date().toLocaleString("vi-VN")
-    };
+    button.disabled = true;
+    button.innerText = "Đang gửi...";
 
 
-    let history =
-        JSON.parse(
-            localStorage.getItem(
-                "exchangeHistory"
-            ) || "[]"
+    try {
+
+        /*
+         * KHÔNG lưu mã xác nhận.
+         */
+
+        await addDoc(
+            collection(
+                db,
+                "exchangeRequests"
+            ),
+            {
+
+                name: name,
+
+                reward: selectedReward,
+
+                price: selectedPrice,
+
+                currency: selectedCurrency,
+
+                status: "pending",
+
+                time:
+                    new Date().toLocaleString(
+                        "vi-VN"
+                    ),
+
+                createdAt:
+                    serverTimestamp()
+
+            }
         );
 
 
-    history.push(record);
+        document.getElementById(
+            "form"
+        ).style.display = "none";
 
 
-    localStorage.setItem(
-        "exchangeHistory",
-        JSON.stringify(history)
-    );
+        document.getElementById(
+            "success"
+        ).style.display = "block";
 
 
-    renderHistory();
+        document.getElementById(
+            "successText"
+        ).innerHTML =
+            `Yêu cầu đổi
+            <b>${escapeHTML(selectedReward)}</b>
+            đã được ghi nhận cho
+            <b>${escapeHTML(name)}</b>.`;
 
 
-    document.getElementById(
-        "form"
-    ).style.display = "none";
+        document.getElementById(
+            "verificationCode"
+        ).value = "";
 
 
-    document.getElementById(
-        "success"
-    ).style.display = "block";
+        await renderHistory();
 
 
-    document.getElementById(
-        "successText"
-    ).innerHTML =
-        `Yêu cầu đổi
-        <b>${escapeHTML(selectedReward)}</b>
-        đã được ghi nhận cho
-        <b>${escapeHTML(name)}</b>.`;
-}
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Không thể gửi yêu cầu.\n\n" +
+            error.message
+        );
+
+    } finally {
+
+        button.disabled = false;
+        button.innerText = "Xác nhận đổi";
+    }
+};
 
 
-/* ========================= */
-/* ĐÓNG FORM */
-/* ========================= */
+/* =========================
+   ĐÓNG FORM
+========================= */
 
-function closeModal() {
+window.closeModal = function() {
 
     document.getElementById(
         "modal"
@@ -1509,14 +1055,14 @@ function closeModal() {
     document.getElementById(
         "verificationCode"
     ).value = "";
-}
+};
 
 
-/* ========================= */
-/* HIỂN THỊ LỊCH SỬ */
-/* ========================= */
+/* =========================
+   HIỂN THỊ LỊCH SỬ
+========================= */
 
-function renderHistory() {
+async function renderHistory() {
 
     const container =
         document.getElementById(
@@ -1524,116 +1070,172 @@ function renderHistory() {
         );
 
 
-    const history =
-        JSON.parse(
-            localStorage.getItem(
-                "exchangeHistory"
-            ) || "[]"
+    try {
+
+        const q = query(
+            collection(
+                db,
+                "exchangeRequests"
+            ),
+            orderBy(
+                "createdAt",
+                "desc"
+            )
         );
 
 
-    if (history.length === 0) {
-
-        container.innerHTML =
-            `<div class="history-empty">
-                Chưa có lịch sử đổi quà.
-            </div>`;
-
-        return;
-    }
+        const snapshot =
+            await getDocs(q);
 
 
-    let html = `
+        if (snapshot.empty) {
 
-        <div style="overflow-x:auto">
+            container.innerHTML =
+                `<div class="history-empty">
+                    Chưa có lịch sử đổi quà.
+                </div>`;
 
-        <table class="history-table">
-
-        <tr>
-
-            <th>#</th>
-
-            <th>Tên</th>
-
-            <th>Phần thưởng</th>
-
-            <th>Giá</th>
-
-            <th>Loại tiền</th>
-
-            <th>Thời gian</th>
-
-        </tr>
-    `;
+            return;
+        }
 
 
-    history
-        .slice()
-        .reverse()
-        .forEach(
-            (item, index) => {
+        let html = `
+
+            <div style="overflow-x:auto">
+
+            <table class="history-table">
+
+            <tr>
+
+                <th>#</th>
+
+                <th>Tên</th>
+
+                <th>Phần thưởng</th>
+
+                <th>Giá</th>
+
+                <th>Loại tiền</th>
+
+                <th>Thời gian</th>
+
+                <th>Trạng thái</th>
+
+            </tr>
+        `;
+
+
+        let index = 0;
+
+
+        snapshot.forEach(
+            (docItem) => {
+
+                index++;
+
+                const item =
+                    docItem.data();
+
+
+                let status =
+                    "⏳ Chờ duyệt";
+
+
+                if (
+                    item.status ===
+                    "approved"
+                ) {
+
+                    status =
+                        "✅ Đã duyệt";
+
+                }
+
+
+                if (
+                    item.status ===
+                    "rejected"
+                ) {
+
+                    status =
+                        "❌ Từ chối";
+                }
+
 
                 html += `
 
-                <tr>
+                    <tr>
 
-                    <td>
-                        ${index + 1}
-                    </td>
+                        <td>
+                            ${index}
+                        </td>
 
-                    <td>
-                        ${escapeHTML(
-                            item.name || ""
-                        )}
-                    </td>
+                        <td>
+                            ${escapeHTML(
+                                item.name || ""
+                            )}
+                        </td>
 
-                    <td>
-                        ${escapeHTML(
-                            item.reward || ""
-                        )}
-                    </td>
+                        <td>
+                            ${escapeHTML(
+                                item.reward || ""
+                            )}
+                        </td>
 
-                    <td>
-                        ${escapeHTML(
-                            item.price || ""
-                        )}
-                    </td>
+                        <td>
+                            ${escapeHTML(
+                                item.price || ""
+                            )}
+                        </td>
 
-                    <td>
-                        ${escapeHTML(
-                            item.currency || ""
-                        )}
-                    </td>
+                        <td>
+                            ${escapeHTML(
+                                item.currency || ""
+                            )}
+                        </td>
 
-                    <td>
-                        ${escapeHTML(
-                            item.time || ""
-                        )}
-                    </td>
+                        <td>
+                            ${escapeHTML(
+                                item.time || ""
+                            )}
+                        </td>
 
-                </tr>
+                        <td>
+                            ${status}
+                        </td>
 
+                    </tr>
                 `;
             }
         );
 
 
-    html += `
+        html += `
 
-        </table>
+            </table>
 
-        </div>
+            </div>
+        `;
 
-    `;
+
+        container.innerHTML = html;
 
 
-    container.innerHTML = html;
+    } catch (error) {
+
+        console.error(error);
+
+        container.innerHTML =
+            `<div class="history-empty">
+                Không thể tải lịch sử.
+            </div>`;
+    }
 }
 
 
-/* ========================= */
-/* CHỐNG HTML */
-/* ========================= */
+/* =========================
+   CHỐNG HTML
+========================= */
 
 function escapeHTML(text) {
 
@@ -1666,9 +1268,9 @@ function escapeHTML(text) {
 }
 
 
-/* ========================= */
-/* HIỂN THỊ LỊCH SỬ KHI MỞ */
-/* ========================= */
+/* =========================
+   KHI MỞ TRANG
+========================= */
 
 document.addEventListener(
     "DOMContentLoaded",
@@ -1683,3 +1285,4 @@ document.addEventListener(
 
 </body>
 </html>
+```
