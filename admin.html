@@ -1,137 +1,134 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SHOP NHẬN QUÀ LIÊN QUÂN</title>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>ADMIN - SHOP NHẬN QUÀ</title>
 
   <style>
+
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
       font-family: Arial, sans-serif;
     }
 
     body {
+      margin: 0;
       background: #080d18;
-      color: #fff;
-      min-height: 100vh;
+      color: white;
     }
 
     header {
-      background: linear-gradient(135deg, #111827, #172554);
-      padding: 25px 15px;
-      text-align: center;
-      border-bottom: 1px solid #334155;
+      background:
+        linear-gradient(
+          135deg,
+          #111827,
+          #172554
+        );
+
+      padding: 25px;
+
+      border-bottom:
+        1px solid #334155;
     }
 
     header h1 {
+      margin: 0;
       color: #facc15;
-      font-size: 28px;
-      margin-bottom: 8px;
-    }
-
-    header p {
-      color: #cbd5e1;
     }
 
     .container {
-      max-width: 1150px;
+      max-width: 1450px;
       margin: auto;
       padding: 25px 15px 50px;
     }
 
-    .notice {
-      background: #172033;
-      border: 1px solid #334155;
-      border-radius: 12px;
-      padding: 15px;
-      margin-bottom: 25px;
-      color: #cbd5e1;
-      line-height: 1.6;
-    }
-
-    .notice strong {
-      color: #facc15;
-    }
-
-    .section-title {
-      margin: 25px 0 15px;
-      font-size: 22px;
-      color: #facc15;
-    }
-
-    .products {
+    .stats {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 15px;
+
+      margin-bottom: 25px;
     }
 
-    .card {
+    .stat {
       background: #111827;
       border: 1px solid #263449;
-      border-radius: 15px;
-      padding: 22px;
-      text-align: center;
-      transition: .2s;
+      border-radius: 12px;
+      padding: 18px;
     }
 
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: #facc15;
-    }
-
-    .icon {
-      font-size: 45px;
-      margin-bottom: 12px;
-    }
-
-    .card h3 {
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
-
-    .price {
-      color: #facc15;
-      font-weight: bold;
-      margin-bottom: 18px;
-    }
-
-    .buy-btn {
-      width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      background: #facc15;
-      color: #111827;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .buy-btn:hover {
-      background: #fde047;
-    }
-
-    .history-box {
-      margin-top: 35px;
-      background: #111827;
-      border: 1px solid #263449;
-      border-radius: 15px;
-      padding: 20px;
-    }
-
-    .history-empty {
+    .stat-title {
       color: #94a3b8;
-      padding: 15px 0;
+      margin-bottom: 8px;
     }
 
-    .order {
-      background: #0f172a;
+    .stat-number {
+      color: #facc15;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    input,
+    select {
+      background: #111827;
+      color: white;
       border: 1px solid #334155;
-      border-radius: 10px;
-      padding: 15px;
-      margin-top: 12px;
+      border-radius: 8px;
+      padding: 12px;
+      outline: none;
+    }
+
+    input {
+      flex: 1;
+      min-width: 230px;
+    }
+
+    select {
+      min-width: 170px;
+    }
+
+    .table-box {
+      overflow-x: auto;
+      background: #111827;
+      border: 1px solid #263449;
+      border-radius: 12px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 1100px;
+    }
+
+    th,
+    td {
+      padding: 14px;
+      border-bottom: 1px solid #263449;
+      text-align: left;
+    }
+
+    th {
+      background: #0f172a;
+      color: #facc15;
+    }
+
+    td {
+      color: #cbd5e1;
     }
 
     .order-code {
@@ -139,12 +136,11 @@
       font-weight: bold;
     }
 
-    .status {
+    .badge {
       display: inline-block;
-      padding: 5px 9px;
+      padding: 6px 9px;
       border-radius: 6px;
       font-size: 13px;
-      margin-top: 8px;
     }
 
     .pending {
@@ -162,274 +158,250 @@
       color: #fecaca;
     }
 
-    /* MODAL */
-
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.75);
-      align-items: center;
-      justify-content: center;
-      padding: 15px;
-      z-index: 999;
-    }
-
-    .modal.active {
+    .actions {
       display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
     }
 
-    .modal-box {
-      width: 100%;
-      max-width: 450px;
-      background: #111827;
-      border: 1px solid #334155;
-      border-radius: 15px;
-      padding: 25px;
-      box-shadow: 0 20px 60px rgba(0,0,0,.5);
-    }
-
-    .modal-box h2 {
-      color: #facc15;
-      margin-bottom: 20px;
-    }
-
-    .selected {
-      background: #172033;
-      padding: 13px;
-      border-radius: 8px;
-      margin-bottom: 18px;
-      line-height: 1.6;
-    }
-
-    input {
-      width: 100%;
-      padding: 13px;
-      background: #0f172a;
-      color: white;
-      border: 1px solid #475569;
-      border-radius: 8px;
-      outline: none;
-      margin-bottom: 15px;
-    }
-
-    input:focus {
-      border-color: #facc15;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 10px;
-    }
-
-    .buttons button {
-      flex: 1;
-      padding: 12px;
+    button {
       border: none;
-      border-radius: 8px;
+      border-radius: 6px;
+      padding: 8px 10px;
       cursor: pointer;
       font-weight: bold;
     }
 
-    .cancel-btn {
-      background: #475569;
-      color: white;
-    }
-
-    .confirm-btn {
+    .done {
       background: #22c55e;
       color: white;
     }
 
-    .success {
-      background: #052e16;
-      border: 1px solid #22c55e;
-      border-radius: 12px;
-      padding: 18px;
-      margin-top: 20px;
-      line-height: 1.8;
+    .cancel {
+      background: #ef4444;
+      color: white;
     }
 
-    .big-code {
-      color: #facc15;
-      font-size: 20px;
-      font-weight: bold;
+    .delete {
+      background: #475569;
+      color: white;
     }
 
-    footer {
+    button:hover {
+      opacity: .85;
+    }
+
+    #message {
+      color: #94a3b8;
+      margin-bottom: 15px;
+    }
+
+    .empty {
+      padding: 40px;
       text-align: center;
-      padding: 25px;
       color: #64748b;
-      border-top: 1px solid #1e293b;
     }
 
-    @media (max-width: 850px) {
-      .products {
-        grid-template-columns: repeat(2, 1fr);
+    @media (max-width: 800px) {
+
+      .stats {
+        grid-template-columns:
+          repeat(2, 1fr);
       }
+
     }
 
-    @media (max-width: 500px) {
-      .products {
+    @media (max-width: 450px) {
+
+      .stats {
         grid-template-columns: 1fr;
       }
 
-      header h1 {
-        font-size: 22px;
-      }
     }
+
   </style>
+
 </head>
 
 <body>
 
 <header>
-  <h1>SHOP NHẬN QUÀ LIÊN QUÂN</h1>
-  <p>Chọn phần quà bạn muốn đổi</p>
+
+  <h1>
+    ADMIN - SHOP NHẬN QUÀ LIÊN QUÂN
+  </h1>
+
 </header>
+
 
 <div class="container">
 
-  <div class="notice">
-    <strong>📢 Lưu ý:</strong>
-    Sau khi gửi yêu cầu, hệ thống sẽ tạo một mã đơn riêng.
-    Hãy lưu mã đơn để tiện kiểm tra trạng thái.
-  </div>
 
-  <h2 class="section-title">🎁 Danh sách phần quà</h2>
+  <!-- THỐNG KÊ -->
 
-  <div class="products">
+  <div class="stats">
 
-    <div class="card">
-      <div class="icon">💎</div>
-      <h3>Đá Quý</h3>
-      <div class="price">20.000đ</div>
-      <button
-        class="buy-btn"
-        onclick="openExchange('Đá Quý', '20.000đ')">
-        ĐỔI QUÀ
-      </button>
-    </div>
+    <div class="stat">
 
-    <div class="card">
-      <div class="icon">💰</div>
-      <h3>Vàng</h3>
-      <div class="price">15.000đ</div>
-      <button
-        class="buy-btn"
-        onclick="openExchange('Vàng', '15.000đ')">
-        ĐỔI QUÀ
-      </button>
-    </div>
-
-    <div class="card">
-      <div class="icon">🔮</div>
-      <h3>Đá Tiến Hóa</h3>
-      <div class="price">30.000đ</div>
-      <button
-        class="buy-btn"
-        onclick="openExchange('Đá Tiến Hóa', '30.000đ')">
-        ĐỔI QUÀ
-      </button>
-    </div>
-
-    <div class="card">
-      <div class="icon">🔴</div>
-      <h3>Ruby</h3>
-      <div class="price">25.000đ</div>
-      <button
-        class="buy-btn"
-        onclick="openExchange('Ruby', '25.000đ')">
-        ĐỔI QUÀ
-      </button>
-    </div>
-
-  </div>
-
-  <div id="result"></div>
-
-  <div class="history-box">
-
-    <h2 class="section-title">
-      📋 Lịch sử đơn hàng
-    </h2>
-
-    <div id="history">
-      <div class="history-empty">
-        Chưa có đơn hàng trong phiên này.
+      <div class="stat-title">
+        Tổng đơn
       </div>
+
+      <div
+        class="stat-number"
+        id="totalOrders">
+        0
+      </div>
+
+    </div>
+
+
+    <div class="stat">
+
+      <div class="stat-title">
+        Đang chờ
+      </div>
+
+      <div
+        class="stat-number"
+        id="pendingOrders">
+        0
+      </div>
+
+    </div>
+
+
+    <div class="stat">
+
+      <div class="stat-title">
+        Hoàn thành
+      </div>
+
+      <div
+        class="stat-number"
+        id="completedOrders">
+        0
+      </div>
+
+    </div>
+
+
+    <div class="stat">
+
+      <div class="stat-title">
+        Đã hủy
+      </div>
+
+      <div
+        class="stat-number"
+        id="cancelledOrders">
+        0
+      </div>
+
     </div>
 
   </div>
 
-</div>
 
-<footer>
-  SHOP NHẬN QUÀ LIÊN QUÂN
-</footer>
+  <!-- TÌM KIẾM -->
 
-
-<!-- MODAL -->
-
-<div class="modal" id="exchangeModal">
-
-  <div class="modal-box">
-
-    <h2>📦 Tạo đơn hàng</h2>
-
-    <div class="selected">
-
-      <div>
-        Phần quà:
-        <strong id="rewardName"></strong>
-      </div>
-
-      <div>
-        Giá:
-        <strong id="rewardPrice"></strong>
-      </div>
-
-    </div>
+  <div class="toolbar">
 
     <input
-      id="customerName"
+      id="search"
       type="text"
-      maxlength="50"
-      placeholder="Nhập tên của bạn"
-    >
+      placeholder="Tìm theo mã đơn hoặc tên...">
 
-    <div class="buttons">
+    <select id="statusFilter">
 
-      <button
-        class="cancel-btn"
-        onclick="closeModal()">
-        HỦY
-      </button>
+      <option value="all">
+        Tất cả trạng thái
+      </option>
 
-      <button
-        class="confirm-btn"
-        onclick="confirmExchange()">
-        XÁC NHẬN
-      </button>
+      <option value="pending">
+        Đang chờ
+      </option>
 
-    </div>
+      <option value="completed">
+        Hoàn thành
+      </option>
+
+      <option value="cancelled">
+        Đã hủy
+      </option>
+
+    </select>
 
   </div>
+
+
+  <div id="message">
+    Đang tải dữ liệu...
+  </div>
+
+
+  <!-- BẢNG -->
+
+  <div class="table-box">
+
+    <table>
+
+      <thead>
+
+        <tr>
+
+          <th>#</th>
+
+          <th>Mã đơn</th>
+
+          <th>Tên</th>
+
+          <th>Phần thưởng</th>
+
+          <th>Giá</th>
+
+          <th>Thời gian</th>
+
+          <th>Trạng thái</th>
+
+          <th>Thao tác</th>
+
+        </tr>
+
+      </thead>
+
+
+      <tbody id="orders">
+
+      </tbody>
+
+    </table>
+
+  </div>
+
 
 </div>
 
 
 <script type="module">
 
-  import { initializeApp }
-    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import {
+    initializeApp
+  } from
+    "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
 
   import {
     getFirestore,
     collection,
-    addDoc,
-    serverTimestamp
-  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    getDocs,
+    updateDoc,
+    deleteDoc,
+    doc,
+    query,
+    orderBy
+  } from
+    "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
   /* =========================
@@ -465,318 +437,11 @@
     getFirestore(app);
 
 
-  /* =========================
-     BIẾN
-  ========================= */
-
-  let selectedReward = "";
-  let selectedPrice = "";
+  let allOrders = [];
 
 
   /* =========================
-     TẠO MÃ ĐƠN
-  ========================= */
-
-  function createOrderCode() {
-
-    const random =
-      Math.random()
-        .toString(36)
-        .substring(2, 8)
-        .toUpperCase();
-
-    return (
-      "DH-" +
-      Date.now() +
-      "-" +
-      random
-    );
-
-  }
-
-
-  /* =========================
-     MỞ MODAL
-  ========================= */
-
-  window.openExchange =
-    function(reward, price) {
-
-      selectedReward = reward;
-      selectedPrice = price;
-
-      document.getElementById(
-        "rewardName"
-      ).textContent = reward;
-
-      document.getElementById(
-        "rewardPrice"
-      ).textContent = price;
-
-      document
-        .getElementById("exchangeModal")
-        .classList.add("active");
-
-    };
-
-
-  /* =========================
-     ĐÓNG MODAL
-  ========================= */
-
-  window.closeModal =
-    function() {
-
-      document
-        .getElementById("exchangeModal")
-        .classList.remove("active");
-
-      document.getElementById(
-        "customerName"
-      ).value = "";
-
-    };
-
-
-  /* =========================
-     GỬI ĐƠN
-  ========================= */
-
-  window.confirmExchange =
-    async function() {
-
-      const name =
-        document
-          .getElementById("customerName")
-          .value
-          .trim();
-
-
-      if (!name) {
-
-        alert("Vui lòng nhập tên.");
-
-        return;
-      }
-
-
-      const orderCode =
-        createOrderCode();
-
-
-      const order = {
-
-        orderCode: orderCode,
-
-        name: name,
-
-        reward: selectedReward,
-
-        price: selectedPrice,
-
-        status: "pending",
-
-        time:
-          new Date()
-            .toLocaleString("vi-VN"),
-
-        createdAt:
-          serverTimestamp()
-
-      };
-
-
-      try {
-
-        await addDoc(
-          collection(
-            db,
-            "exchangeRequests"
-          ),
-          order
-        );
-
-
-        closeModal();
-
-
-        saveLocalOrder(order);
-
-
-        showSuccess(order);
-
-
-        renderHistory();
-
-
-      } catch (error) {
-
-        console.error(error);
-
-        alert(
-          "Không thể gửi đơn. Hãy kiểm tra Firebase."
-        );
-
-      }
-
-    };
-
-
-  /* =========================
-     LƯU LỊCH SỬ LOCAL
-  ========================= */
-
-  function saveLocalOrder(order) {
-
-    const old =
-      JSON.parse(
-        localStorage.getItem(
-          "shopOrders"
-        ) || "[]"
-      );
-
-
-    old.unshift(order);
-
-
-    localStorage.setItem(
-      "shopOrders",
-      JSON.stringify(old.slice(0, 20))
-    );
-
-  }
-
-
-  /* =========================
-     HIỆN THÔNG BÁO
-  ========================= */
-
-  function showSuccess(order) {
-
-    document.getElementById(
-      "result"
-    ).innerHTML = `
-
-      <div class="success">
-
-        <div>
-          ✅ Gửi yêu cầu thành công!
-        </div>
-
-        <div>
-          Mã đơn:
-          <span class="big-code">
-            ${escapeHTML(order.orderCode)}
-          </span>
-        </div>
-
-        <div>
-          Phần quà: ${escapeHTML(order.reward)}
-        </div>
-
-        <div>
-          Trạng thái: Đang chờ xử lý
-        </div>
-
-      </div>
-
-    `;
-
-  }
-
-
-  /* =========================
-     HIỆN LỊCH SỬ
-  ========================= */
-
-  function renderHistory() {
-
-    const history =
-      document.getElementById(
-        "history"
-      );
-
-
-    const orders =
-      JSON.parse(
-        localStorage.getItem(
-          "shopOrders"
-        ) || "[]"
-      );
-
-
-    if (!orders.length) {
-
-      history.innerHTML = `
-        <div class="history-empty">
-          Chưa có đơn hàng trong phiên này.
-        </div>
-      `;
-
-      return;
-    }
-
-
-    history.innerHTML =
-      orders.map(order => {
-
-        let statusClass =
-          order.status || "pending";
-
-        let statusText =
-          "Đang chờ";
-
-
-        if (order.status === "completed") {
-          statusText = "Đã hoàn thành";
-        }
-
-        if (order.status === "cancelled") {
-          statusText = "Đã hủy";
-        }
-
-
-        return `
-
-          <div class="order">
-
-            <div>
-              Mã đơn:
-              <span class="order-code">
-                ${escapeHTML(order.orderCode)}
-              </span>
-            </div>
-
-            <div>
-              Phần quà:
-              ${escapeHTML(order.reward)}
-            </div>
-
-            <div>
-              Giá:
-              ${escapeHTML(order.price)}
-            </div>
-
-            <div>
-              Thời gian:
-              ${escapeHTML(order.time)}
-            </div>
-
-            <span class="status ${statusClass}">
-              ${statusText}
-            </span>
-
-          </div>
-
-        `;
-
-      }).join("");
-
-  }
-
-
-  /* =========================
-     ESCAPE HTML
+     ESCAPE
   ========================= */
 
   function escapeHTML(value) {
@@ -792,30 +457,492 @@
 
 
   /* =========================
-     LOAD
+     LOAD ORDERS
   ========================= */
 
-  renderHistory();
+  async function loadOrders() {
+
+    const message =
+      document.getElementById(
+        "message"
+      );
+
+
+    try {
+
+      message.innerText =
+        "Đang tải đơn hàng...";
+
+
+      const q = query(
+        collection(
+          db,
+          "exchangeRequests"
+        ),
+        orderBy(
+          "createdAt",
+          "desc"
+        )
+      );
+
+
+      const snapshot =
+        await getDocs(q);
+
+
+      allOrders = [];
+
+
+      snapshot.forEach(item => {
+
+        allOrders.push({
+
+          id: item.id,
+
+          ...item.data()
+
+        });
+
+      });
+
+
+      updateStats();
+
+      renderOrders();
+
+
+      message.innerText =
+        `Đã tải ${allOrders.length} đơn hàng.`;
+
+    } catch (error) {
+
+      console.error(error);
+
+      message.innerText =
+        "Không thể tải dữ liệu Firebase.";
+
+    }
+
+  }
 
 
   /* =========================
-     CLICK NGOÀI MODAL
+     THỐNG KÊ
+  ========================= */
+
+  function updateStats() {
+
+    const total =
+      allOrders.length;
+
+
+    const pending =
+      allOrders.filter(
+        order =>
+          order.status === "pending"
+      ).length;
+
+
+    const completed =
+      allOrders.filter(
+        order =>
+          order.status === "completed"
+      ).length;
+
+
+    const cancelled =
+      allOrders.filter(
+        order =>
+          order.status === "cancelled"
+      ).length;
+
+
+    document.getElementById(
+      "totalOrders"
+    ).textContent = total;
+
+
+    document.getElementById(
+      "pendingOrders"
+    ).textContent = pending;
+
+
+    document.getElementById(
+      "completedOrders"
+    ).textContent = completed;
+
+
+    document.getElementById(
+      "cancelledOrders"
+    ).textContent = cancelled;
+
+  }
+
+
+  /* =========================
+     HIỂN THỊ
+  ========================= */
+
+  function renderOrders() {
+
+    const tbody =
+      document.getElementById(
+        "orders"
+      );
+
+
+    const search =
+      document.getElementById(
+        "search"
+      )
+      .value
+      .trim()
+      .toLowerCase();
+
+
+    const filter =
+      document.getElementById(
+        "statusFilter"
+      ).value;
+
+
+    let filtered =
+      allOrders.filter(order => {
+
+        const code =
+          String(
+            order.orderCode ||
+            order.id ||
+            ""
+          ).toLowerCase();
+
+
+        const name =
+          String(
+            order.name || ""
+          ).toLowerCase();
+
+
+        const matchSearch =
+          code.includes(search) ||
+          name.includes(search);
+
+
+        const matchStatus =
+          filter === "all" ||
+          order.status === filter;
+
+
+        return (
+          matchSearch &&
+          matchStatus
+        );
+
+      });
+
+
+    if (!filtered.length) {
+
+      tbody.innerHTML = `
+
+        <tr>
+
+          <td
+            colspan="8"
+            class="empty">
+
+            Không tìm thấy đơn hàng.
+
+          </td>
+
+        </tr>
+
+      `;
+
+      return;
+
+    }
+
+
+    tbody.innerHTML =
+      filtered.map(
+        (order, index) => {
+
+          const code =
+            order.orderCode ||
+            order.id;
+
+
+          let statusText =
+            "Đang chờ";
+
+
+          if (
+            order.status ===
+            "completed"
+          ) {
+            statusText =
+              "Hoàn thành";
+          }
+
+
+          if (
+            order.status ===
+            "cancelled"
+          ) {
+            statusText =
+              "Đã hủy";
+          }
+
+
+          const status =
+            order.status ||
+            "pending";
+
+
+          return `
+
+            <tr>
+
+              <td>
+                ${index + 1}
+              </td>
+
+              <td>
+
+                <span
+                  class="order-code">
+
+                  ${escapeHTML(code)}
+
+                </span>
+
+              </td>
+
+              <td>
+                ${escapeHTML(
+                  order.name
+                )}
+              </td>
+
+              <td>
+                ${escapeHTML(
+                  order.reward
+                )}
+              </td>
+
+              <td>
+                ${escapeHTML(
+                  order.price
+                )}
+              </td>
+
+              <td>
+                ${escapeHTML(
+                  order.time
+                )}
+              </td>
+
+              <td>
+
+                <span
+                  class="badge ${escapeHTML(status)}">
+
+                  ${statusText}
+
+                </span>
+
+              </td>
+
+              <td>
+
+                <div class="actions">
+
+                  <button
+                    class="done"
+                    onclick="completeOrder('${escapeHTML(order.id)}')">
+
+                    Hoàn thành
+
+                  </button>
+
+                  <button
+                    class="cancel"
+                    onclick="cancelOrder('${escapeHTML(order.id)}')">
+
+                    Hủy
+
+                  </button>
+
+                  <button
+                    class="delete"
+                    onclick="deleteOrder('${escapeHTML(order.id)}')">
+
+                    Xóa
+
+                  </button>
+
+                </div>
+
+              </td>
+
+            </tr>
+
+          `;
+
+        }
+      ).join("");
+
+  }
+
+
+  /* =========================
+     HOÀN THÀNH
+  ========================= */
+
+  window.completeOrder =
+    async function(id) {
+
+      try {
+
+        await updateDoc(
+
+          doc(
+            db,
+            "exchangeRequests",
+            id
+          ),
+
+          {
+            status: "completed"
+          }
+
+        );
+
+
+        await loadOrders();
+
+      } catch (error) {
+
+        console.error(error);
+
+        alert(
+          "Không thể cập nhật đơn."
+        );
+
+      }
+
+    };
+
+
+  /* =========================
+     HỦY
+  ========================= */
+
+  window.cancelOrder =
+    async function(id) {
+
+      try {
+
+        await updateDoc(
+
+          doc(
+            db,
+            "exchangeRequests",
+            id
+          ),
+
+          {
+            status: "cancelled"
+          }
+
+        );
+
+
+        await loadOrders();
+
+      } catch (error) {
+
+        console.error(error);
+
+        alert(
+          "Không thể cập nhật đơn."
+        );
+
+      }
+
+    };
+
+
+  /* =========================
+     XÓA
+  ========================= */
+
+  window.deleteOrder =
+    async function(id) {
+
+      const ok =
+        confirm(
+          "Bạn có chắc muốn xóa đơn này?"
+        );
+
+
+      if (!ok) return;
+
+
+      try {
+
+        await deleteDoc(
+
+          doc(
+            db,
+            "exchangeRequests",
+            id
+          )
+
+        );
+
+
+        await loadOrders();
+
+      } catch (error) {
+
+        console.error(error);
+
+        alert(
+          "Không thể xóa đơn."
+        );
+
+      }
+
+    };
+
+
+  /* =========================
+     TÌM KIẾM
   ========================= */
 
   document
-    .getElementById("exchangeModal")
+    .getElementById("search")
     .addEventListener(
-      "click",
-      function(event) {
-
-        if (
-          event.target === this
-        ) {
-          closeModal();
-        }
-
-      }
+      "input",
+      renderOrders
     );
+
+
+  document
+    .getElementById("statusFilter")
+    .addEventListener(
+      "change",
+      renderOrders
+    );
+
+
+  /* =========================
+     KHỞI ĐỘNG
+  ========================= */
+
+  loadOrders();
 
 </script>
 
