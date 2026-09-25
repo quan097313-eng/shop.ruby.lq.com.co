@@ -1,883 +1,823 @@
-```html
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin - Shop Đổi Phần Thưởng</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHOP NHẬN QUÀ LIÊN QUÂN</title>
 
-<style>
-* {
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
 
-body {
-    margin: 0;
-    color: white;
-    background:
-        radial-gradient(circle at top, #68189a, transparent 35%),
-        linear-gradient(135deg, #16002b, #35105c, #180024);
-    min-height: 100vh;
-}
+    body {
+      background: #080d18;
+      color: #fff;
+      min-height: 100vh;
+    }
 
-header {
-    text-align: center;
-    padding: 30px 15px;
-    background: rgba(0,0,0,.4);
-}
+    header {
+      background: linear-gradient(135deg, #111827, #172554);
+      padding: 25px 15px;
+      text-align: center;
+      border-bottom: 1px solid #334155;
+    }
 
-header h1 {
-    margin: 0;
-    color: #ffd700;
-}
+    header h1 {
+      color: #facc15;
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
 
-.container {
-    max-width: 1300px;
-    margin: 30px auto;
-    padding: 15px;
-}
+    header p {
+      color: #cbd5e1;
+    }
 
-.login-box {
-    max-width: 400px;
-    margin: 80px auto;
-    padding: 30px;
-    background: rgba(0,0,0,.4);
-    border-radius: 15px;
-    text-align: center;
-}
+    .container {
+      max-width: 1150px;
+      margin: auto;
+      padding: 25px 15px 50px;
+    }
 
-.login-box h2 {
-    color: #ffd700;
-}
+    .notice {
+      background: #172033;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 25px;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
 
-.login-box input {
-    width: 100%;
-    padding: 13px;
-    margin: 8px 0;
-    border: 0;
-    border-radius: 8px;
-    outline: none;
-}
+    .notice strong {
+      color: #facc15;
+    }
 
-.login-box button {
-    width: 100%;
-    padding: 13px;
-    margin-top: 10px;
-    border: 0;
-    border-radius: 8px;
-    background: linear-gradient(135deg,#ffd700,#ffb700);
-    font-weight: bold;
-    cursor: pointer;
-}
+    .section-title {
+      margin: 25px 0 15px;
+      font-size: 22px;
+      color: #facc15;
+    }
 
-#error {
-    color: #ff6675;
-}
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
 
-#adminPanel {
-    display: none;
-}
+    .card {
+      background: #111827;
+      border: 1px solid #263449;
+      border-radius: 15px;
+      padding: 22px;
+      text-align: center;
+      transition: .2s;
+    }
 
-.status {
-    padding: 15px;
-    margin-bottom: 20px;
-    background: rgba(255,255,255,.08);
-    border-radius: 10px;
-    text-align: center;
-}
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #facc15;
+    }
 
-.stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
-    gap: 15px;
-    margin-bottom: 25px;
-}
+    .icon {
+      font-size: 45px;
+      margin-bottom: 12px;
+    }
 
-.stat {
-    padding: 20px;
-    background: rgba(255,255,255,.1);
-    border-radius: 12px;
-    text-align: center;
-}
+    .card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
 
-.stat h2 {
-    margin: 0;
-    color: #ffd700;
-    font-size: 30px;
-}
+    .price {
+      color: #facc15;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
 
-.stat p {
-    color: #ccc;
-}
+    .buy-btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #facc15;
+      color: #111827;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-.table-box {
-    overflow-x: auto;
-    background: rgba(0,0,0,.3);
-    border-radius: 15px;
-    padding: 15px;
-}
+    .buy-btn:hover {
+      background: #fde047;
+    }
 
-table {
-    width: 100%;
-    min-width: 950px;
-    border-collapse: collapse;
-}
+    .history-box {
+      margin-top: 35px;
+      background: #111827;
+      border: 1px solid #263449;
+      border-radius: 15px;
+      padding: 20px;
+    }
 
-th,
-td {
-    padding: 12px;
-    border-bottom: 1px solid rgba(255,255,255,.12);
-    text-align: center;
-}
+    .history-empty {
+      color: #94a3b8;
+      padding: 15px 0;
+    }
 
-th {
-    color: #ffd700;
-    background: rgba(0,0,0,.25);
-}
+    .order {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 12px;
+    }
 
-button {
-    border: 0;
-    border-radius: 7px;
-    padding: 8px 12px;
-    cursor: pointer;
-    font-weight: bold;
-    margin: 2px;
-}
+    .order-code {
+      color: #facc15;
+      font-weight: bold;
+    }
 
-.refresh {
-    background: #ffd700;
-    color: #222;
-}
+    .status {
+      display: inline-block;
+      padding: 5px 9px;
+      border-radius: 6px;
+      font-size: 13px;
+      margin-top: 8px;
+    }
 
-.logout {
-    background: #555;
-    color: white;
-}
+    .pending {
+      background: #713f12;
+      color: #fde68a;
+    }
 
-.approve {
-    background: #35d07f;
-    color: #111;
-}
+    .completed {
+      background: #14532d;
+      color: #bbf7d0;
+    }
 
-.reject {
-    background: #ff6675;
-    color: white;
-}
+    .cancelled {
+      background: #7f1d1d;
+      color: #fecaca;
+    }
 
-.delete {
-    background: #555;
-    color: white;
-}
+    /* MODAL */
 
-.pending {
-    color: #ffd700;
-    font-weight: bold;
-}
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.75);
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+      z-index: 999;
+    }
 
-.approved {
-    color: #55ff88;
-    font-weight: bold;
-}
+    .modal.active {
+      display: flex;
+    }
 
-.rejected {
-    color: #ff6675;
-    font-weight: bold;
-}
+    .modal-box {
+      width: 100%;
+      max-width: 450px;
+      background: #111827;
+      border: 1px solid #334155;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    }
 
-.empty {
-    padding: 40px;
-    text-align: center;
-    color: #aaa;
-}
-</style>
+    .modal-box h2 {
+      color: #facc15;
+      margin-bottom: 20px;
+    }
+
+    .selected {
+      background: #172033;
+      padding: 13px;
+      border-radius: 8px;
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      background: #0f172a;
+      color: white;
+      border: 1px solid #475569;
+      border-radius: 8px;
+      outline: none;
+      margin-bottom: 15px;
+    }
+
+    input:focus {
+      border-color: #facc15;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .buttons button {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .cancel-btn {
+      background: #475569;
+      color: white;
+    }
+
+    .confirm-btn {
+      background: #22c55e;
+      color: white;
+    }
+
+    .success {
+      background: #052e16;
+      border: 1px solid #22c55e;
+      border-radius: 12px;
+      padding: 18px;
+      margin-top: 20px;
+      line-height: 1.8;
+    }
+
+    .big-code {
+      color: #facc15;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #64748b;
+      border-top: 1px solid #1e293b;
+    }
+
+    @media (max-width: 850px) {
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      header h1 {
+        font-size: 22px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
-    <h1>⚙️ ADMIN QUẢN TRỊ SHOP</h1>
-    <p>Quản lý yêu cầu đổi phần thưởng</p>
+  <h1>SHOP NHẬN QUÀ LIÊN QUÂN</h1>
+  <p>Chọn phần quà bạn muốn đổi</p>
 </header>
-
-
-<!-- ========================= -->
-<!-- ĐĂNG NHẬP -->
-<!-- ========================= -->
-
-<div id="loginBox" class="login-box">
-
-    <h2>🔐 Đăng nhập Admin</h2>
-
-    <input
-        type="text"
-        id="username"
-        placeholder="Tên đăng nhập"
-        autocomplete="off"
-    >
-
-    <input
-        type="password"
-        id="password"
-        placeholder="Mật khẩu"
-    >
-
-    <button onclick="login()">
-        Đăng nhập
-    </button>
-
-    <p id="error"></p>
-
-</div>
-
-
-<!-- ========================= -->
-<!-- ADMIN PANEL -->
-<!-- ========================= -->
-
-<div id="adminPanel">
 
 <div class="container">
 
-    <div class="status">
+  <div class="notice">
+    <strong>📢 Lưu ý:</strong>
+    Sau khi gửi yêu cầu, hệ thống sẽ tạo một mã đơn riêng.
+    Hãy lưu mã đơn để tiện kiểm tra trạng thái.
+  </div>
 
-        <span id="firebaseStatus">
-            🔄 Đang kết nối Firebase...
-        </span>
+  <h2 class="section-title">🎁 Danh sách phần quà</h2>
 
-        <br><br>
+  <div class="products">
 
-        <button
-            class="refresh"
-            onclick="loadOrders()"
-        >
-            🔄 Làm mới
-        </button>
-
-        <button
-            class="logout"
-            onclick="logout()"
-        >
-            🚪 Đăng xuất
-        </button>
-
+    <div class="card">
+      <div class="icon">💎</div>
+      <h3>Đá Quý</h3>
+      <div class="price">20.000đ</div>
+      <button
+        class="buy-btn"
+        onclick="openExchange('Đá Quý', '20.000đ')">
+        ĐỔI QUÀ
+      </button>
     </div>
 
-
-    <!-- THỐNG KÊ -->
-
-    <div class="stats">
-
-        <div class="stat">
-            <h2 id="totalOrders">0</h2>
-            <p>Tổng đơn</p>
-        </div>
-
-        <div class="stat">
-            <h2 id="pendingOrders">0</h2>
-            <p>Chờ duyệt</p>
-        </div>
-
-        <div class="stat">
-            <h2 id="approvedOrders">0</h2>
-            <p>Đã duyệt</p>
-        </div>
-
-        <div class="stat">
-            <h2 id="rejectedOrders">0</h2>
-            <p>Từ chối</p>
-        </div>
-
+    <div class="card">
+      <div class="icon">💰</div>
+      <h3>Vàng</h3>
+      <div class="price">15.000đ</div>
+      <button
+        class="buy-btn"
+        onclick="openExchange('Vàng', '15.000đ')">
+        ĐỔI QUÀ
+      </button>
     </div>
 
-
-    <!-- DANH SÁCH ĐƠN -->
-
-    <div class="table-box">
-
-        <table>
-
-            <thead>
-
-                <tr>
-                    <th>#</th>
-                    <th>Tên</th>
-                    <th>Phần thưởng</th>
-                    <th>Giá</th>
-                    <th>Loại tiền</th>
-                    <th>Thời gian</th>
-                    <th>Trạng thái</th>
-                    <th>Thao tác</th>
-                </tr>
-
-            </thead>
-
-            <tbody id="ordersBody">
-
-                <tr>
-                    <td
-                        colspan="8"
-                        class="empty"
-                    >
-                        Chưa có dữ liệu.
-                    </td>
-                </tr>
-
-            </tbody>
-
-        </table>
-
+    <div class="card">
+      <div class="icon">🔮</div>
+      <h3>Đá Tiến Hóa</h3>
+      <div class="price">30.000đ</div>
+      <button
+        class="buy-btn"
+        onclick="openExchange('Đá Tiến Hóa', '30.000đ')">
+        ĐỔI QUÀ
+      </button>
     </div>
+
+    <div class="card">
+      <div class="icon">🔴</div>
+      <h3>Ruby</h3>
+      <div class="price">25.000đ</div>
+      <button
+        class="buy-btn"
+        onclick="openExchange('Ruby', '25.000đ')">
+        ĐỔI QUÀ
+      </button>
+    </div>
+
+  </div>
+
+  <div id="result"></div>
+
+  <div class="history-box">
+
+    <h2 class="section-title">
+      📋 Lịch sử đơn hàng
+    </h2>
+
+    <div id="history">
+      <div class="history-empty">
+        Chưa có đơn hàng trong phiên này.
+      </div>
+    </div>
+
+  </div>
 
 </div>
+
+<footer>
+  SHOP NHẬN QUÀ LIÊN QUÂN
+</footer>
+
+
+<!-- MODAL -->
+
+<div class="modal" id="exchangeModal">
+
+  <div class="modal-box">
+
+    <h2>📦 Tạo đơn hàng</h2>
+
+    <div class="selected">
+
+      <div>
+        Phần quà:
+        <strong id="rewardName"></strong>
+      </div>
+
+      <div>
+        Giá:
+        <strong id="rewardPrice"></strong>
+      </div>
+
+    </div>
+
+    <input
+      id="customerName"
+      type="text"
+      maxlength="50"
+      placeholder="Nhập tên của bạn"
+    >
+
+    <div class="buttons">
+
+      <button
+        class="cancel-btn"
+        onclick="closeModal()">
+        HỦY
+      </button>
+
+      <button
+        class="confirm-btn"
+        onclick="confirmExchange()">
+        XÁC NHẬN
+      </button>
+
+    </div>
+
+  </div>
 
 </div>
 
 
 <script type="module">
 
-import {
-    initializeApp
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+  import { initializeApp }
+    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-import {
+  import {
     getFirestore,
     collection,
-    getDocs,
-    updateDoc,
-    deleteDoc,
-    doc,
-    query,
-    orderBy
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+    addDoc,
+    serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
-/* =========================
-   FIREBASE
-========================= */
+  /* =========================
+     FIREBASE
+  ========================= */
 
-const firebaseConfig = {
+  const firebaseConfig = {
 
-    apiKey:
-        "AIzaSyD28nAKhfVQHF_I134R0YyaWQuGw2FMliY",
+    apiKey: "YOUR_API_KEY",
 
     authDomain:
-        "admin-shopcuaquan.firebaseapp.com",
+      "YOUR_PROJECT.firebaseapp.com",
 
     projectId:
-        "admin-shopcuaquan",
+      "YOUR_PROJECT_ID",
 
     storageBucket:
-        "admin-shopcuaquan.firebasestorage.app",
+      "YOUR_PROJECT.appspot.com",
 
     messagingSenderId:
-        "608228191463",
+      "YOUR_SENDER_ID",
 
     appId:
-        "1:608228191463:web:52298a53e0f0a829874642",
+      "YOUR_APP_ID"
 
-    measurementId:
-        "G-M67P3RDCH1"
-};
+  };
 
 
-/* =========================
-   KHỞI TẠO
-========================= */
-
-const app =
+  const app =
     initializeApp(firebaseConfig);
 
-const db =
+  const db =
     getFirestore(app);
 
 
-document.getElementById(
-    "firebaseStatus"
-).innerHTML =
-    "🟢 Firebase đã kết nối";
+  /* =========================
+     BIẾN
+  ========================= */
+
+  let selectedReward = "";
+  let selectedPrice = "";
 
 
-/* =========================
-   TÀI KHOẢN ADMIN
-========================= */
+  /* =========================
+     TẠO MÃ ĐƠN
+  ========================= */
 
-const ADMIN_USERNAME =
-    "adminquan";
+  function createOrderCode() {
 
-const ADMIN_PASSWORD =
-    "AnhQuan_123";
+    const random =
+      Math.random()
+        .toString(36)
+        .substring(2, 8)
+        .toUpperCase();
 
-
-/* =========================
-   ĐĂNG NHẬP
-========================= */
-
-window.login = function() {
-
-    const username =
-        document.getElementById(
-            "username"
-        ).value.trim();
-
-    const password =
-        document.getElementById(
-            "password"
-        ).value;
-
-
-    if (
-        username === ADMIN_USERNAME &&
-        password === ADMIN_PASSWORD
-    ) {
-
-        sessionStorage.setItem(
-            "adminLogged",
-            "true"
-        );
-
-        document.getElementById(
-            "loginBox"
-        ).style.display = "none";
-
-        document.getElementById(
-            "adminPanel"
-        ).style.display = "block";
-
-        loadOrders();
-
-    } else {
-
-        document.getElementById(
-            "error"
-        ).innerText =
-            "❌ Sai tên đăng nhập hoặc mật khẩu!";
-    }
-};
-
-
-/* =========================
-   ĐĂNG XUẤT
-========================= */
-
-window.logout = function() {
-
-    sessionStorage.removeItem(
-        "adminLogged"
+    return (
+      "DH-" +
+      Date.now() +
+      "-" +
+      random
     );
 
-    location.reload();
-};
+  }
 
 
-/* =========================
-   KIỂM TRA ĐĂNG NHẬP
-========================= */
+  /* =========================
+     MỞ MODAL
+  ========================= */
 
-if (
-    sessionStorage.getItem(
-        "adminLogged"
-    ) === "true"
-) {
+  window.openExchange =
+    function(reward, price) {
 
-    document.getElementById(
-        "loginBox"
-    ).style.display = "none";
+      selectedReward = reward;
+      selectedPrice = price;
 
-    document.getElementById(
-        "adminPanel"
-    ).style.display = "block";
+      document.getElementById(
+        "rewardName"
+      ).textContent = reward;
 
-    loadOrders();
-}
+      document.getElementById(
+        "rewardPrice"
+      ).textContent = price;
+
+      document
+        .getElementById("exchangeModal")
+        .classList.add("active");
+
+    };
 
 
-/* =========================
-   TẢI ĐƠN FIREBASE
-========================= */
+  /* =========================
+     ĐÓNG MODAL
+  ========================= */
 
-async function loadOrders() {
+  window.closeModal =
+    function() {
 
-    const body =
-        document.getElementById(
-            "ordersBody"
+      document
+        .getElementById("exchangeModal")
+        .classList.remove("active");
+
+      document.getElementById(
+        "customerName"
+      ).value = "";
+
+    };
+
+
+  /* =========================
+     GỬI ĐƠN
+  ========================= */
+
+  window.confirmExchange =
+    async function() {
+
+      const name =
+        document
+          .getElementById("customerName")
+          .value
+          .trim();
+
+
+      if (!name) {
+
+        alert("Vui lòng nhập tên.");
+
+        return;
+      }
+
+
+      const orderCode =
+        createOrderCode();
+
+
+      const order = {
+
+        orderCode: orderCode,
+
+        name: name,
+
+        reward: selectedReward,
+
+        price: selectedPrice,
+
+        status: "pending",
+
+        time:
+          new Date()
+            .toLocaleString("vi-VN"),
+
+        createdAt:
+          serverTimestamp()
+
+      };
+
+
+      try {
+
+        await addDoc(
+          collection(
+            db,
+            "exchangeRequests"
+          ),
+          order
         );
 
 
-    body.innerHTML = `
-        <tr>
-            <td colspan="8" class="empty">
-                🔄 Đang tải đơn...
-            </td>
-        </tr>
-    `;
+        closeModal();
 
 
-    try {
-
-        const q = query(
-            collection(
-                db,
-                "exchangeRequests"
-            ),
-            orderBy(
-                "createdAt",
-                "desc"
-            )
-        );
+        saveLocalOrder(order);
 
 
-        const snapshot =
-            await getDocs(q);
+        showSuccess(order);
 
 
-        const orders = [];
+        renderHistory();
 
 
-        snapshot.forEach(
-            item => {
-
-                orders.push({
-                    id: item.id,
-                    ...item.data()
-                });
-
-            }
-        );
-
-
-        renderOrders(orders);
-
-
-    } catch (error) {
+      } catch (error) {
 
         console.error(error);
 
-
-        body.innerHTML = `
-            <tr>
-                <td colspan="8" class="empty">
-                    ❌ Không thể tải dữ liệu.<br><br>
-                    ${escapeHTML(
-                        error.message
-                    )}
-                </td>
-            </tr>
-        `;
-    }
-}
-
-
-/* =========================
-   HIỂN THỊ
-========================= */
-
-function renderOrders(orders) {
-
-    const body =
-        document.getElementById(
-            "ordersBody"
+        alert(
+          "Không thể gửi đơn. Hãy kiểm tra Firebase."
         );
 
+      }
 
-    const pending =
-        orders.filter(
-            x => x.status === "pending"
-        ).length;
+    };
 
 
-    const approved =
-        orders.filter(
-            x => x.status === "approved"
-        ).length;
+  /* =========================
+     LƯU LỊCH SỬ LOCAL
+  ========================= */
+
+  function saveLocalOrder(order) {
+
+    const old =
+      JSON.parse(
+        localStorage.getItem(
+          "shopOrders"
+        ) || "[]"
+      );
 
 
-    const rejected =
-        orders.filter(
-            x => x.status === "rejected"
-        ).length;
+    old.unshift(order);
 
 
-    document.getElementById(
-        "totalOrders"
-    ).innerText =
-        orders.length;
-
-
-    document.getElementById(
-        "pendingOrders"
-    ).innerText =
-        pending;
-
-
-    document.getElementById(
-        "approvedOrders"
-    ).innerText =
-        approved;
-
-
-    document.getElementById(
-        "rejectedOrders"
-    ).innerText =
-        rejected;
-
-
-    if (orders.length === 0) {
-
-        body.innerHTML = `
-            <tr>
-                <td
-                    colspan="8"
-                    class="empty"
-                >
-                    📭 Chưa có yêu cầu đổi quà.
-                </td>
-            </tr>
-        `;
-
-        return;
-    }
-
-
-    body.innerHTML = "";
-
-
-    orders.forEach(
-        (item, index) => {
-
-            let statusText =
-                "⏳ Chờ duyệt";
-
-            let statusClass =
-                "pending";
-
-
-            if (
-                item.status ===
-                "approved"
-            ) {
-
-                statusText =
-                    "✅ Đã duyệt";
-
-                statusClass =
-                    "approved";
-            }
-
-
-            if (
-                item.status ===
-                "rejected"
-            ) {
-
-                statusText =
-                    "❌ Từ chối";
-
-                statusClass =
-                    "rejected";
-            }
-
-
-            const row =
-                document.createElement(
-                    "tr"
-                );
-
-
-            row.innerHTML = `
-
-                <td>
-                    ${index + 1}
-                </td>
-
-                <td>
-                    ${escapeHTML(
-                        item.name || ""
-                    )}
-                </td>
-
-                <td>
-                    ${escapeHTML(
-                        item.reward || ""
-                    )}
-                </td>
-
-                <td>
-                    ${escapeHTML(
-                        item.price || ""
-                    )}
-                </td>
-
-                <td>
-                    ${escapeHTML(
-                        item.currency || ""
-                    )}
-                </td>
-
-                <td>
-                    ${escapeHTML(
-                        item.time || ""
-                    )}
-                </td>
-
-                <td class="${statusClass}">
-                    ${statusText}
-                </td>
-
-                <td>
-
-                    <button
-                        class="approve"
-                        onclick="changeStatus(
-                            '${item.id}',
-                            'approved'
-                        )"
-                    >
-                        ✓ Duyệt
-                    </button>
-
-                    <button
-                        class="reject"
-                        onclick="changeStatus(
-                            '${item.id}',
-                            'rejected'
-                        )"
-                    >
-                        ✕ Từ chối
-                    </button>
-
-                    <button
-                        class="delete"
-                        onclick="removeOrder(
-                            '${item.id}'
-                        )"
-                    >
-                        🗑️ Xóa
-                    </button>
-
-                </td>
-            `;
-
-
-            body.appendChild(row);
-
-        }
+    localStorage.setItem(
+      "shopOrders",
+      JSON.stringify(old.slice(0, 20))
     );
-}
+
+  }
 
 
-/* =========================
-   ĐỔI TRẠNG THÁI
-========================= */
+  /* =========================
+     HIỆN THÔNG BÁO
+  ========================= */
 
-window.changeStatus =
-async function(id, status) {
+  function showSuccess(order) {
 
-    try {
+    document.getElementById(
+      "result"
+    ).innerHTML = `
 
-        await updateDoc(
-            doc(
-                db,
-                "exchangeRequests",
-                id
-            ),
-            {
-                status: status
-            }
-        );
+      <div class="success">
+
+        <div>
+          ✅ Gửi yêu cầu thành công!
+        </div>
+
+        <div>
+          Mã đơn:
+          <span class="big-code">
+            ${escapeHTML(order.orderCode)}
+          </span>
+        </div>
+
+        <div>
+          Phần quà: ${escapeHTML(order.reward)}
+        </div>
+
+        <div>
+          Trạng thái: Đang chờ xử lý
+        </div>
+
+      </div>
+
+    `;
+
+  }
 
 
-        await loadOrders();
+  /* =========================
+     HIỆN LỊCH SỬ
+  ========================= */
+
+  function renderHistory() {
+
+    const history =
+      document.getElementById(
+        "history"
+      );
 
 
-    } catch (error) {
+    const orders =
+      JSON.parse(
+        localStorage.getItem(
+          "shopOrders"
+        ) || "[]"
+      );
 
-        alert(
-            "❌ Lỗi: " +
-            error.message
-        );
+
+    if (!orders.length) {
+
+      history.innerHTML = `
+        <div class="history-empty">
+          Chưa có đơn hàng trong phiên này.
+        </div>
+      `;
+
+      return;
     }
-};
 
 
-/* =========================
-   XÓA ĐƠN
-========================= */
+    history.innerHTML =
+      orders.map(order => {
 
-window.removeOrder =
-async function(id) {
+        let statusClass =
+          order.status || "pending";
 
-    const ok =
-        confirm(
-            "Bạn có chắc muốn xóa đơn này?"
-        );
+        let statusText =
+          "Đang chờ";
 
 
-    if (!ok) {
-        return;
-    }
+        if (order.status === "completed") {
+          statusText = "Đã hoàn thành";
+        }
+
+        if (order.status === "cancelled") {
+          statusText = "Đã hủy";
+        }
 
 
-    try {
+        return `
 
-        await deleteDoc(
-            doc(
-                db,
-                "exchangeRequests",
-                id
-            )
-        );
+          <div class="order">
+
+            <div>
+              Mã đơn:
+              <span class="order-code">
+                ${escapeHTML(order.orderCode)}
+              </span>
+            </div>
+
+            <div>
+              Phần quà:
+              ${escapeHTML(order.reward)}
+            </div>
+
+            <div>
+              Giá:
+              ${escapeHTML(order.price)}
+            </div>
+
+            <div>
+              Thời gian:
+              ${escapeHTML(order.time)}
+            </div>
+
+            <span class="status ${statusClass}">
+              ${statusText}
+            </span>
+
+          </div>
+
+        `;
+
+      }).join("");
+
+  }
 
 
-        await loadOrders();
+  /* =========================
+     ESCAPE HTML
+  ========================= */
+
+  function escapeHTML(value) {
+
+    return String(value ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+
+  }
 
 
-    } catch (error) {
+  /* =========================
+     LOAD
+  ========================= */
 
-        alert(
-            "❌ Lỗi: " +
-            error.message
-        );
-    }
-};
+  renderHistory();
 
 
-/* =========================
-   ESCAPE HTML
-========================= */
+  /* =========================
+     CLICK NGOÀI MODAL
+  ========================= */
 
-function escapeHTML(text) {
+  document
+    .getElementById("exchangeModal")
+    .addEventListener(
+      "click",
+      function(event) {
 
-    return String(text)
+        if (
+          event.target === this
+        ) {
+          closeModal();
+        }
 
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-
-        .replace(
-            /</g,
-            "&lt;"
-        )
-
-        .replace(
-            />/g,
-            "&gt;"
-        )
-
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-
-        .replace(
-            /'/g,
-            "&#039;"
-        );
-}
+      }
+    );
 
 </script>
 
 </body>
 </html>
-```
