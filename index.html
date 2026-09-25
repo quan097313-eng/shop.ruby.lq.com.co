@@ -286,7 +286,7 @@ footer {
 <header>
 
     <h1>
-        SHOP ĐỔI RUBY LIÊN QUÂN SANG SKIN & ĐÁ TIẾN HÓA
+        SHOP NHẬN QUÀ LIÊN QUÂN
     </h1>
 
     <p>
@@ -302,7 +302,6 @@ footer {
     <a href="#gem">🔮 Đá quý</a>
     <a href="#gold">🪙 Vàng</a>
     <a href="#evo">⚡ Đá Tiến Hóa</a>
-    <a href="#history">📜 Lịch sử đổi quà</a>
 
 </nav>
 
@@ -716,19 +715,7 @@ footer {
 </div>
 
 
-<!-- ========================= -->
-<!-- LỊCH SỬ -->
-<!-- ========================= -->
 
-<section class="history-box" id="history">
-
-    <h2>
-        📜 LỊCH SỬ ĐỔI QUÀ
-    </h2>
-
-    <div id="historyRecords"></div>
-
-</section>
 
 
 </div>
@@ -750,7 +737,7 @@ footer {
 <div id="form">
 
     <h2>
-        🎁 Điền thông tin
+        🎁 Đổi quà Garena
     </h2>
 
     <p id="reward"></p>
@@ -765,12 +752,12 @@ footer {
     <input
         type="text"
         id="verificationCode"
-        placeholder="Mã xác nhận"
+        placeholder="Mã đơn / PIN xác nhận"
         autocomplete="off"
     >
 
     <p class="warning">
-        Mã xác nhận là bắt buộc.
+        Mã đơn / PIN xác nhận là bắt buộc.
     </p>
 
     <button onclick="confirmExchange()">
@@ -931,7 +918,7 @@ window.confirmExchange = async function() {
     if (!verificationCode) {
 
         alert(
-            "Vui lòng nhập mã xác nhận."
+            "Vui lòng nhập mã đơn / PIN xác nhận."
         );
 
         return;
@@ -1059,177 +1046,18 @@ window.closeModal = function() {
 
 
 /* =========================
-   HIỂN THỊ LỊCH SỬ
+   HIỂN THỊ ĐƠN ĐANG CHỜ XÁC NHẬN
 ========================= */
 
 async function renderHistory() {
+    const container = document.getElementById("pendingRecords");
+    if (!container) return;
 
-    const container =
-        document.getElementById(
-            "historyRecords"
-        );
-
-
-    try {
-
-        const q = query(
-            collection(
-                db,
-                "exchangeRequests"
-            ),
-            orderBy(
-                "createdAt",
-                "desc"
-            )
-        );
-
-
-        const snapshot =
-            await getDocs(q);
-
-
-        if (snapshot.empty) {
-
-            container.innerHTML =
-                `<div class="history-empty">
-                    Chưa có lịch sử đổi quà.
-                </div>`;
-
-            return;
-        }
-
-
-        let html = `
-
-            <div style="overflow-x:auto">
-
-            <table class="history-table">
-
-            <tr>
-
-                <th>#</th>
-
-                <th>Tên</th>
-
-                <th>Phần thưởng</th>
-
-                <th>Giá</th>
-
-                <th>Loại tiền</th>
-
-                <th>Thời gian</th>
-
-                <th>Trạng thái</th>
-
-            </tr>
-        `;
-
-
-        let index = 0;
-
-
-        snapshot.forEach(
-            (docItem) => {
-
-                index++;
-
-                const item =
-                    docItem.data();
-
-
-                let status =
-                    "⏳ Chờ duyệt";
-
-
-                if (
-                    item.status ===
-                    "approved"
-                ) {
-
-                    status =
-                        "✅ Đã duyệt";
-
-                }
-
-
-                if (
-                    item.status ===
-                    "rejected"
-                ) {
-
-                    status =
-                        "❌ Từ chối";
-                }
-
-
-                html += `
-
-                    <tr>
-
-                        <td>
-                            ${index}
-                        </td>
-
-                        <td>
-                            ${escapeHTML(
-                                item.name || ""
-                            )}
-                        </td>
-
-                        <td>
-                            ${escapeHTML(
-                                item.reward || ""
-                            )}
-                        </td>
-
-                        <td>
-                            ${escapeHTML(
-                                item.price || ""
-                            )}
-                        </td>
-
-                        <td>
-                            ${escapeHTML(
-                                item.currency || ""
-                            )}
-                        </td>
-
-                        <td>
-                            ${escapeHTML(
-                                item.time || ""
-                            )}
-                        </td>
-
-                        <td>
-                            ${status}
-                        </td>
-
-                    </tr>
-                `;
-            }
-        );
-
-
-        html += `
-
-            </table>
-
-            </div>
-        `;
-
-
-        container.innerHTML = html;
-
-
-    } catch (error) {
-
-        console.error(error);
-
-        container.innerHTML =
-            `<div class="history-empty">
-                Không thể tải lịch sử.
-            </div>`;
-    }
+    // Không hiển thị danh sách đơn của tất cả người dùng công khai.
+    container.innerHTML =
+        `<div class="history-empty">
+            Yêu cầu của bạn đã được gửi và đang chờ xác nhận.
+        </div>`;
 }
 
 
