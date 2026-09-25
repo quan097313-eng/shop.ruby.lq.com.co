@@ -1,1116 +1,823 @@
-```html
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHOP NHẬN QUÀ LIÊN QUÂN</title>
 
-<title>Shop Đổi Phần Thưởng</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
 
-<style>
-* {
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
+    body {
+      background: #080d18;
+      color: #fff;
+      min-height: 100vh;
+    }
 
-html {
-    scroll-behavior: smooth;
-}
+    header {
+      background: linear-gradient(135deg, #111827, #172554);
+      padding: 25px 15px;
+      text-align: center;
+      border-bottom: 1px solid #334155;
+    }
 
-body {
-    margin: 0;
-    color: white;
-    background:
-        radial-gradient(circle at top, #68189a, transparent 35%),
-        linear-gradient(135deg, #16002b, #35105c, #180024);
-}
-
-header {
-    text-align: center;
-    padding: 45px 15px;
-    background: rgba(0, 0, 0, .4);
-}
-
-header h1 {
-    margin: 0;
-    color: #ffd700;
-    font-size: 38px;
-    text-shadow: 0 0 18px rgba(255, 215, 0, .35);
-}
-
-header p {
-    color: #ddd;
-}
-
-nav {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    padding: 12px;
-    background: rgba(20, 0, 35, .95);
-    backdrop-filter: blur(10px);
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 16px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, .08);
-    transition: .2s;
-}
-
-nav a:hover {
-    background: #ffd700;
-    color: #222;
-}
-
-.container {
-    max-width: 1100px;
-    margin: 30px auto;
-    padding: 15px;
-}
-
-.section {
-    margin-top: 50px;
-}
-
-.section-title {
-    text-align: center;
-    color: #ffd700;
-    font-size: 30px;
-    margin-bottom: 25px;
-}
-
-.items {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.card {
-    background: rgba(255, 255, 255, .1);
-    border: 1px solid rgba(255, 255, 255, .2);
-    border-radius: 15px;
-    padding: 22px;
-    text-align: center;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, .3);
-    transition: .25s;
-}
-
-.card:hover {
-    transform: translateY(-6px);
-    border-color: #ffd700;
-}
-
-.icon {
-    font-size: 58px;
-    margin-bottom: 10px;
-}
-
-.ruby {
-    color: #ff4d6d;
-    font-size: 22px;
-    font-weight: bold;
-}
-
-.gem {
-    color: #66e6ff;
-    font-size: 22px;
-    font-weight: bold;
-}
-
-.gold {
-    color: #ffd700;
-    font-size: 22px;
-    font-weight: bold;
-}
-
-.evo {
-    color: #ff9f43;
-    font-size: 22px;
-    font-weight: bold;
-}
-
-.card p {
-    color: #ddd;
-    min-height: 40px;
-}
-
-button {
-    border: 0;
-    border-radius: 8px;
-    padding: 12px 20px;
-    background: linear-gradient(135deg, #ffd700, #ffb700);
-    color: #222;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 15px;
-    transition: .2s;
-}
-
-button:hover {
-    filter: brightness(1.1);
-    transform: translateY(-1px);
-}
-
-.close {
-    background: #555;
-    color: white;
-}
-
-.notice {
-    margin-top: 40px;
-    padding: 20px;
-    background: rgba(0, 0, 0, .3);
-    border-radius: 12px;
-    text-align: center;
-    color: #ddd;
-}
-
-.history-box {
-    margin-top: 50px;
-    padding: 25px;
-    background: rgba(0, 0, 0, .35);
-    border: 1px solid rgba(255, 215, 0, .25);
-    border-radius: 15px;
-}
-
-.history-box h2 {
-    text-align: center;
-    color: #ffd700;
-}
-
-.history-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.history-table th,
-.history-table td {
-    border: 1px solid rgba(255, 255, 255, .15);
-    padding: 10px;
-    text-align: center;
-}
-
-.history-table th {
-    color: #ffd700;
-}
-
-.history-empty {
-    text-align: center;
-    color: #aaa;
-    padding: 20px;
-}
-
-#modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 100;
-    background: rgba(0, 0, 0, .8);
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-.modal-box {
-    max-width: 450px;
-    width: 100%;
-    background: #24113d;
-    border-radius: 15px;
-    padding: 30px;
-    text-align: center;
-    box-shadow: 0 15px 60px rgba(0, 0, 0, .5);
-}
-
-.modal-box input {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0;
-    border-radius: 8px;
-    border: 1px solid #777;
-    outline: none;
-}
-
-.modal-box input:focus {
-    border-color: #ffd700;
-}
-
-.warning {
-    color: #ffcc66;
-    font-size: 14px;
-}
-
-.success {
-    color: #55ff88;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-footer {
-    text-align: center;
-    padding: 30px;
-    background: rgba(0, 0, 0, .35);
-    color: #aaa;
-}
-
-@media (max-width: 600px) {
     header h1 {
-        font-size: 27px;
+      color: #facc15;
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      color: #cbd5e1;
+    }
+
+    .container {
+      max-width: 1150px;
+      margin: auto;
+      padding: 25px 15px 50px;
+    }
+
+    .notice {
+      background: #172033;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 25px;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+
+    .notice strong {
+      color: #facc15;
     }
 
     .section-title {
-        font-size: 25px;
+      margin: 25px 0 15px;
+      font-size: 22px;
+      color: #facc15;
     }
 
-    .history-table {
-        font-size: 12px;
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
     }
 
-    .history-table th,
-    .history-table td {
-        padding: 6px;
+    .card {
+      background: #111827;
+      border: 1px solid #263449;
+      border-radius: 15px;
+      padding: 22px;
+      text-align: center;
+      transition: .2s;
     }
-}
-</style>
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #facc15;
+    }
+
+    .icon {
+      font-size: 45px;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      color: #facc15;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    .buy-btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #facc15;
+      color: #111827;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .buy-btn:hover {
+      background: #fde047;
+    }
+
+    .history-box {
+      margin-top: 35px;
+      background: #111827;
+      border: 1px solid #263449;
+      border-radius: 15px;
+      padding: 20px;
+    }
+
+    .history-empty {
+      color: #94a3b8;
+      padding: 15px 0;
+    }
+
+    .order {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 12px;
+    }
+
+    .order-code {
+      color: #facc15;
+      font-weight: bold;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 5px 9px;
+      border-radius: 6px;
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    .pending {
+      background: #713f12;
+      color: #fde68a;
+    }
+
+    .completed {
+      background: #14532d;
+      color: #bbf7d0;
+    }
+
+    .cancelled {
+      background: #7f1d1d;
+      color: #fecaca;
+    }
+
+    /* MODAL */
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.75);
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+      z-index: 999;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 450px;
+      background: #111827;
+      border: 1px solid #334155;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    }
+
+    .modal-box h2 {
+      color: #facc15;
+      margin-bottom: 20px;
+    }
+
+    .selected {
+      background: #172033;
+      padding: 13px;
+      border-radius: 8px;
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      background: #0f172a;
+      color: white;
+      border: 1px solid #475569;
+      border-radius: 8px;
+      outline: none;
+      margin-bottom: 15px;
+    }
+
+    input:focus {
+      border-color: #facc15;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .buttons button {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .cancel-btn {
+      background: #475569;
+      color: white;
+    }
+
+    .confirm-btn {
+      background: #22c55e;
+      color: white;
+    }
+
+    .success {
+      background: #052e16;
+      border: 1px solid #22c55e;
+      border-radius: 12px;
+      padding: 18px;
+      margin-top: 20px;
+      line-height: 1.8;
+    }
+
+    .big-code {
+      color: #facc15;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #64748b;
+      border-top: 1px solid #1e293b;
+    }
+
+    @media (max-width: 850px) {
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      header h1 {
+        font-size: 22px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
-
-    <h1>
-        SHOP NHẬN QUÀ LIÊN QUÂN
-    </h1>
-
-    <p>
-        Trao đổi phần thưởng
-    </p>
-
+  <h1>SHOP NHẬN QUÀ LIÊN QUÂN</h1>
+  <p>Chọn phần quà bạn muốn đổi</p>
 </header>
-
-
-<nav>
-
-    <a href="#ruby">💎 Ruby</a>
-    <a href="#gem">🔮 Đá quý</a>
-    <a href="#gold">🪙 Vàng</a>
-    <a href="#evo">⚡ Đá Tiến Hóa</a>
-
-</nav>
-
 
 <div class="container">
 
+  <div class="notice">
+    <strong>📢 Lưu ý:</strong>
+    Sau khi gửi yêu cầu, hệ thống sẽ tạo một mã đơn riêng.
+    Hãy lưu mã đơn để tiện kiểm tra trạng thái.
+  </div>
 
-<!-- ========================= -->
-<!-- KHU RUBY -->
-<!-- ========================= -->
+  <h2 class="section-title">🎁 Danh sách phần quà</h2>
 
-<section class="section" id="ruby">
+  <div class="products">
 
-<h2 class="section-title">
-    💎 KHU ĐỔI RUBY
-</h2>
+    <div class="card">
+      <div class="icon">💎</div>
+      <h3>Đá Quý</h3>
+      <div class="price">20.000đ</div>
+      <button
+        class="buy-btn"
+        onclick="openExchange('Đá Quý', '20.000đ')">
+        ĐỔI QUÀ
+      </button>
+    </div>
 
-<div class="items">
+    <div class="card">
+      <div class="icon">💰</div>
+      <h3>Vàng</h3>
+      <div class="price">15.000đ</div>
+      <button
+        class="buy-btn"
+        onclick="openExchange('Vàng', '15.000đ')">
+        ĐỔI QUÀ
+      </button>
+    </div>
 
+    <div class="card">
+      <div class="icon">🔮</div>
+      <h3>Đá Tiến Hóa</h3>
+      <div class="price">30.000đ</div>
+      <button
+        class="buy-btn"
+        onclick="openExchange('Đá Tiến Hóa', '30.000đ')">
+        ĐỔI QUÀ
+      </button>
+    </div>
 
-<div class="card">
-    <div class="icon">🎁</div>
-    <div class="ruby">500 Ruby</div>
-    <h2>Rương SS</h2>
-    <p>Đổi lấy 1 Rương SS</p>
+    <div class="card">
+      <div class="icon">🔴</div>
+      <h3>Ruby</h3>
+      <div class="price">25.000đ</div>
+      <button
+        class="buy-btn"
+        onclick="openExchange('Ruby', '25.000đ')">
+        ĐỔI QUÀ
+      </button>
+    </div>
 
-    <button onclick="openExchange('Rương SS','500 Ruby','Ruby')">
-        Đổi thưởng
-    </button>
-</div>
+  </div>
 
+  <div id="result"></div>
 
-<div class="card">
-    <div class="icon">👑</div>
-    <div class="ruby">700 Ruby</div>
-    <h2>Skin SS hữu hạn</h2>
-    <p>Đổi lấy Skin SS hữu hạn</p>
+  <div class="history-box">
 
-    <button onclick="openExchange('Skin SS hữu hạn','700 Ruby','Ruby')">
-        Đổi thưởng
-    </button>
-</div>
+    <h2 class="section-title">
+      📋 Lịch sử đơn hàng
+    </h2>
 
+    <div id="history">
+      <div class="history-empty">
+        Chưa có đơn hàng trong phiên này.
+      </div>
+    </div>
 
-<div class="card">
-    <div class="icon">🎉</div>
-    <div class="ruby">1000 Ruby</div>
-    <h2>Skin SS Tết</h2>
-    <p>Đổi lấy Skin SS Tết</p>
-
-    <button onclick="openExchange('Skin SS Tết','1000 Ruby','Ruby')">
-        Đổi thưởng
-    </button>
-</div>
-
-
-<div class="card">
-    <div class="icon">🔥</div>
-    <div class="ruby">2000 Ruby</div>
-    <h2>Skin SSS hữu hạn</h2>
-    <p>Đổi lấy Skin SSS hữu hạn</p>
-
-    <button onclick="openExchange('Skin SSS hữu hạn','2000 Ruby','Ruby')">
-        Đổi thưởng
-    </button>
-</div>
-
-
-<div class="card">
-    <div class="icon">⚡</div>
-    <div class="ruby">2500 Ruby</div>
-    <h2>Skin SSS+ hữu hạn</h2>
-    <p>Đổi lấy Skin SSS+ hữu hạn</p>
-
-    <button onclick="openExchange('Skin SSS+ hữu hạn','2500 Ruby','Ruby')">
-        Đổi thưởng
-    </button>
-</div>
-
-
-<div class="card">
-    <div class="icon">🌟</div>
-    <div class="ruby">3000 Ruby</div>
-    <h2>Skin SSS+ Tối thượng</h2>
-    <p>Đổi lấy Skin SSS+ Tối thượng</p>
-
-    <button onclick="openExchange('Skin SSS+ Tối thượng','3000 Ruby','Ruby')">
-        Đổi thưởng
-    </button>
-</div>
-
-
-<div class="card">
-    <div class="icon">🗡️</div>
-    <div class="ruby">5000 Ruby</div>
-    <h2>Đá TH Butterfly BMTT</h2>
-    <p>Đủ Đá Tiến Hóa lên Evo 5</p>
-
-    <button onclick="openExchange('Đá TH Butterfly BMTT (Evo 5)','5000 Ruby','Ruby')">
-        Đổi thưởng
-    </button>
-</div>
-
-
-<div class="card">
-    <div class="icon">🐒</div>
-    <div class="ruby">5000 Ruby</div>
-    <h2>Đá TH Ngộ Không</h2>
-    <p>Đủ Đá Tiến Hóa Nhóc Tì Bá Đạo Evo 5</p>
-
-    <button onclick="openExchange('Đá TH Ngộ Không Nhóc Tì Bá Đạo (Evo 5)','5000 Ruby','Ruby')">
-        Đổi thưởng
-    </button>
-</div>
-
-
-<div class="card">
-    <div class="icon">🏹</div>
-    <div class="ruby">5000 Ruby</div>
-    <h2>Đá TH Valhein</h2>
-    <p>Đủ Đá Tiến Hóa Xạ Thần Evo 5</p>
-
-    <button onclick="openExchange('Đá TH Valhein Xạ Thần (Evo 5)','5000 Ruby','Ruby')">
-        Đổi thưởng
-    </button>
-</div>
-
-
-<div class="card">
-    <div class="icon">🛡️</div>
-    <div class="ruby">5000 Ruby</div>
-    <h2>Violet Thứ Nguyên Vệ Thần</h2>
-    <p>Đổi Skin Violet Thứ Nguyên Vệ Thần</p>
-
-    <button onclick="openExchange('Skin Violet Thứ Nguyên Vệ Thần','5000 Ruby','Ruby')">
-        Đổi thưởng
-    </button>
-</div>
-
-
-<div class="card">
-    <div class="icon">🛡️</div>
-    <div class="ruby">6000 Ruby</div>
-    <h2>Tel'Annas Thứ Nguyên Vệ Thần</h2>
-    <p>Đổi Skin Tel'Annas Thứ Nguyên Vệ Thần</p>
-
-    <button onclick="openExchange('Skin Tel\\'Annas Thứ Nguyên Vệ Thần','6000 Ruby','Ruby')">
-        Đổi thưởng
-    </button>
-</div>
-
-
-<div class="card">
-    <div class="icon">🛡️</div>
-    <div class="ruby">7000 Ruby</div>
-    <h2>Airi Thứ Nguyên Vệ Thần</h2>
-    <p>Đổi Skin Airi Thứ Nguyên Vệ Thần</p>
-
-    <button onclick="openExchange('Skin Airi Thứ Nguyên Vệ Thần','7000 Ruby','Ruby')">
-        Đổi thưởng
-    </button>
-</div>
-
-
-<div class="card">
-    <div class="icon">🛡️</div>
-    <div class="ruby">8000 Ruby</div>
-    <h2>Lauriel Thứ Nguyên Vệ Thần</h2>
-    <p>Đổi Skin Lauriel Thứ Nguyên Vệ Thần</p>
-
-    <button onclick="openExchange('Skin Lauriel Thứ Nguyên Vệ Thần','8000 Ruby','Ruby')">
-        Đổi thưởng
-    </button>
-</div>
-
-
-<div class="card">
-    <div class="icon">🛡️</div>
-    <div class="ruby">10000 Ruby</div>
-    <h2>Nakroth Thứ Nguyên Vệ Thần</h2>
-    <p>Đổi Skin Nakroth Thứ Nguyên Vệ Thần</p>
-
-    <button onclick="openExchange('Skin Nakroth Thứ Nguyên Vệ Thần','10000 Ruby','Ruby')">
-        Đổi thưởng
-    </button>
-</div>
-
-
-<div class="card">
-    <div class="icon">🛡️</div>
-    <div class="ruby">10000 Ruby</div>
-    <h2>Valhein Thứ Nguyên Vệ Thần</h2>
-    <p>Đổi Skin Valhein Thứ Nguyên Vệ Thần</p>
-
-    <button onclick="openExchange('Skin Valhein Thứ Nguyên Vệ Thần','10000 Ruby','Ruby')">
-        Đổi thưởng
-    </button>
-</div>
-
-
-<div class="card">
-    <div class="icon">🛡️</div>
-    <div class="ruby">12000 Ruby</div>
-    <h2>Hayate Thứ Nguyên Vệ Thần</h2>
-    <p>Đổi Skin Hayate Thứ Nguyên Vệ Thần</p>
-
-    <button onclick="openExchange('Skin Hayate Thứ Nguyên Vệ Thần','12000 Ruby','Ruby')">
-        Đổi thưởng
-    </button>
-</div>
-
+  </div>
 
 </div>
-</section>
-
-
-<!-- ========================= -->
-<!-- KHU ĐÁ QUÝ -->
-<!-- ========================= -->
-
-<section class="section" id="gem">
-
-<h2 class="section-title">
-    🔮 KHU ĐỔI ĐÁ QUÝ
-</h2>
-
-<div class="items">
-
-<div class="card">
-    <div class="icon">🔮</div>
-    <div class="gem">1 Đá quý</div>
-    <h2>Rương tất cả Skin SS</h2>
-    <p>Đổi rương và tự chọn Skin SS</p>
-
-    <button onclick="openExchange('Rương tất cả Skin SS - tự chọn','1 Đá quý','Đá quý')">
-        Đổi thưởng
-    </button>
-</div>
-
-
-<div class="card">
-    <div class="icon">💠</div>
-    <div class="gem">2 Đá quý</div>
-    <h2>Rương Skin SSS hữu hạn</h2>
-    <p>Đổi rương và tự chọn Skin SSS hữu hạn</p>
-
-    <button onclick="openExchange('Rương Skin SSS hữu hạn - tự chọn','2 Đá quý','Đá quý')">
-        Đổi thưởng
-    </button>
-</div>
-
-</div>
-</section>
-
-
-<!-- ========================= -->
-<!-- KHU VÀNG -->
-<!-- ========================= -->
-
-<section class="section" id="gold">
-
-<h2 class="section-title">
-    🪙 KHU ĐỔI VÀNG
-</h2>
-
-<div class="items">
-
-<div class="card">
-    <div class="icon">🪙</div>
-    <div class="gold">5000 Vàng</div>
-    <h2>Skin SS</h2>
-    <p>Đổi lấy Skin SS</p>
-
-    <button onclick="openExchange('Skin SS','5000 Vàng','Vàng')">
-        Đổi thưởng
-    </button>
-</div>
-
-
-<div class="card">
-    <div class="icon">👑</div>
-    <div class="gold">10000 Vàng</div>
-    <h2>Skin SS hữu hạn</h2>
-    <p>Đổi lấy Skin SS hữu hạn</p>
-
-    <button onclick="openExchange('Skin SS hữu hạn','10000 Vàng','Vàng')">
-        Đổi thưởng
-    </button>
-</div>
-
-
-<div class="card">
-    <div class="icon">🎊</div>
-    <div class="gold">12000 Vàng</div>
-    <h2>Skin SS Tết</h2>
-    <p>Đổi lấy Skin SS Tết</p>
-
-    <button onclick="openExchange('Skin SS Tết','12000 Vàng','Vàng')">
-        Đổi thưởng
-    </button>
-</div>
-
-
-<div class="card">
-    <div class="icon">🔥</div>
-    <div class="gold">15000 Vàng</div>
-    <h2>Skin SSS hữu hạn</h2>
-    <p>Đổi lấy Skin SSS hữu hạn</p>
-
-    <button onclick="openExchange('Skin SSS hữu hạn','15000 Vàng','Vàng')">
-        Đổi thưởng
-    </button>
-</div>
-
-
-<div class="card">
-    <div class="icon">⚡</div>
-    <div class="gold">17000 Vàng</div>
-    <h2>Skin SSS+ hữu hạn</h2>
-    <p>Đổi lấy Skin SSS+ hữu hạn</p>
-
-    <button onclick="openExchange('Skin SSS+ hữu hạn','17000 Vàng','Vàng')">
-        Đổi thưởng
-    </button>
-</div>
-
-
-<div class="card">
-    <div class="icon">🌟</div>
-    <div class="gold">20000 Vàng</div>
-    <h2>Skin SSS+ Tối thượng</h2>
-    <p>Đổi lấy Skin SSS+ Tối thượng</p>
-
-    <button onclick="openExchange('Skin SSS+ Tối thượng','20000 Vàng','Vàng')">
-        Đổi thưởng
-    </button>
-</div>
-
-</div>
-</section>
-
-
-<!-- ========================= -->
-<!-- KHU ĐÁ TIẾN HÓA -->
-<!-- ========================= -->
-
-<section class="section" id="evo">
-
-<h2 class="section-title">
-    ⚡ KHU ĐỔI ĐÁ TIẾN HÓA (VÀNG)
-</h2>
-
-<div class="items">
-
-<div class="card">
-    <div class="icon">🗡️</div>
-    <div class="evo">10000 Vàng</div>
-    <h2>Đá TH Butterfly BMTT</h2>
-    <p>
-        Đổi full đá nâng Cấp 5 (Evo 5)
-        Butterfly Bình Minh Tận Thế
-    </p>
-
-    <button onclick="openExchange('Đá TH Butterfly BMTT (Evo 5)','10000 Vàng','Vàng')">
-        Đổi thưởng
-    </button>
-</div>
-
-
-<div class="card">
-    <div class="icon">🐒</div>
-    <div class="evo">10000 Vàng</div>
-    <h2>Đá TH Ngộ Không</h2>
-    <p>
-        Đổi full đá nâng Cấp 5 (Evo 5)
-        Ngộ Không Nhóc Tì Bá Đạo
-    </p>
-
-    <button onclick="openExchange('Đá TH Ngộ Không Nhóc Tì Bá Đạo (Evo 5)','10000 Vàng','Vàng')">
-        Đổi thưởng
-    </button>
-</div>
-
-
-<div class="card">
-    <div class="icon">🏹</div>
-    <div class="evo">10000 Vàng</div>
-    <h2>Đá TH Valhein Xạ Thần</h2>
-    <p>
-        Đổi full đá nâng Cấp 5 (Evo 5)
-        Valhein Xạ Thần
-    </p>
-
-    <button onclick="openExchange('Đá TH Valhein Xạ Thần (Evo 5)','10000 Vàng','Vàng')">
-        Đổi thưởng
-    </button>
-</div>
-
-</div>
-</section>
-
-
-<div class="notice">
-
-    🎁 Vui lòng điền đầy đủ thông tin để gửi yêu cầu.
-
-    <br><br>
-
-    Mã xác nhận là bắt buộc để xác nhận yêu cầu.
-
-</div>
-
-
-
-
-
-</div>
-
 
 <footer>
-    © 2026 Shop đổi phần thưởng
+  SHOP NHẬN QUÀ LIÊN QUÂN
 </footer>
 
 
-<!-- ========================= -->
 <!-- MODAL -->
-<!-- ========================= -->
 
-<div id="modal">
+<div class="modal" id="exchangeModal">
 
-<div class="modal-box">
+  <div class="modal-box">
 
-<div id="form">
+    <h2>📦 Tạo đơn hàng</h2>
 
-    <h2>
-        🎁 Tài khoản Garena
-    </h2>
+    <div class="selected">
 
-    <p id="reward"></p>
+      <div>
+        Phần quà:
+        <strong id="rewardName"></strong>
+      </div>
+
+      <div>
+        Giá:
+        <strong id="rewardPrice"></strong>
+      </div>
+
+    </div>
 
     <input
-        type="text"
-        id="playerName"
-        placeholder="Tên"
-        autocomplete="off"
+      id="customerName"
+      type="text"
+      maxlength="50"
+      placeholder="Nhập tên của bạn"
     >
 
-    <input
-        type="text"
-        id="verificationCode"
-        placeholder="Mã xác nhận"
-        autocomplete="off"
-    >
+    <div class="buttons">
 
-    <p class="warning">
-        Mã xác nhận là bắt buộc.
-    </p>
+      <button
+        class="cancel-btn"
+        onclick="closeModal()">
+        HỦY
+      </button>
 
-    <button onclick="confirmExchange()">
-        Xác nhận đổi
-    </button>
+      <button
+        class="confirm-btn"
+        onclick="confirmExchange()">
+        XÁC NHẬN
+      </button>
 
-    <button
-        class="close"
-        onclick="closeModal()"
-    >
-        Hủy
-    </button>
+    </div>
+
+  </div>
 
 </div>
 
-
-<div id="success" style="display:none">
-
-    <p class="success">
-        ✓ Gửi yêu cầu thành công!
-    </p>
-
-    <p id="successText"></p>
-
-    <button onclick="closeModal()">
-        Đóng
-    </button>
-
-</div>
-
-</div>
-</div>
-
-
-<!-- ========================= -->
-<!-- FIREBASE + JAVASCRIPT -->
-<!-- ========================= -->
 
 <script type="module">
 
-import {
-    initializeApp
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+  import { initializeApp }
+    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-import {
+  import {
     getFirestore,
     collection,
     addDoc,
-    getDocs,
-    query,
-    orderBy,
     serverTimestamp
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
-/* =========================
-   FIREBASE CONFIG
-========================= */
+  /* =========================
+     FIREBASE
+  ========================= */
 
-const firebaseConfig = {
+  const firebaseConfig = {
 
-    apiKey:
-        "AIzaSyD28nAKhfVQHF_I134R0YyaWQuGw2FMliY",
+    apiKey: "YOUR_API_KEY",
 
     authDomain:
-        "admin-shopcuaquan.firebaseapp.com",
+      "YOUR_PROJECT.firebaseapp.com",
 
     projectId:
-        "admin-shopcuaquan",
+      "YOUR_PROJECT_ID",
 
     storageBucket:
-        "admin-shopcuaquan.firebasestorage.app",
+      "YOUR_PROJECT.appspot.com",
 
     messagingSenderId:
-        "608228191463",
+      "YOUR_SENDER_ID",
 
     appId:
-        "1:608228191463:web:52298a53e0f0a829874642",
+      "YOUR_APP_ID"
 
-    measurementId:
-        "G-M67P3RDCH1"
-};
+  };
 
 
-/* =========================
-   KHỞI TẠO FIREBASE
-========================= */
+  const app =
+    initializeApp(firebaseConfig);
 
-const app = initializeApp(firebaseConfig);
-
-const db = getFirestore(app);
+  const db =
+    getFirestore(app);
 
 
-/* =========================
-   BIẾN
-========================= */
+  /* =========================
+     BIẾN
+  ========================= */
 
-let selectedReward = "";
-let selectedPrice = "";
-let selectedCurrency = "";
-
-
-/* =========================
-   MỞ FORM
-========================= */
-
-window.openExchange = function(
-    reward,
-    price,
-    currency
-) {
-
-    selectedReward = reward;
-    selectedPrice = price;
-    selectedCurrency = currency;
-
-    document.getElementById(
-        "reward"
-    ).innerHTML =
-        `Bạn muốn đổi
-        <b>${escapeHTML(price)}</b>
-        lấy
-        <b>${escapeHTML(reward)}</b>?`;
-
-    document.getElementById(
-        "modal"
-    ).style.display = "flex";
-};
+  let selectedReward = "";
+  let selectedPrice = "";
 
 
-/* =========================
-   GỬI YÊU CẦU LÊN FIREBASE
-========================= */
+  /* =========================
+     TẠO MÃ ĐƠN
+  ========================= */
 
-window.confirmExchange = async function() {
+  function createOrderCode() {
 
-    const name =
-        document.getElementById(
-            "playerName"
-        ).value.trim();
+    const random =
+      Math.random()
+        .toString(36)
+        .substring(2, 8)
+        .toUpperCase();
 
-    const verificationCode =
-        document.getElementById(
-            "verificationCode"
-        ).value.trim();
+    return (
+      "DH-" +
+      Date.now() +
+      "-" +
+      random
+    );
+
+  }
 
 
-    if (!name) {
+  /* =========================
+     MỞ MODAL
+  ========================= */
 
-        alert(
-            "Vui lòng nhập tên."
-        );
+  window.openExchange =
+    function(reward, price) {
+
+      selectedReward = reward;
+      selectedPrice = price;
+
+      document.getElementById(
+        "rewardName"
+      ).textContent = reward;
+
+      document.getElementById(
+        "rewardPrice"
+      ).textContent = price;
+
+      document
+        .getElementById("exchangeModal")
+        .classList.add("active");
+
+    };
+
+
+  /* =========================
+     ĐÓNG MODAL
+  ========================= */
+
+  window.closeModal =
+    function() {
+
+      document
+        .getElementById("exchangeModal")
+        .classList.remove("active");
+
+      document.getElementById(
+        "customerName"
+      ).value = "";
+
+    };
+
+
+  /* =========================
+     GỬI ĐƠN
+  ========================= */
+
+  window.confirmExchange =
+    async function() {
+
+      const name =
+        document
+          .getElementById("customerName")
+          .value
+          .trim();
+
+
+      if (!name) {
+
+        alert("Vui lòng nhập tên.");
 
         return;
-    }
+      }
 
 
-    if (!verificationCode) {
-
-        alert(
-            "Vui lòng nhập mã xác nhận."
-        );
-
-        return;
-    }
+      const orderCode =
+        createOrderCode();
 
 
-    const button =
-        document.querySelector(
-            "#form button"
-        );
+      const order = {
 
-    button.disabled = true;
-    button.innerText = "Đang gửi...";
+        orderCode: orderCode,
+
+        name: name,
+
+        reward: selectedReward,
+
+        price: selectedPrice,
+
+        status: "pending",
+
+        time:
+          new Date()
+            .toLocaleString("vi-VN"),
+
+        createdAt:
+          serverTimestamp()
+
+      };
 
 
-    try {
-
-        /*
-         * KHÔNG lưu mã xác nhận.
-         */
+      try {
 
         await addDoc(
-            collection(
-                db,
-                "exchangeRequests"
-            ),
-            {
-
-                name: name,
-
-                reward: selectedReward,
-
-                price: selectedPrice,
-
-                currency: selectedCurrency,
-
-                status: "pending",
-
-                time:
-                    new Date().toLocaleString(
-                        "vi-VN"
-                    ),
-
-                createdAt:
-                    serverTimestamp()
-
-            }
+          collection(
+            db,
+            "exchangeRequests"
+          ),
+          order
         );
 
 
-        document.getElementById(
-            "form"
-        ).style.display = "none";
+        closeModal();
 
 
-        document.getElementById(
-            "success"
-        ).style.display = "block";
+        saveLocalOrder(order);
 
 
-        document.getElementById(
-            "successText"
-        ).innerHTML =
-            `Yêu cầu đổi
-            <b>${escapeHTML(selectedReward)}</b>
-            đã được ghi nhận cho
-            <b>${escapeHTML(name)}</b>.`;
+        showSuccess(order);
 
 
-        document.getElementById(
-            "verificationCode"
-        ).value = "";
+        renderHistory();
 
 
-        await renderHistory();
-
-
-    } catch (error) {
+      } catch (error) {
 
         console.error(error);
 
         alert(
-            "Không thể gửi yêu cầu.\n\n" +
-            error.message
+          "Không thể gửi đơn. Hãy kiểm tra Firebase."
         );
 
-    } finally {
+      }
 
-        button.disabled = false;
-        button.innerText = "Xác nhận đổi";
+    };
+
+
+  /* =========================
+     LƯU LỊCH SỬ LOCAL
+  ========================= */
+
+  function saveLocalOrder(order) {
+
+    const old =
+      JSON.parse(
+        localStorage.getItem(
+          "shopOrders"
+        ) || "[]"
+      );
+
+
+    old.unshift(order);
+
+
+    localStorage.setItem(
+      "shopOrders",
+      JSON.stringify(old.slice(0, 20))
+    );
+
+  }
+
+
+  /* =========================
+     HIỆN THÔNG BÁO
+  ========================= */
+
+  function showSuccess(order) {
+
+    document.getElementById(
+      "result"
+    ).innerHTML = `
+
+      <div class="success">
+
+        <div>
+          ✅ Gửi yêu cầu thành công!
+        </div>
+
+        <div>
+          Mã đơn:
+          <span class="big-code">
+            ${escapeHTML(order.orderCode)}
+          </span>
+        </div>
+
+        <div>
+          Phần quà: ${escapeHTML(order.reward)}
+        </div>
+
+        <div>
+          Trạng thái: Đang chờ xử lý
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+
+  /* =========================
+     HIỆN LỊCH SỬ
+  ========================= */
+
+  function renderHistory() {
+
+    const history =
+      document.getElementById(
+        "history"
+      );
+
+
+    const orders =
+      JSON.parse(
+        localStorage.getItem(
+          "shopOrders"
+        ) || "[]"
+      );
+
+
+    if (!orders.length) {
+
+      history.innerHTML = `
+        <div class="history-empty">
+          Chưa có đơn hàng trong phiên này.
+        </div>
+      `;
+
+      return;
     }
-};
 
 
-/* =========================
-   ĐÓNG FORM
-========================= */
+    history.innerHTML =
+      orders.map(order => {
 
-window.closeModal = function() {
+        let statusClass =
+          order.status || "pending";
 
-    document.getElementById(
-        "modal"
-    ).style.display = "none";
-
-
-    document.getElementById(
-        "form"
-    ).style.display = "block";
+        let statusText =
+          "Đang chờ";
 
 
-    document.getElementById(
-        "success"
-    ).style.display = "none";
+        if (order.status === "completed") {
+          statusText = "Đã hoàn thành";
+        }
+
+        if (order.status === "cancelled") {
+          statusText = "Đã hủy";
+        }
 
 
-    document.getElementById(
-        "playerName"
-    ).value = "";
+        return `
+
+          <div class="order">
+
+            <div>
+              Mã đơn:
+              <span class="order-code">
+                ${escapeHTML(order.orderCode)}
+              </span>
+            </div>
+
+            <div>
+              Phần quà:
+              ${escapeHTML(order.reward)}
+            </div>
+
+            <div>
+              Giá:
+              ${escapeHTML(order.price)}
+            </div>
+
+            <div>
+              Thời gian:
+              ${escapeHTML(order.time)}
+            </div>
+
+            <span class="status ${statusClass}">
+              ${statusText}
+            </span>
+
+          </div>
+
+        `;
+
+      }).join("");
+
+  }
 
 
-    document.getElementById(
-        "verificationCode"
-    ).value = "";
-};
+  /* =========================
+     ESCAPE HTML
+  ========================= */
+
+  function escapeHTML(value) {
+
+    return String(value ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+
+  }
 
 
-/* =========================
-   HIỂN THỊ ĐƠN ĐANG CHỜ XÁC NHẬN
-========================= */
+  /* =========================
+     LOAD
+  ========================= */
 
-async function renderHistory() {
-    const container = document.getElementById("pendingRecords");
-    if (!container) return;
-
-    // Không hiển thị danh sách đơn của tất cả người dùng công khai.
-    container.innerHTML =
-        `<div class="history-empty">
-            Yêu cầu của bạn đã được gửi và đang chờ xác nhận.
-        </div>`;
-}
+  renderHistory();
 
 
-/* =========================
-   CHỐNG HTML
-========================= */
+  /* =========================
+     CLICK NGOÀI MODAL
+  ========================= */
 
-function escapeHTML(text) {
+  document
+    .getElementById("exchangeModal")
+    .addEventListener(
+      "click",
+      function(event) {
 
-    return String(text)
+        if (
+          event.target === this
+        ) {
+          closeModal();
+        }
 
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-
-        .replace(
-            /</g,
-            "&lt;"
-        )
-
-        .replace(
-            />/g,
-            "&gt;"
-        )
-
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-
-        .replace(
-            /'/g,
-            "&#039;"
-        );
-}
-
-
-/* =========================
-   KHI MỞ TRANG
-========================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function() {
-
-        renderHistory();
-
-    }
-);
+      }
+    );
 
 </script>
 
 </body>
 </html>
-```
