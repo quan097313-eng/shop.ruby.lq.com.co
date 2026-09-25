@@ -6,215 +6,500 @@
 
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0">
+    content="width=device-width, initial-scale=1.0"
+  >
 
-  <title>ADMIN - SHOP NHẬN QUÀ</title>
+  <title>ADMIN - SHOP NHẬN QUÀ LIÊN QUÂN</title>
+
 
   <style>
 
     * {
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
-      background: #080d18;
+      font-family: Arial, sans-serif;
+      background:
+        linear-gradient(135deg,#140022,#260044,#12001f);
+      color: white;
+      min-height: 100vh;
+    }
+
+
+    .login-container {
+
+      min-height: 100vh;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 20px;
+    }
+
+
+    .login-box {
+
+      width: 100%;
+
+      max-width: 400px;
+
+      padding: 30px;
+
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.08),
+          rgba(255,255,255,.03)
+        );
+
+      border:
+        1px solid rgba(255,255,255,.1);
+
+      box-shadow:
+        0 20px 70px rgba(0,0,0,.5);
+
+      text-align: center;
+    }
+
+
+    .login-box h1 {
+
+      color: #dc9aff;
+
+      margin-bottom: 25px;
+    }
+
+
+    input {
+
+      width: 100%;
+
+      padding: 13px;
+
+      margin-bottom: 12px;
+
+      border-radius: 9px;
+
+      border:
+        1px solid rgba(255,255,255,.15);
+
+      background:
+        rgba(255,255,255,.07);
+
+      color: white;
+
+      outline: none;
+    }
+
+
+    input:focus {
+
+      border-color: #b94ee8;
+
+    }
+
+
+    button {
+
+      border: none;
+
+      cursor: pointer;
+
+      border-radius: 9px;
+
+      padding: 11px 15px;
+
+      font-weight: bold;
+
+      transition: .2s;
+    }
+
+
+    .login-btn {
+
+      width: 100%;
+
+      background:
+        linear-gradient(90deg,#8c32c9,#bd55ee);
+
       color: white;
     }
 
-    header {
-      background:
-        linear-gradient(
-          135deg,
-          #111827,
-          #172554
-        );
 
-      padding: 25px;
+    .login-error {
+
+      color: #ff7777;
+
+      margin-top: 12px;
+
+      display: none;
+    }
+
+
+    /* ADMIN */
+
+    #adminPanel {
+
+      display: none;
+
+    }
+
+
+    header {
+
+      padding: 20px;
+
+      background:
+        rgba(0,0,0,.35);
 
       border-bottom:
-        1px solid #334155;
+        1px solid rgba(255,255,255,.1);
+
     }
+
+
+    header .top {
+
+      max-width: 1400px;
+
+      margin: auto;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 15px;
+
+    }
+
 
     header h1 {
-      margin: 0;
-      color: #facc15;
+
+      color: #dc9aff;
+
+      font-size: 25px;
+
     }
+
+
+    .top-buttons {
+
+      display: flex;
+
+      gap: 8px;
+
+    }
+
+
+    .refresh-btn {
+
+      background: #7130a0;
+
+      color: white;
+
+    }
+
+
+    .logout-btn {
+
+      background: #9d3030;
+
+      color: white;
+
+    }
+
 
     .container {
-      max-width: 1450px;
+
+      width: 95%;
+
+      max-width: 1400px;
+
       margin: auto;
-      padding: 25px 15px 50px;
+
+      padding: 25px 0 50px;
+
     }
 
+
+    .connection {
+
+      background:
+        rgba(0,255,100,.08);
+
+      border:
+        1px solid rgba(0,255,100,.2);
+
+      padding: 12px;
+
+      border-radius: 10px;
+
+      margin-bottom: 20px;
+
+      color: #9dffb6;
+
+    }
+
+
     .stats {
+
       display: grid;
+
       grid-template-columns:
-        repeat(4, 1fr);
+        repeat(auto-fit,minmax(180px,1fr));
 
       gap: 15px;
 
       margin-bottom: 25px;
     }
 
+
     .stat {
-      background: #111827;
-      border: 1px solid #263449;
-      border-radius: 12px;
-      padding: 18px;
+
+      background:
+        rgba(255,255,255,.06);
+
+      border:
+        1px solid rgba(255,255,255,.1);
+
+      padding: 20px;
+
+      border-radius: 13px;
+
     }
+
 
     .stat-title {
-      color: #94a3b8;
+
+      color: #aaa;
+
       margin-bottom: 8px;
+
     }
 
-    .stat-number {
-      color: #facc15;
+
+    .stat-value {
+
       font-size: 28px;
+
       font-weight: bold;
+
+      color: #e1a2ff;
+
     }
 
-    .toolbar {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
+
+    .orders-box {
+
+      background:
+        rgba(255,255,255,.05);
+
+      border:
+        1px solid rgba(255,255,255,.1);
+
+      border-radius: 15px;
+
+      overflow: hidden;
     }
 
-    input,
-    select {
-      background: #111827;
-      color: white;
-      border: 1px solid #334155;
-      border-radius: 8px;
-      padding: 12px;
-      outline: none;
+
+    .orders-title {
+
+      padding: 20px;
+
+      font-size: 21px;
+
+      color: #e1a2ff;
+
     }
 
-    input {
-      flex: 1;
-      min-width: 230px;
-    }
 
-    select {
-      min-width: 170px;
-    }
+    .table-wrapper {
 
-    .table-box {
+      width: 100%;
+
       overflow-x: auto;
-      background: #111827;
-      border: 1px solid #263449;
-      border-radius: 12px;
     }
+
 
     table {
+
       width: 100%;
+
       border-collapse: collapse;
-      min-width: 1100px;
+
+      min-width: 1050px;
     }
 
-    th,
-    td {
-      padding: 14px;
-      border-bottom: 1px solid #263449;
-      text-align: left;
-    }
 
     th {
-      background: #0f172a;
-      color: #facc15;
+
+      background:
+        rgba(168,61,228,.18);
+
+      color: #e4b3ff;
+
+      padding: 13px;
+
+      text-align: left;
+
+      white-space: nowrap;
     }
+
 
     td {
-      color: #cbd5e1;
+
+      padding: 12px;
+
+      border-top:
+        1px solid rgba(255,255,255,.07);
+
+      color: #ddd;
+
     }
+
+
+    tr:hover td {
+
+      background:
+        rgba(255,255,255,.03);
+
+    }
+
 
     .order-code {
-      color: #facc15;
+
+      color: #e19aff;
+
       font-weight: bold;
+
+      white-space: nowrap;
+
     }
 
-    .badge {
+
+    .status {
+
       display: inline-block;
+
       padding: 6px 9px;
-      border-radius: 6px;
+
+      border-radius: 20px;
+
       font-size: 13px;
+
+      font-weight: bold;
+
     }
 
-    .pending {
-      background: #713f12;
-      color: #fde68a;
+
+    .status-pending {
+
+      background:
+        rgba(255,193,7,.15);
+
+      color: #ffd45e;
+
     }
 
-    .completed {
-      background: #14532d;
-      color: #bbf7d0;
+
+    .status-approved {
+
+      background:
+        rgba(0,255,120,.12);
+
+      color: #70ffac;
+
     }
 
-    .cancelled {
-      background: #7f1d1d;
-      color: #fecaca;
+
+    .status-rejected {
+
+      background:
+        rgba(255,50,50,.12);
+
+      color: #ff8585;
+
     }
+
 
     .actions {
+
       display: flex;
-      gap: 5px;
-      flex-wrap: wrap;
+
+      gap: 6px;
+
     }
 
-    button {
-      border: none;
-      border-radius: 6px;
-      padding: 8px 10px;
-      cursor: pointer;
-      font-weight: bold;
-    }
 
-    .done {
-      background: #22c55e;
+    .approve {
+
+      background: #248d53;
+
       color: white;
     }
 
-    .cancel {
-      background: #ef4444;
+
+    .reject {
+
+      background: #a33b3b;
+
       color: white;
     }
+
 
     .delete {
-      background: #475569;
+
+      background: #555;
+
       color: white;
     }
 
-    button:hover {
-      opacity: .85;
-    }
-
-    #message {
-      color: #94a3b8;
-      margin-bottom: 15px;
-    }
 
     .empty {
-      padding: 40px;
+
       text-align: center;
-      color: #64748b;
+
+      padding: 40px;
+
+      color: #999;
     }
 
-    @media (max-width: 800px) {
 
-      .stats {
-        grid-template-columns:
-          repeat(2, 1fr);
+    .loading {
+
+      text-align: center;
+
+      padding: 40px;
+
+      color: #bbb;
+    }
+
+
+    @media(max-width:700px) {
+
+      header .top {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
       }
 
-    }
+      .top-buttons {
 
-    @media (max-width: 450px) {
+        justify-content: center;
 
-      .stats {
-        grid-template-columns: 1fr;
       }
 
     }
@@ -223,162 +508,222 @@
 
 </head>
 
+
 <body>
 
-<header>
 
-  <h1>
-    ADMIN - SHOP NHẬN QUÀ LIÊN QUÂN
-  </h1>
+<!-- LOGIN -->
 
-</header>
+<div
+  class="login-container"
+  id="loginContainer"
+>
 
+  <div class="login-box">
 
-<div class="container">
-
-
-  <!-- THỐNG KÊ -->
-
-  <div class="stats">
-
-    <div class="stat">
-
-      <div class="stat-title">
-        Tổng đơn
-      </div>
-
-      <div
-        class="stat-number"
-        id="totalOrders">
-        0
-      </div>
-
-    </div>
-
-
-    <div class="stat">
-
-      <div class="stat-title">
-        Đang chờ
-      </div>
-
-      <div
-        class="stat-number"
-        id="pendingOrders">
-        0
-      </div>
-
-    </div>
-
-
-    <div class="stat">
-
-      <div class="stat-title">
-        Hoàn thành
-      </div>
-
-      <div
-        class="stat-number"
-        id="completedOrders">
-        0
-      </div>
-
-    </div>
-
-
-    <div class="stat">
-
-      <div class="stat-title">
-        Đã hủy
-      </div>
-
-      <div
-        class="stat-number"
-        id="cancelledOrders">
-        0
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- TÌM KIẾM -->
-
-  <div class="toolbar">
+    <h1>🔐 ADMIN</h1>
 
     <input
-      id="search"
       type="text"
-      placeholder="Tìm theo mã đơn hoặc tên...">
+      id="adminUsername"
+      placeholder="Tên đăng nhập"
+    >
 
-    <select id="statusFilter">
+    <input
+      type="password"
+      id="adminPassword"
+      placeholder="Mật khẩu"
+    >
 
-      <option value="all">
-        Tất cả trạng thái
-      </option>
+    <button
+      class="login-btn"
+      onclick="login()"
+    >
+      Đăng nhập
+    </button>
 
-      <option value="pending">
-        Đang chờ
-      </option>
-
-      <option value="completed">
-        Hoàn thành
-      </option>
-
-      <option value="cancelled">
-        Đã hủy
-      </option>
-
-    </select>
-
-  </div>
-
-
-  <div id="message">
-    Đang tải dữ liệu...
-  </div>
-
-
-  <!-- BẢNG -->
-
-  <div class="table-box">
-
-    <table>
-
-      <thead>
-
-        <tr>
-
-          <th>#</th>
-
-          <th>Mã đơn</th>
-
-          <th>Tên</th>
-
-          <th>Phần thưởng</th>
-
-          <th>Giá</th>
-
-          <th>Thời gian</th>
-
-          <th>Trạng thái</th>
-
-          <th>Thao tác</th>
-
-        </tr>
-
-      </thead>
-
-
-      <tbody id="orders">
-
-      </tbody>
-
-    </table>
+    <div
+      class="login-error"
+      id="loginError"
+    >
+      Sai tài khoản hoặc mật khẩu.
+    </div>
 
   </div>
 
+</div>
+
+
+<!-- ADMIN PANEL -->
+
+<div id="adminPanel">
+
+  <header>
+
+    <div class="top">
+
+      <h1>🎁 SHOP NHẬN QUÀ LIÊN QUÂN - ADMIN</h1>
+
+      <div class="top-buttons">
+
+        <button
+          class="refresh-btn"
+          onclick="loadOrders()"
+        >
+          🔄 Làm mới
+        </button>
+
+        <button
+          class="logout-btn"
+          onclick="logout()"
+        >
+          Đăng xuất
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <div class="container">
+
+    <div class="connection" id="connectionStatus">
+      🟢 Đã kết nối hệ thống
+    </div>
+
+
+    <!-- STATS -->
+
+    <div class="stats">
+
+      <div class="stat">
+
+        <div class="stat-title">
+          Tổng đơn
+        </div>
+
+        <div
+          class="stat-value"
+          id="totalOrders"
+        >
+          0
+        </div>
+
+      </div>
+
+
+      <div class="stat">
+
+        <div class="stat-title">
+          Đang chờ
+        </div>
+
+        <div
+          class="stat-value"
+          id="pendingOrders"
+        >
+          0
+        </div>
+
+      </div>
+
+
+      <div class="stat">
+
+        <div class="stat-title">
+          Đã duyệt
+        </div>
+
+        <div
+          class="stat-value"
+          id="approvedOrders"
+        >
+          0
+        </div>
+
+      </div>
+
+
+      <div class="stat">
+
+        <div class="stat-title">
+          Từ chối
+        </div>
+
+        <div
+          class="stat-value"
+          id="rejectedOrders"
+        >
+          0
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ORDERS -->
+
+    <div class="orders-box">
+
+      <div class="orders-title">
+        📋 Danh sách đơn hàng
+      </div>
+
+      <div class="table-wrapper">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>#</th>
+
+              <th>Mã đơn</th>
+
+              <th>Tên</th>
+
+              <th>Phần thưởng</th>
+
+              <th>Giá</th>
+
+              <th>Loại tiền</th>
+
+              <th>Thời gian</th>
+
+              <th>Trạng thái</th>
+
+              <th>Thao tác</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody id="ordersTable">
+
+            <tr>
+
+              <td
+                colspan="9"
+                class="loading"
+              >
+                Đang tải dữ liệu...
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
 
 </div>
 
@@ -388,41 +733,39 @@
   import {
     initializeApp
   } from
-    "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 
 
   import {
     getFirestore,
     collection,
     getDocs,
-    updateDoc,
-    deleteDoc,
-    doc,
     query,
-    orderBy
+    orderBy,
+    doc,
+    updateDoc,
+    deleteDoc
   } from
-    "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 
-  /* =========================
-     FIREBASE
-  ========================= */
+  /* FIREBASE CONFIG */
 
   const firebaseConfig = {
 
     apiKey: "YOUR_API_KEY",
 
     authDomain:
-      "YOUR_PROJECT.firebaseapp.com",
+      "admin-shopcuaquan.firebaseapp.com",
 
     projectId:
-      "YOUR_PROJECT_ID",
+      "admin-shopcuaquan",
 
     storageBucket:
-      "YOUR_PROJECT.appspot.com",
+      "admin-shopcuaquan.firebasestorage.app",
 
     messagingSenderId:
-      "YOUR_SENDER_ID",
+      "YOUR_MESSAGING_SENDER_ID",
 
     appId:
       "YOUR_APP_ID"
@@ -437,42 +780,123 @@
     getFirestore(app);
 
 
-  let allOrders = [];
+  /* ADMIN LOGIN */
+
+  const ADMIN_USERNAME =
+    "adminquan";
+
+  const ADMIN_PASSWORD =
+    "AnhQuan_123";
 
 
-  /* =========================
-     ESCAPE
-  ========================= */
+  /* KIỂM TRA SESSION */
 
-  function escapeHTML(value) {
+  if (
+    sessionStorage.getItem("adminLogged")
+    === "true"
+  ) {
 
-    return String(value ?? "")
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
+    showAdmin();
 
   }
 
 
-  /* =========================
-     LOAD ORDERS
-  ========================= */
+  /* LOGIN */
 
-  async function loadOrders() {
+  window.login = function() {
 
-    const message =
+    const username =
       document.getElementById(
-        "message"
+        "adminUsername"
+      ).value.trim();
+
+
+    const password =
+      document.getElementById(
+        "adminPassword"
+      ).value;
+
+
+    const error =
+      document.getElementById(
+        "loginError"
       );
 
 
+    if (
+      username === ADMIN_USERNAME &&
+      password === ADMIN_PASSWORD
+    ) {
+
+      sessionStorage.setItem(
+        "adminLogged",
+        "true"
+      );
+
+      showAdmin();
+
+    } else {
+
+      error.style.display =
+        "block";
+
+    }
+
+  };
+
+
+  /* SHOW ADMIN */
+
+  function showAdmin() {
+
+    document.getElementById(
+      "loginContainer"
+    ).style.display = "none";
+
+
+    document.getElementById(
+      "adminPanel"
+    ).style.display = "block";
+
+
+    loadOrders();
+
+  }
+
+
+  /* LOGOUT */
+
+  window.logout = function() {
+
+    sessionStorage.removeItem(
+      "adminLogged"
+    );
+
+    location.reload();
+
+  };
+
+
+  /* LOAD ORDERS */
+
+  window.loadOrders = async function() {
+
+    const table =
+      document.getElementById(
+        "ordersTable"
+      );
+
+
+    table.innerHTML = `
+      <tr>
+        <td colspan="9" class="loading">
+          Đang tải dữ liệu...
+        </td>
+      </tr>
+    `;
+
+
     try {
-
-      message.innerText =
-        "Đang tải đơn hàng...";
-
 
       const q = query(
         collection(
@@ -490,12 +914,12 @@
         await getDocs(q);
 
 
-      allOrders = [];
+      const orders = [];
 
 
       snapshot.forEach(item => {
 
-        allOrders.push({
+        orders.push({
 
           id: item.id,
 
@@ -506,157 +930,102 @@
       });
 
 
-      updateStats();
-
-      renderOrders();
+      renderOrders(orders);
 
 
-      message.innerText =
-        `Đã tải ${allOrders.length} đơn hàng.`;
+      document.getElementById(
+        "connectionStatus"
+      ).textContent =
+        "🟢 Đã kết nối Firebase";
+
 
     } catch (error) {
 
       console.error(error);
 
-      message.innerText =
-        "Không thể tải dữ liệu Firebase.";
+
+      document.getElementById(
+        "connectionStatus"
+      ).textContent =
+        "🔴 Không thể tải dữ liệu Firebase";
+
+
+      table.innerHTML = `
+        <tr>
+          <td colspan="9" class="empty">
+            Không thể tải danh sách đơn hàng.
+            <br>
+            Kiểm tra Firestore và Security Rules.
+          </td>
+        </tr>
+      `;
 
     }
 
-  }
+  };
 
 
-  /* =========================
-     THỐNG KÊ
-  ========================= */
+  /* RENDER */
 
-  function updateStats() {
+  function renderOrders(orders) {
 
-    const total =
-      allOrders.length;
-
-
-    const pending =
-      allOrders.filter(
-        order =>
-          order.status === "pending"
-      ).length;
+    const table =
+      document.getElementById(
+        "ordersTable"
+      );
 
 
-    const completed =
-      allOrders.filter(
-        order =>
-          order.status === "completed"
-      ).length;
+    let pending = 0;
+    let approved = 0;
+    let rejected = 0;
 
 
-    const cancelled =
-      allOrders.filter(
-        order =>
-          order.status === "cancelled"
-      ).length;
+    orders.forEach(order => {
+
+      if (order.status === "pending")
+        pending++;
+
+      if (order.status === "approved")
+        approved++;
+
+      if (order.status === "rejected")
+        rejected++;
+
+    });
 
 
     document.getElementById(
       "totalOrders"
-    ).textContent = total;
+    ).textContent =
+      orders.length;
 
 
     document.getElementById(
       "pendingOrders"
-    ).textContent = pending;
+    ).textContent =
+      pending;
 
 
     document.getElementById(
-      "completedOrders"
-    ).textContent = completed;
+      "approvedOrders"
+    ).textContent =
+      approved;
 
 
     document.getElementById(
-      "cancelledOrders"
-    ).textContent = cancelled;
-
-  }
-
-
-  /* =========================
-     HIỂN THỊ
-  ========================= */
-
-  function renderOrders() {
-
-    const tbody =
-      document.getElementById(
-        "orders"
-      );
+      "rejectedOrders"
+    ).textContent =
+      rejected;
 
 
-    const search =
-      document.getElementById(
-        "search"
-      )
-      .value
-      .trim()
-      .toLowerCase();
+    if (!orders.length) {
 
-
-    const filter =
-      document.getElementById(
-        "statusFilter"
-      ).value;
-
-
-    let filtered =
-      allOrders.filter(order => {
-
-        const code =
-          String(
-            order.orderCode ||
-            order.id ||
-            ""
-          ).toLowerCase();
-
-
-        const name =
-          String(
-            order.name || ""
-          ).toLowerCase();
-
-
-        const matchSearch =
-          code.includes(search) ||
-          name.includes(search);
-
-
-        const matchStatus =
-          filter === "all" ||
-          order.status === filter;
-
-
-        return (
-          matchSearch &&
-          matchStatus
-        );
-
-      });
-
-
-    if (!filtered.length) {
-
-      tbody.innerHTML = `
-
+      table.innerHTML = `
         <tr>
-
-          <td
-            colspan="8"
-            class="empty">
-
-            Không tìm thấy đơn hàng.
-
+          <td colspan="9" class="empty">
+            Chưa có đơn hàng nào.
           </td>
-
         </tr>
-
       `;
 
       return;
@@ -664,144 +1033,191 @@
     }
 
 
-    tbody.innerHTML =
-      filtered.map(
-        (order, index) => {
+    table.innerHTML =
+      orders.map((item,index) => {
 
-          const code =
-            order.orderCode ||
-            order.id;
+        const status =
+          item.status || "pending";
 
 
-          let statusText =
-            "Đang chờ";
+        let statusText =
+          "Đang chờ";
+
+        let statusClass =
+          "status-pending";
 
 
-          if (
-            order.status ===
-            "completed"
-          ) {
-            statusText =
-              "Hoàn thành";
-          }
+        if (
+          status === "approved"
+        ) {
 
+          statusText =
+            "Đã duyệt";
 
-          if (
-            order.status ===
-            "cancelled"
-          ) {
-            statusText =
-              "Đã hủy";
-          }
-
-
-          const status =
-            order.status ||
-            "pending";
-
-
-          return `
-
-            <tr>
-
-              <td>
-                ${index + 1}
-              </td>
-
-              <td>
-
-                <span
-                  class="order-code">
-
-                  ${escapeHTML(code)}
-
-                </span>
-
-              </td>
-
-              <td>
-                ${escapeHTML(
-                  order.name
-                )}
-              </td>
-
-              <td>
-                ${escapeHTML(
-                  order.reward
-                )}
-              </td>
-
-              <td>
-                ${escapeHTML(
-                  order.price
-                )}
-              </td>
-
-              <td>
-                ${escapeHTML(
-                  order.time
-                )}
-              </td>
-
-              <td>
-
-                <span
-                  class="badge ${escapeHTML(status)}">
-
-                  ${statusText}
-
-                </span>
-
-              </td>
-
-              <td>
-
-                <div class="actions">
-
-                  <button
-                    class="done"
-                    onclick="completeOrder('${escapeHTML(order.id)}')">
-
-                    Hoàn thành
-
-                  </button>
-
-                  <button
-                    class="cancel"
-                    onclick="cancelOrder('${escapeHTML(order.id)}')">
-
-                    Hủy
-
-                  </button>
-
-                  <button
-                    class="delete"
-                    onclick="deleteOrder('${escapeHTML(order.id)}')">
-
-                    Xóa
-
-                  </button>
-
-                </div>
-
-              </td>
-
-            </tr>
-
-          `;
+          statusClass =
+            "status-approved";
 
         }
-      ).join("");
+
+
+        if (
+          status === "rejected"
+        ) {
+
+          statusText =
+            "Từ chối";
+
+          statusClass =
+            "status-rejected";
+
+        }
+
+
+        /*
+          Nếu đơn cũ chưa có orderCode,
+          dùng ID Firestore để vẫn hiển thị
+          được mã đơn.
+        */
+
+        const orderCode =
+          item.orderCode ||
+          item.id;
+
+
+        return `
+
+          <tr>
+
+            <td>
+              ${index + 1}
+            </td>
+
+
+            <td>
+
+              <span class="order-code">
+
+                ${escapeHTML(orderCode)}
+
+              </span>
+
+            </td>
+
+
+            <td>
+              ${escapeHTML(
+                item.name || ""
+              )}
+            </td>
+
+
+            <td>
+              ${escapeHTML(
+                item.reward || ""
+              )}
+            </td>
+
+
+            <td>
+              ${Number(
+                item.price || 0
+              ).toLocaleString("vi-VN")}
+            </td>
+
+
+            <td>
+              ${escapeHTML(
+                item.currency || ""
+              )}
+            </td>
+
+
+            <td>
+              ${escapeHTML(
+                item.time || ""
+              )}
+            </td>
+
+
+            <td>
+
+              <span
+                class="status ${statusClass}"
+              >
+                ${statusText}
+              </span>
+
+            </td>
+
+
+            <td>
+
+              <div class="actions">
+
+                ${
+                  status !== "approved"
+                  ?
+                  `
+                    <button
+                      class="approve"
+                      onclick="changeStatus(
+                        '${item.id}',
+                        'approved'
+                      )"
+                    >
+                      ✓ Duyệt
+                    </button>
+                  `
+                  :
+                  ""
+                }
+
+
+                ${
+                  status !== "rejected"
+                  ?
+                  `
+                    <button
+                      class="reject"
+                      onclick="changeStatus(
+                        '${item.id}',
+                        'rejected'
+                      )"
+                    >
+                      ✕ Từ chối
+                    </button>
+                  `
+                  :
+                  ""
+                }
+
+
+                <button
+                  class="delete"
+                  onclick="removeOrder(
+                    '${item.id}'
+                  )"
+                >
+                  🗑 Xóa
+                </button>
+
+              </div>
+
+            </td>
+
+          </tr>
+
+        `;
+
+      }).join("");
 
   }
 
 
-  /* =========================
-     HOÀN THÀNH
-  ========================= */
+  /* CHANGE STATUS */
 
-  window.completeOrder =
-    async function(id) {
+  window.changeStatus =
+    async function(id,status) {
 
       try {
 
@@ -814,7 +1230,7 @@
           ),
 
           {
-            status: "completed"
+            status: status
           }
 
         );
@@ -822,12 +1238,13 @@
 
         await loadOrders();
 
+
       } catch (error) {
 
         console.error(error);
 
         alert(
-          "Không thể cập nhật đơn."
+          "Không thể cập nhật trạng thái."
         );
 
       }
@@ -835,50 +1252,9 @@
     };
 
 
-  /* =========================
-     HỦY
-  ========================= */
+  /* DELETE */
 
-  window.cancelOrder =
-    async function(id) {
-
-      try {
-
-        await updateDoc(
-
-          doc(
-            db,
-            "exchangeRequests",
-            id
-          ),
-
-          {
-            status: "cancelled"
-          }
-
-        );
-
-
-        await loadOrders();
-
-      } catch (error) {
-
-        console.error(error);
-
-        alert(
-          "Không thể cập nhật đơn."
-        );
-
-      }
-
-    };
-
-
-  /* =========================
-     XÓA
-  ========================= */
-
-  window.deleteOrder =
+  window.removeOrder =
     async function(id) {
 
       const ok =
@@ -905,6 +1281,7 @@
 
         await loadOrders();
 
+
       } catch (error) {
 
         console.error(error);
@@ -918,31 +1295,56 @@
     };
 
 
-  /* =========================
-     TÌM KIẾM
-  ========================= */
+  /* ESCAPE HTML */
+
+  function escapeHTML(value) {
+
+    return String(value)
+
+      .replace(
+        /&/g,
+        "&amp;"
+      )
+
+      .replace(
+        /</g,
+        "&lt;"
+      )
+
+      .replace(
+        />/g,
+        "&gt;"
+      )
+
+      .replace(
+        /"/g,
+        "&quot;"
+      )
+
+      .replace(
+        /'/g,
+        "&#039;"
+      );
+
+  }
+
+
+  /* ENTER TO LOGIN */
 
   document
-    .getElementById("search")
+    .getElementById("adminPassword")
     .addEventListener(
-      "input",
-      renderOrders
+      "keydown",
+      function(e) {
+
+        if (e.key === "Enter") {
+
+          login();
+
+        }
+
+      }
     );
-
-
-  document
-    .getElementById("statusFilter")
-    .addEventListener(
-      "change",
-      renderOrders
-    );
-
-
-  /* =========================
-     KHỞI ĐỘNG
-  ========================= */
-
-  loadOrders();
 
 </script>
 
