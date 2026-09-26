@@ -569,13 +569,22 @@
       <input
         type="text"
         id="playerName"
-        placeholder="Tên người nhận"
+        placeholder="Tên tài khoản"
         maxlength="100"
+        autocomplete="username"
+      >
+
+      <input
+        type="password"
+        id="playerPassword"
+        placeholder="Mật khẩu"
+        maxlength="100"
+        autocomplete="current-password"
       >
 
       <div class="modal-info">
         Hệ thống sẽ tự động tạo <b>mã đơn</b> cho yêu cầu của bạn.
-        Không yêu cầu mật khẩu, mã OTP hoặc mã xác thực tài khoản.
+        Mật khẩu chỉ được dùng trong biểu mẫu và không được gửi hoặc lưu vào Firebase.
       </div>
 
       <div class="error" id="formError"></div>
@@ -608,10 +617,6 @@
         MÃ ĐƠN
         <strong id="successOrderCode">---</strong>
       </div>
-
-      <p style="color:#aaa;line-height:1.5;">
-        Hãy lưu mã đơn này để kiểm tra yêu cầu của bạn.
-      </p>
 
       <br>
 
@@ -692,6 +697,7 @@
       currency;
 
     document.getElementById("playerName").value = "";
+    document.getElementById("playerPassword").value = "";
 
     document.getElementById("formError").style.display = "none";
 
@@ -725,7 +731,7 @@
     if (!name) {
 
       error.textContent =
-        "Vui lòng nhập tên.";
+        "Vui lòng nhập tên tài khoản.";
 
       error.style.display = "block";
 
