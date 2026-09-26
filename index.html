@@ -533,7 +533,7 @@
 
     <div class="notice">
       <strong>Lưu ý:</strong><br>
-      Sau khi gửi yêu cầu, hệ thống sẽ tạo một <b>mã đơn</b> riêng cho yêu cầu của bạn.
+      Khi tạo yêu cầu, bạn cần tự nhập <b>mã đơn</b>.
       Hãy lưu lại mã đơn để tiện kiểm tra với quản trị viên.
       <br><br>
       Yêu cầu sau khi gửi sẽ ở trạng thái <b>Đang chờ xác nhận</b>.
@@ -571,20 +571,20 @@
         id="playerName"
         placeholder="Tên tài khoản"
         maxlength="100"
-        autocomplete="username"
+        autocomplete="off"
       >
 
       <input
-        type="password"
-        id="playerPassword"
-        placeholder="Mật khẩu"
-        maxlength="100"
-        autocomplete="current-password"
+        type="text"
+        id="orderCodeInput"
+        placeholder="Mã đơn bắt buộc"
+        maxlength="50"
+        autocomplete="off"
       >
 
       <div class="modal-info">
-        Hệ thống sẽ tự động tạo <b>mã đơn</b> cho yêu cầu của bạn.
-        Mật khẩu chỉ được dùng trong biểu mẫu và không được gửi hoặc lưu vào Firebase.
+        Vui lòng tự nhập <b>mã đơn</b> của bạn.
+        Mã đơn này sẽ được lưu cùng yêu cầu để quản trị viên kiểm tra.
       </div>
 
       <div class="error" id="formError"></div>
@@ -649,13 +649,14 @@
 
 
   /* FIREBASE CONFIG */
+
   const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
+    apiKey: "AIzaSyD28nAKhfVQHF_I134R0YyaWQuGw2FMliY",
     authDomain: "admin-shopcuaquan.firebaseapp.com",
     projectId: "admin-shopcuaquan",
     storageBucket: "admin-shopcuaquan.firebasestorage.app",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    messagingSenderId: "608228191463",
+    appId: "1:608228191463:web:52298a53e0f0a829874642"
   };
 
 
@@ -668,21 +669,8 @@
   let selectedCurrency = "";
 
 
-  /* TẠO MÃ ĐƠN */
-  function createOrderCode() {
-
-    const time = Date.now().toString(36).toUpperCase();
-
-    const random = Math.random()
-      .toString(36)
-      .substring(2, 8)
-      .toUpperCase();
-
-    return `DH-${time}-${random}`;
-  }
-
-
   /* MỞ FORM */
+
   window.openExchange = function(reward, price, currency) {
 
     selectedReward = reward;
@@ -690,6 +678,7 @@
     selectedCurrency = currency;
 
     document.getElementById("selectedRewardText").textContent = reward;
+
     document.getElementById("selectedPriceText").textContent =
       price.toLocaleString("vi-VN");
 
@@ -697,11 +686,13 @@
       currency;
 
     document.getElementById("playerName").value = "";
-    document.getElementById("playerPassword").value = "";
+
+    document.getElementById("orderCodeInput").value = "";
 
     document.getElementById("formError").style.display = "none";
 
     document.getElementById("exchangeForm").style.display = "block";
+
     document.getElementById("successPanel").classList.remove("show");
 
     document.getElementById("exchangeModal").classList.add("show");
@@ -709,6 +700,7 @@
 
 
   /* ĐÓNG FORM */
+
   window.closeModal = function() {
 
     document.getElementById("exchangeModal")
@@ -718,10 +710,15 @@
 
 
   /* XÁC NHẬN */
+
   window.confirmExchange = async function() {
 
     const name =
       document.getElementById("playerName")
+        .value.trim();
+
+    const orderCode =
+      document.getElementById("orderCodeInput")
         .value.trim();
 
     const error =
@@ -739,10 +736,29 @@
     }
 
 
+    if (!orderCode) {
+
+      error.textContent =
+        "Vui lòng tự nhập mã đơn.";
+
+      error.style.display = "block";
+
+      return;
+    }
+
+
+    if (orderCode.length < 3) {
+
+      error.textContent =
+        "Mã đơn phải có ít nhất 3 ký tự.";
+
+      error.style.display = "block";
+
+      return;
+    }
+
+
     error.style.display = "none";
-
-
-    const orderCode = createOrderCode();
 
 
     try {
@@ -787,7 +803,14 @@
       document.getElementById("historyBox").innerHTML = `
         Yêu cầu của bạn đã được gửi thành công.<br>
         Mã đơn của bạn:
-        <strong style="color:#d895ff">${escapeHTML(orderCode)}</strong>
+        <strong style="color:#d895ff">
+          ${escapeHTML(orderCode)}
+        </strong>
+        <br><br>
+        Trạng thái:
+        <strong style="color:#ffd45e">
+          Đang chờ xác nhận
+        </strong>
       `;
 
 
@@ -806,6 +829,7 @@
 
 
   /* ESCAPE HTML */
+
   function escapeHTML(value) {
 
     return String(value)
@@ -819,6 +843,7 @@
 
 
   /* CLICK RA NGOÀI MODAL */
+
   document.getElementById("exchangeModal")
     .addEventListener("click", function(e) {
 
