@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SHOP NHẬN QUÀ LIÊN QUÂN</title>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>ADMIN - SHOP NHẬN QUÀ LIÊN QUÂN</title>
+
 
   <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -14,623 +22,709 @@
 
     body {
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #140022, #260044, #12001f);
-      color: #fff;
+      background:
+        linear-gradient(135deg,#140022,#260044,#12001f);
+      color: white;
       min-height: 100vh;
     }
 
-    header {
-      background: rgba(0,0,0,.35);
-      padding: 25px 15px;
-      text-align: center;
-      border-bottom: 1px solid rgba(255,255,255,.1);
-    }
 
-    header h1 {
-      color: #d78cff;
-      font-size: 28px;
-      margin-bottom: 8px;
-    }
+    .login-container {
 
-    header p {
-      color: #ccc;
-    }
+      min-height: 100vh;
 
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(18,0,31,.95);
-      backdrop-filter: blur(10px);
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 8px;
-      padding: 12px;
-      border-bottom: 1px solid rgba(255,255,255,.1);
-    }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 10px 15px;
-      border-radius: 10px;
-      background: rgba(255,255,255,.08);
-      transition: .2s;
-    }
-
-    nav a:hover {
-      background: #8f3dcc;
-    }
-
-    .container {
-      width: 95%;
-      max-width: 1200px;
-      margin: auto;
-      padding: 25px 0 50px;
-    }
-
-    .section {
-      margin-bottom: 40px;
-    }
-
-    .section-title {
-      font-size: 24px;
-      margin-bottom: 18px;
-      color: #e5a5ff;
-      border-left: 5px solid #a83de4;
-      padding-left: 12px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-    }
-
-    .card {
-      background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 15px;
-      padding: 18px;
-      box-shadow: 0 8px 30px rgba(0,0,0,.25);
-      transition: .2s;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: #a83de4;
-    }
-
-    .card h3 {
-      color: #fff;
-      margin-bottom: 10px;
-    }
-
-    .reward {
-      color: #ddd;
-      min-height: 45px;
-      margin-bottom: 15px;
-      line-height: 1.5;
-    }
-
-    .price {
-      color: #ffd35a;
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 12px;
-    }
-
-    button {
-      border: none;
-      cursor: pointer;
-      border-radius: 9px;
-      padding: 11px 15px;
-      font-weight: bold;
-      transition: .2s;
-    }
-
-    .exchange-btn {
-      width: 100%;
-      background: linear-gradient(90deg, #8c32c9, #bd55ee);
-      color: white;
-    }
-
-    .exchange-btn:hover {
-      filter: brightness(1.15);
-    }
-
-    .notice {
-      background: rgba(255,193,7,.08);
-      border: 1px solid rgba(255,193,7,.25);
-      padding: 18px;
-      border-radius: 12px;
-      line-height: 1.7;
-      color: #f5e5b0;
-    }
-
-    .history-box {
-      margin-top: 25px;
-      background: rgba(255,255,255,.05);
-      border-radius: 12px;
-      padding: 18px;
-      text-align: center;
-      color: #ccc;
-    }
-
-    /* MODAL */
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-      background: rgba(0,0,0,.75);
       align-items: center;
+
       justify-content: center;
+
       padding: 20px;
     }
 
-    .modal.show {
-      display: flex;
-    }
 
-    .modal-box {
+    .login-box {
+
       width: 100%;
-      max-width: 430px;
-      background: linear-gradient(145deg, #210035, #100018);
-      border: 1px solid rgba(255,255,255,.15);
+
+      max-width: 400px;
+
+      padding: 30px;
+
       border-radius: 18px;
-      padding: 25px;
-      box-shadow: 0 20px 70px rgba(0,0,0,.6);
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.08),
+          rgba(255,255,255,.03)
+        );
+
+      border:
+        1px solid rgba(255,255,255,.1);
+
+      box-shadow:
+        0 20px 70px rgba(0,0,0,.5);
+
+      text-align: center;
     }
 
-    .modal-box h2 {
-      margin-bottom: 18px;
+
+    .login-box h1 {
+
       color: #dc9aff;
+
+      margin-bottom: 25px;
     }
 
-    .modal-box input {
+
+    input {
+
       width: 100%;
+
       padding: 13px;
+
       margin-bottom: 12px;
+
       border-radius: 9px;
-      border: 1px solid rgba(255,255,255,.15);
-      background: rgba(255,255,255,.07);
+
+      border:
+        1px solid rgba(255,255,255,.15);
+
+      background:
+        rgba(255,255,255,.07);
+
       color: white;
+
       outline: none;
     }
 
-    .modal-box input:focus {
+
+    input:focus {
+
       border-color: #b94ee8;
+
     }
 
-    .modal-info {
-      background: rgba(168,61,228,.1);
-      border: 1px solid rgba(168,61,228,.25);
-      padding: 12px;
+
+    button {
+
+      border: none;
+
+      cursor: pointer;
+
       border-radius: 9px;
-      color: #ddd;
-      line-height: 1.5;
-      margin-bottom: 15px;
+
+      padding: 11px 15px;
+
+      font-weight: bold;
+
+      transition: .2s;
     }
 
-    .modal-actions {
-      display: flex;
-      gap: 10px;
-    }
 
-    .confirm-btn {
-      flex: 1;
-      background: #9e3bd2;
+    .login-btn {
+
+      width: 100%;
+
+      background:
+        linear-gradient(90deg,#8c32c9,#bd55ee);
+
       color: white;
     }
 
-    .cancel-btn {
-      flex: 1;
-      background: #444;
-      color: white;
-    }
 
-    .error {
+    .login-error {
+
       color: #ff7777;
-      margin-bottom: 12px;
+
+      margin-top: 12px;
+
       display: none;
     }
 
-    /* SUCCESS */
-    .success-panel {
+
+    /* ADMIN */
+
+    #adminPanel {
+
       display: none;
-      text-align: center;
+
     }
 
-    .success-panel.show {
-      display: block;
+
+    header {
+
+      padding: 20px;
+
+      background:
+        rgba(0,0,0,.35);
+
+      border-bottom:
+        1px solid rgba(255,255,255,.1);
+
     }
 
-    .success-icon {
-      font-size: 55px;
-      margin-bottom: 10px;
+
+    header .top {
+
+      max-width: 1400px;
+
+      margin: auto;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 15px;
+
     }
+
+
+    header h1 {
+
+      color: #dc9aff;
+
+      font-size: 25px;
+
+    }
+
+
+    .top-buttons {
+
+      display: flex;
+
+      gap: 8px;
+
+    }
+
+
+    .refresh-btn {
+
+      background: #7130a0;
+
+      color: white;
+
+    }
+
+
+    .logout-btn {
+
+      background: #9d3030;
+
+      color: white;
+
+    }
+
+
+    .container {
+
+      width: 95%;
+
+      max-width: 1400px;
+
+      margin: auto;
+
+      padding: 25px 0 50px;
+
+    }
+
+
+    .connection {
+
+      background:
+        rgba(0,255,100,.08);
+
+      border:
+        1px solid rgba(0,255,100,.2);
+
+      padding: 12px;
+
+      border-radius: 10px;
+
+      margin-bottom: 20px;
+
+      color: #9dffb6;
+
+    }
+
+
+    .stats {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(auto-fit,minmax(180px,1fr));
+
+      gap: 15px;
+
+      margin-bottom: 25px;
+    }
+
+
+    .stat {
+
+      background:
+        rgba(255,255,255,.06);
+
+      border:
+        1px solid rgba(255,255,255,.1);
+
+      padding: 20px;
+
+      border-radius: 13px;
+
+    }
+
+
+    .stat-title {
+
+      color: #aaa;
+
+      margin-bottom: 8px;
+
+    }
+
+
+    .stat-value {
+
+      font-size: 28px;
+
+      font-weight: bold;
+
+      color: #e1a2ff;
+
+    }
+
+
+    .orders-box {
+
+      background:
+        rgba(255,255,255,.05);
+
+      border:
+        1px solid rgba(255,255,255,.1);
+
+      border-radius: 15px;
+
+      overflow: hidden;
+    }
+
+
+    .orders-title {
+
+      padding: 20px;
+
+      font-size: 21px;
+
+      color: #e1a2ff;
+
+    }
+
+
+    .table-wrapper {
+
+      width: 100%;
+
+      overflow-x: auto;
+    }
+
+
+    table {
+
+      width: 100%;
+
+      border-collapse: collapse;
+
+      min-width: 1050px;
+    }
+
+
+    th {
+
+      background:
+        rgba(168,61,228,.18);
+
+      color: #e4b3ff;
+
+      padding: 13px;
+
+      text-align: left;
+
+      white-space: nowrap;
+    }
+
+
+    td {
+
+      padding: 12px;
+
+      border-top:
+        1px solid rgba(255,255,255,.07);
+
+      color: #ddd;
+
+    }
+
+
+    tr:hover td {
+
+      background:
+        rgba(255,255,255,.03);
+
+    }
+
 
     .order-code {
-      margin: 18px 0;
-      padding: 15px;
-      background: rgba(168,61,228,.15);
-      border: 1px dashed #c05bea;
-      border-radius: 10px;
+
+      color: #e19aff;
+
+      font-weight: bold;
+
+      white-space: nowrap;
+
     }
 
-    .order-code strong {
-      display: block;
-      font-size: 22px;
-      color: #e1a2ff;
-      margin-top: 6px;
+
+    .status {
+
+      display: inline-block;
+
+      padding: 6px 9px;
+
+      border-radius: 20px;
+
+      font-size: 13px;
+
+      font-weight: bold;
+
     }
 
-    footer {
+
+    .status-pending {
+
+      background:
+        rgba(255,193,7,.15);
+
+      color: #ffd45e;
+
+    }
+
+
+    .status-approved {
+
+      background:
+        rgba(0,255,120,.12);
+
+      color: #70ffac;
+
+    }
+
+
+    .status-rejected {
+
+      background:
+        rgba(255,50,50,.12);
+
+      color: #ff8585;
+
+    }
+
+
+    .actions {
+
+      display: flex;
+
+      gap: 6px;
+
+    }
+
+
+    .approve {
+
+      background: #248d53;
+
+      color: white;
+    }
+
+
+    .reject {
+
+      background: #a33b3b;
+
+      color: white;
+    }
+
+
+    .delete {
+
+      background: #555;
+
+      color: white;
+    }
+
+
+    .empty {
+
       text-align: center;
-      padding: 25px;
-      color: #888;
-      border-top: 1px solid rgba(255,255,255,.08);
+
+      padding: 40px;
+
+      color: #999;
     }
 
-    @media(max-width:600px) {
-      header h1 {
-        font-size: 22px;
+
+    .loading {
+
+      text-align: center;
+
+      padding: 40px;
+
+      color: #bbb;
+    }
+
+
+    @media(max-width:700px) {
+
+      header .top {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
       }
 
-      .grid {
-        grid-template-columns: 1fr;
+      .top-buttons {
+
+        justify-content: center;
+
       }
+
     }
+
   </style>
+
 </head>
+
 
 <body>
 
-<header>
-  <h1>🎁 SHOP NHẬN QUÀ LIÊN QUÂN</h1>
-  <p>Đổi phần thưởng nhanh chóng và tiện lợi</p>
-</header>
 
-<nav>
-  <a href="#ruby">💎 Ruby</a>
-  <a href="#daquy">💠 Đá quý</a>
-  <a href="#vang">🪙 Vàng</a>
-  <a href="#tiendohoa">⭐ Đá Tiến Hóa</a>
-</nav>
+<!-- LOGIN -->
 
-<div class="container">
+<div
+  class="login-container"
+  id="loginContainer"
+>
 
-  <!-- RUBY -->
-  <section class="section" id="ruby">
-    <h2 class="section-title">💎 Ruby</h2>
+  <div class="login-box">
 
-    <div class="grid">
+    <h1>🔐 ADMIN</h1>
 
-      <div class="card">
-        <h3>500 Ruby</h3>
-        <div class="reward">🎁 Rương SS</div>
-        <div class="price">500 Ruby</div>
-        <button class="exchange-btn" onclick="openExchange('Rương SS',500,'Ruby')">Đổi ngay</button>
-      </div>
+    <input
+      type="text"
+      id="adminUsername"
+      placeholder="Tên đăng nhập"
+    >
 
-      <div class="card">
-        <h3>700 Ruby</h3>
-        <div class="reward">🎁 Skin SS hữu hạn</div>
-        <div class="price">700 Ruby</div>
-        <button class="exchange-btn" onclick="openExchange('Skin SS hữu hạn',700,'Ruby')">Đổi ngay</button>
-      </div>
+    <input
+      type="password"
+      id="adminPassword"
+      placeholder="Mật khẩu"
+    >
 
-      <div class="card">
-        <h3>1000 Ruby</h3>
-        <div class="reward">🎁 Skin SS Tết</div>
-        <div class="price">1000 Ruby</div>
-        <button class="exchange-btn" onclick="openExchange('Skin SS Tết',1000,'Ruby')">Đổi ngay</button>
-      </div>
+    <button
+      class="login-btn"
+      onclick="login()"
+    >
+      Đăng nhập
+    </button>
 
-      <div class="card">
-        <h3>2000 Ruby</h3>
-        <div class="reward">🎁 Skin SSS hữu hạn</div>
-        <div class="price">2000 Ruby</div>
-        <button class="exchange-btn" onclick="openExchange('Skin SSS hữu hạn',2000,'Ruby')">Đổi ngay</button>
-      </div>
-
-      <div class="card">
-        <h3>2500 Ruby</h3>
-        <div class="reward">🎁 Skin SSS+ hữu hạn</div>
-        <div class="price">2500 Ruby</div>
-        <button class="exchange-btn" onclick="openExchange('Skin SSS+ hữu hạn',2500,'Ruby')">Đổi ngay</button>
-      </div>
-
-      <div class="card">
-        <h3>3000 Ruby</h3>
-        <div class="reward">🎁 Skin SSS+ Tối thượng</div>
-        <div class="price">3000 Ruby</div>
-        <button class="exchange-btn" onclick="openExchange('Skin SSS+ Tối thượng',3000,'Ruby')">Đổi ngay</button>
-      </div>
-
-      <div class="card">
-        <h3>5000 Ruby</h3>
-        <div class="reward">⭐ Đá Evo 5</div>
-        <div class="price">5000 Ruby</div>
-        <button class="exchange-btn" onclick="openExchange('Đá Evo 5',5000,'Ruby')">Đổi ngay</button>
-      </div>
-
-      <div class="card">
-        <h3>5000 Ruby</h3>
-        <div class="reward">🎁 Violet Thứ Nguyên Vệ Thần</div>
-        <div class="price">5000 Ruby</div>
-        <button class="exchange-btn" onclick="openExchange('Violet Thứ Nguyên Vệ Thần',5000,'Ruby')">Đổi ngay</button>
-      </div>
-
-      <div class="card">
-        <h3>5000 Ruby</h3>
-        <div class="reward">🎁 Tel'Annas Thứ Nguyên Vệ Thần</div>
-        <div class="price">5000 Ruby</div>
-        <button class="exchange-btn" onclick="openExchange('TelAnnas Thứ Nguyên Vệ Thần',5000,'Ruby')">Đổi ngay</button>
-      </div>
-
-      <div class="card">
-        <h3>5000 Ruby</h3>
-        <div class="reward">🎁 Airi Thứ Nguyên Vệ Thần</div>
-        <div class="price">5000 Ruby</div>
-        <button class="exchange-btn" onclick="openExchange('Airi Thứ Nguyên Vệ Thần',5000,'Ruby')">Đổi ngay</button>
-      </div>
-
-      <div class="card">
-        <h3>6000 Ruby</h3>
-        <div class="reward">🎁 Lauriel Thứ Nguyên Vệ Thần</div>
-        <div class="price">6000 Ruby</div>
-        <button class="exchange-btn" onclick="openExchange('Lauriel Thứ Nguyên Vệ Thần',6000,'Ruby')">Đổi ngay</button>
-      </div>
-
-      <div class="card">
-        <h3>7000 Ruby</h3>
-        <div class="reward">🎁 Nakroth Thứ Nguyên Vệ Thần</div>
-        <div class="price">7000 Ruby</div>
-        <button class="exchange-btn" onclick="openExchange('Nakroth Thứ Nguyên Vệ Thần',7000,'Ruby')">Đổi ngay</button>
-      </div>
-
-      <div class="card">
-        <h3>8000 Ruby</h3>
-        <div class="reward">🎁 Valhein Thứ Nguyên Vệ Thần</div>
-        <div class="price">8000 Ruby</div>
-        <button class="exchange-btn" onclick="openExchange('Valhein Thứ Nguyên Vệ Thần',8000,'Ruby')">Đổi ngay</button>
-      </div>
-
-      <div class="card">
-        <h3>10000 Ruby</h3>
-        <div class="reward">⭐ Đá Evo 5 cao cấp</div>
-        <div class="price">10000 Ruby</div>
-        <button class="exchange-btn" onclick="openExchange('Đá Evo 5 cao cấp',10000,'Ruby')">Đổi ngay</button>
-      </div>
-
-      <div class="card">
-        <h3>10000 Ruby</h3>
-        <div class="reward">🎁 Skin SSS+ đặc biệt</div>
-        <div class="price">10000 Ruby</div>
-        <button class="exchange-btn" onclick="openExchange('Skin SSS+ đặc biệt',10000,'Ruby')">Đổi ngay</button>
-      </div>
-
-      <div class="card">
-        <h3>12000 Ruby</h3>
-        <div class="reward">🎁 Skin SSS+ Tối thượng</div>
-        <div class="price">12000 Ruby</div>
-        <button class="exchange-btn" onclick="openExchange('Skin SSS+ Tối thượng',12000,'Ruby')">Đổi ngay</button>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ĐÁ QUÝ -->
-  <section class="section" id="daquy">
-    <h2 class="section-title">💠 Đá quý</h2>
-
-    <div class="grid">
-
-      <div class="card">
-        <h3>1 Đá quý</h3>
-        <div class="reward">💠 Gói 1 Đá quý</div>
-        <div class="price">1 Đá quý</div>
-        <button class="exchange-btn" onclick="openExchange('Gói 1 Đá quý',1,'Đá quý')">Đổi ngay</button>
-      </div>
-
-      <div class="card">
-        <h3>2 Đá quý</h3>
-        <div class="reward">💠 Gói 2 Đá quý</div>
-        <div class="price">2 Đá quý</div>
-        <button class="exchange-btn" onclick="openExchange('Gói 2 Đá quý',2,'Đá quý')">Đổi ngay</button>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- VÀNG -->
-  <section class="section" id="vang">
-    <h2 class="section-title">🪙 Vàng</h2>
-
-    <div class="grid">
-
-      <div class="card">
-        <h3>5000 Vàng</h3>
-        <div class="reward">🪙 Gói 5000 Vàng</div>
-        <div class="price">5000 Vàng</div>
-        <button class="exchange-btn" onclick="openExchange('Gói 5000 Vàng',5000,'Vàng')">Đổi ngay</button>
-      </div>
-
-      <div class="card">
-        <h3>10000 Vàng</h3>
-        <div class="reward">🪙 Gói 10000 Vàng</div>
-        <div class="price">10000 Vàng</div>
-        <button class="exchange-btn" onclick="openExchange('Gói 10000 Vàng',10000,'Vàng')">Đổi ngay</button>
-      </div>
-
-      <div class="card">
-        <h3>12000 Vàng</h3>
-        <div class="reward">🪙 Gói 12000 Vàng</div>
-        <div class="price">12000 Vàng</div>
-        <button class="exchange-btn" onclick="openExchange('Gói 12000 Vàng',12000,'Vàng')">Đổi ngay</button>
-      </div>
-
-      <div class="card">
-        <h3>15000 Vàng</h3>
-        <div class="reward">🪙 Gói 15000 Vàng</div>
-        <div class="price">15000 Vàng</div>
-        <button class="exchange-btn" onclick="openExchange('Gói 15000 Vàng',15000,'Vàng')">Đổi ngay</button>
-      </div>
-
-      <div class="card">
-        <h3>17000 Vàng</h3>
-        <div class="reward">🪙 Gói 17000 Vàng</div>
-        <div class="price">17000 Vàng</div>
-        <button class="exchange-btn" onclick="openExchange('Gói 17000 Vàng',17000,'Vàng')">Đổi ngay</button>
-      </div>
-
-      <div class="card">
-        <h3>20000 Vàng</h3>
-        <div class="reward">🪙 Gói 20000 Vàng</div>
-        <div class="price">20000 Vàng</div>
-        <button class="exchange-btn" onclick="openExchange('Gói 20000 Vàng',20000,'Vàng')">Đổi ngay</button>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ĐÁ TIẾN HÓA -->
-  <section class="section" id="tiendohoa">
-    <h2 class="section-title">⭐ Đá Tiến Hóa</h2>
-
-    <div class="grid">
-
-      <div class="card">
-        <h3>Butterfly BMTT</h3>
-        <div class="reward">⭐ Đá Tiến Hóa cho Butterfly BMTT</div>
-        <div class="price">10000 Vàng</div>
-        <button class="exchange-btn" onclick="openExchange('Đá Tiến Hóa Butterfly BMTT',10000,'Vàng')">Đổi ngay</button>
-      </div>
-
-      <div class="card">
-        <h3>Ngộ Không Nhóc Tì Bá Đạo</h3>
-        <div class="reward">⭐ Đá Tiến Hóa cho Ngộ Không</div>
-        <div class="price">10000 Vàng</div>
-        <button class="exchange-btn" onclick="openExchange('Đá Tiến Hóa Ngộ Không Nhóc Tì Bá Đạo',10000,'Vàng')">Đổi ngay</button>
-      </div>
-
-      <div class="card">
-        <h3>Valhein Xạ Thần</h3>
-        <div class="reward">⭐ Đá Tiến Hóa cho Valhein</div>
-        <div class="price">10000 Vàng</div>
-        <button class="exchange-btn" onclick="openExchange('Đá Tiến Hóa Valhein Xạ Thần',10000,'Vàng')">Đổi ngay</button>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- THÔNG BÁO -->
-  <section class="section">
-    <h2 class="section-title">📢 Thông báo</h2>
-
-    <div class="notice">
-      <strong>Lưu ý:</strong><br>
-      Khi tạo yêu cầu, bạn cần tự nhập <b>mã đơn</b>.
-      Hãy lưu lại mã đơn để tiện kiểm tra với quản trị viên.
-      <br><br>
-      Yêu cầu sau khi gửi sẽ ở trạng thái <b>Đang chờ xác nhận</b>.
+    <div
+      class="login-error"
+      id="loginError"
+    >
+      Sai tài khoản hoặc mật khẩu.
     </div>
 
-    <div class="history-box" id="historyBox">
-      Yêu cầu của bạn đã được gửi và đang chờ xác nhận.
-    </div>
-  </section>
+  </div>
 
 </div>
 
-<footer>
-  SHOP NHẬN QUÀ LIÊN QUÂN
-</footer>
 
+<!-- ADMIN PANEL -->
 
-<!-- MODAL -->
-<div class="modal" id="exchangeModal">
+<div id="adminPanel">
 
-  <div class="modal-box">
+  <header>
 
-    <div id="exchangeForm">
+    <div class="top">
 
-      <h2>🎁 Tạo yêu cầu đổi quà</h2>
+      <h1>🎁 SHOP NHẬN QUÀ LIÊN QUÂN - ADMIN</h1>
 
-      <div class="modal-info">
-        <div><b>Phần thưởng:</b> <span id="selectedRewardText"></span></div>
-        <div><b>Giá:</b> <span id="selectedPriceText"></span></div>
-        <div><b>Loại:</b> <span id="selectedCurrencyText"></span></div>
-      </div>
+      <div class="top-buttons">
 
-      <input
-        type="text"
-        id="playerName"
-        placeholder="Tên tài khoản"
-        maxlength="100"
-        autocomplete="off"
-      >
-
-      <input
-        type="text"
-        id="orderCodeInput"
-        placeholder="Mã đơn bắt buộc"
-        maxlength="50"
-        autocomplete="off"
-      >
-
-      <div class="modal-info">
-        Vui lòng tự nhập <b>mã đơn</b> của bạn.
-        Mã đơn này sẽ được lưu cùng yêu cầu để quản trị viên kiểm tra.
-      </div>
-
-      <div class="error" id="formError"></div>
-
-      <div class="modal-actions">
-        <button class="confirm-btn" onclick="confirmExchange()">
-          Xác nhận
+        <button
+          class="refresh-btn"
+          onclick="loadOrders()"
+        >
+          🔄 Làm mới
         </button>
 
-        <button class="cancel-btn" onclick="closeModal()">
-          Hủy
+        <button
+          class="logout-btn"
+          onclick="logout()"
+        >
+          Đăng xuất
         </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <div class="container">
+
+    <div class="connection" id="connectionStatus">
+      🟢 Đã kết nối hệ thống
+    </div>
+
+
+    <!-- STATS -->
+
+    <div class="stats">
+
+      <div class="stat">
+
+        <div class="stat-title">
+          Tổng đơn
+        </div>
+
+        <div
+          class="stat-value"
+          id="totalOrders"
+        >
+          0
+        </div>
+
+      </div>
+
+
+      <div class="stat">
+
+        <div class="stat-title">
+          Đang chờ
+        </div>
+
+        <div
+          class="stat-value"
+          id="pendingOrders"
+        >
+          0
+        </div>
+
+      </div>
+
+
+      <div class="stat">
+
+        <div class="stat-title">
+          Đã duyệt
+        </div>
+
+        <div
+          class="stat-value"
+          id="approvedOrders"
+        >
+          0
+        </div>
+
+      </div>
+
+
+      <div class="stat">
+
+        <div class="stat-title">
+          Từ chối
+        </div>
+
+        <div
+          class="stat-value"
+          id="rejectedOrders"
+        >
+          0
+        </div>
+
       </div>
 
     </div>
 
 
-    <!-- SUCCESS -->
-    <div class="success-panel" id="successPanel">
+    <!-- ORDERS -->
 
-      <div class="success-icon">✅</div>
+    <div class="orders-box">
 
-      <h2>Gửi yêu cầu thành công!</h2>
-
-      <p style="color:#ccc;">
-        Yêu cầu của bạn đã được gửi đến hệ thống.
-      </p>
-
-      <div class="order-code">
-        MÃ ĐƠN
-        <strong id="successOrderCode">---</strong>
+      <div class="orders-title">
+        📋 Danh sách đơn hàng
       </div>
 
-      <br>
+      <div class="table-wrapper">
 
-      <button
-        class="confirm-btn"
-        style="width:100%;"
-        onclick="closeModal()"
-      >
-        Đóng
-      </button>
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>#</th>
+
+              <th>Mã đơn</th>
+
+              <th>Tên</th>
+
+              <th>Phần thưởng</th>
+
+              <th>Giá</th>
+
+              <th>Loại tiền</th>
+
+              <th>Thời gian</th>
+
+              <th>Trạng thái</th>
+
+              <th>Thao tác</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody id="ordersTable">
+
+            <tr>
+
+              <td
+                colspan="9"
+                class="loading"
+              >
+                Đang tải dữ liệu...
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
 
     </div>
 
   </div>
+
 </div>
 
 
@@ -638,194 +732,568 @@
 
   import {
     initializeApp
-  } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+  } from
+  "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
 
   import {
     getFirestore,
     collection,
-    addDoc,
-    serverTimestamp
-  } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+    getDocs,
+    query,
+    orderBy,
+    doc,
+    updateDoc,
+    deleteDoc
+  } from
+  "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 
   /* FIREBASE CONFIG */
 
   const firebaseConfig = {
-    apiKey: "AIzaSyD28nAKhfVQHF_I134R0YyaWQuGw2FMliY",
-    authDomain: "admin-shopcuaquan.firebaseapp.com",
-    projectId: "admin-shopcuaquan",
-    storageBucket: "admin-shopcuaquan.firebasestorage.app",
-    messagingSenderId: "608228191463",
-    appId: "1:608228191463:web:52298a53e0f0a829874642"
-  };
 
+    apiKey:
+      "AIzaSyD28nAKhfVQHF_I134R0YyaWQuGw2FMliY",
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+    authDomain:
+      "admin-shopcuaquan.firebaseapp.com",
 
+    projectId:
+      "admin-shopcuaquan",
 
-  let selectedReward = "";
-  let selectedPrice = 0;
-  let selectedCurrency = "";
+    storageBucket:
+      "admin-shopcuaquan.firebasestorage.app",
 
+    messagingSenderId:
+      "608228191463",
 
-  /* MỞ FORM */
-
-  window.openExchange = function(reward, price, currency) {
-
-    selectedReward = reward;
-    selectedPrice = price;
-    selectedCurrency = currency;
-
-    document.getElementById("selectedRewardText").textContent = reward;
-
-    document.getElementById("selectedPriceText").textContent =
-      price.toLocaleString("vi-VN");
-
-    document.getElementById("selectedCurrencyText").textContent =
-      currency;
-
-    document.getElementById("playerName").value = "";
-
-    document.getElementById("orderCodeInput").value = "";
-
-    document.getElementById("formError").style.display = "none";
-
-    document.getElementById("exchangeForm").style.display = "block";
-
-    document.getElementById("successPanel").classList.remove("show");
-
-    document.getElementById("exchangeModal").classList.add("show");
-  };
-
-
-  /* ĐÓNG FORM */
-
-  window.closeModal = function() {
-
-    document.getElementById("exchangeModal")
-      .classList.remove("show");
+    appId:
+      "1:608228191463:web:52298a53e0f0a829874642"
 
   };
 
 
-  /* XÁC NHẬN */
+  const app =
+    initializeApp(firebaseConfig);
 
-  window.confirmExchange = async function() {
+  const db =
+    getFirestore(app);
 
-    const name =
-      document.getElementById("playerName")
-        .value.trim();
 
-    const orderCode =
-      document.getElementById("orderCodeInput")
-        .value.trim();
+  /* ADMIN LOGIN */
+
+  const ADMIN_USERNAME =
+    "adminquan";
+
+  const ADMIN_PASSWORD =
+    "AnhQuan_123";
+
+
+  /* KIỂM TRA SESSION */
+
+  if (
+    sessionStorage.getItem("adminLogged")
+    === "true"
+  ) {
+
+    showAdmin();
+
+  }
+
+
+  /* LOGIN */
+
+  window.login = function() {
+
+    const username =
+      document.getElementById(
+        "adminUsername"
+      ).value.trim();
+
+
+    const password =
+      document.getElementById(
+        "adminPassword"
+      ).value;
+
 
     const error =
-      document.getElementById("formError");
+      document.getElementById(
+        "loginError"
+      );
 
 
-    if (!name) {
+    if (
+      username === ADMIN_USERNAME &&
+      password === ADMIN_PASSWORD
+    ) {
 
-      error.textContent =
-        "Vui lòng nhập tên tài khoản.";
+      sessionStorage.setItem(
+        "adminLogged",
+        "true"
+      );
 
-      error.style.display = "block";
+      showAdmin();
 
-      return;
+    } else {
+
+      error.style.display =
+        "block";
+
     }
 
-
-    if (!orderCode) {
-
-      error.textContent =
-        "Vui lòng tự nhập mã đơn.";
-
-      error.style.display = "block";
-
-      return;
-    }
+  };
 
 
-    if (orderCode.length < 3) {
+  /* SHOW ADMIN */
 
-      error.textContent =
-        "Mã đơn phải có ít nhất 3 ký tự.";
+  function showAdmin() {
 
-      error.style.display = "block";
-
-      return;
-    }
+    document.getElementById(
+      "loginContainer"
+    ).style.display = "none";
 
 
-    error.style.display = "none";
+    document.getElementById(
+      "adminPanel"
+    ).style.display = "block";
+
+
+    loadOrders();
+
+  }
+
+
+  /* LOGOUT */
+
+  window.logout = function() {
+
+    sessionStorage.removeItem(
+      "adminLogged"
+    );
+
+    location.reload();
+
+  };
+
+
+  /* LOAD ORDERS */
+
+  window.loadOrders = async function() {
+
+    const table =
+      document.getElementById(
+        "ordersTable"
+      );
+
+
+    table.innerHTML = `
+      <tr>
+        <td colspan="9" class="loading">
+          Đang tải dữ liệu...
+        </td>
+      </tr>
+    `;
 
 
     try {
 
-      await addDoc(
-        collection(db, "exchangeRequests"),
-        {
-
-          orderCode: orderCode,
-
-          name: name,
-
-          reward: selectedReward,
-
-          price: selectedPrice,
-
-          currency: selectedCurrency,
-
-          status: "pending",
-
-          time: new Date()
-            .toLocaleString("vi-VN"),
-
-          createdAt: serverTimestamp()
-
-        }
+      const q = query(
+        collection(
+          db,
+          "exchangeRequests"
+        ),
+        orderBy(
+          "createdAt",
+          "desc"
+        )
       );
 
 
-      document.getElementById("exchangeForm")
-        .style.display = "none";
+      const snapshot =
+        await getDocs(q);
 
 
-      document.getElementById("successOrderCode")
-        .textContent = orderCode;
+      const orders = [];
 
 
-      document.getElementById("successPanel")
-        .classList.add("show");
+      snapshot.forEach(item => {
+
+        orders.push({
+
+          id: item.id,
+
+          ...item.data()
+
+        });
+
+      });
 
 
-      document.getElementById("historyBox").innerHTML = `
-        Yêu cầu của bạn đã được gửi thành công.<br>
-        Mã đơn của bạn:
-        <strong style="color:#d895ff">
-          ${escapeHTML(orderCode)}
-        </strong>
-        <br><br>
-        Trạng thái:
-        <strong style="color:#ffd45e">
-          Đang chờ xác nhận
-        </strong>
+      renderOrders(orders);
+
+
+      document.getElementById(
+        "connectionStatus"
+      ).textContent =
+        "🟢 Đã kết nối Firebase";
+
+
+    } catch (error) {
+
+      console.error(error);
+
+
+      document.getElementById(
+        "connectionStatus"
+      ).textContent =
+        "🔴 Không thể tải dữ liệu Firebase";
+
+
+      table.innerHTML = `
+        <tr>
+          <td colspan="9" class="empty">
+            Không thể tải danh sách đơn hàng.
+            <br>
+            Kiểm tra Firestore và Security Rules.
+          </td>
+        </tr>
       `;
-
-
-    } catch (err) {
-
-      console.error(err);
-
-      error.textContent =
-        "Không thể gửi yêu cầu. Vui lòng thử lại.";
-
-      error.style.display = "block";
 
     }
 
   };
+
+
+  /* RENDER */
+
+  function renderOrders(orders) {
+
+    const table =
+      document.getElementById(
+        "ordersTable"
+      );
+
+
+    let pending = 0;
+    let approved = 0;
+    let rejected = 0;
+
+
+    orders.forEach(order => {
+
+      if (order.status === "pending")
+        pending++;
+
+      if (order.status === "approved")
+        approved++;
+
+      if (order.status === "rejected")
+        rejected++;
+
+    });
+
+
+    document.getElementById(
+      "totalOrders"
+    ).textContent =
+      orders.length;
+
+
+    document.getElementById(
+      "pendingOrders"
+    ).textContent =
+      pending;
+
+
+    document.getElementById(
+      "approvedOrders"
+    ).textContent =
+      approved;
+
+
+    document.getElementById(
+      "rejectedOrders"
+    ).textContent =
+      rejected;
+
+
+    if (!orders.length) {
+
+      table.innerHTML = `
+        <tr>
+          <td colspan="9" class="empty">
+            Chưa có đơn hàng nào.
+          </td>
+        </tr>
+      `;
+
+      return;
+
+    }
+
+
+    table.innerHTML =
+      orders.map((item,index) => {
+
+        const status =
+          item.status || "pending";
+
+
+        let statusText =
+          "Đang chờ";
+
+        let statusClass =
+          "status-pending";
+
+
+        if (
+          status === "approved"
+        ) {
+
+          statusText =
+            "Đã duyệt";
+
+          statusClass =
+            "status-approved";
+
+        }
+
+
+        if (
+          status === "rejected"
+        ) {
+
+          statusText =
+            "Từ chối";
+
+          statusClass =
+            "status-rejected";
+
+        }
+
+
+        /*
+          Mã đơn do người dùng tự nhập.
+          Nếu đơn cũ chưa có mã thì dùng ID
+          Firestore để vẫn hiển thị được.
+        */
+
+        const orderCode =
+          item.orderCode ||
+          item.id;
+
+
+        return `
+
+          <tr>
+
+            <td>
+              ${index + 1}
+            </td>
+
+
+            <td>
+
+              <span class="order-code">
+
+                ${escapeHTML(orderCode)}
+
+              </span>
+
+            </td>
+
+
+            <td>
+              ${escapeHTML(
+                item.name || ""
+              )}
+            </td>
+
+
+            <td>
+              ${escapeHTML(
+                item.reward || ""
+              )}
+            </td>
+
+
+            <td>
+              ${Number(
+                item.price || 0
+              ).toLocaleString("vi-VN")}
+            </td>
+
+
+            <td>
+              ${escapeHTML(
+                item.currency || ""
+              )}
+            </td>
+
+
+            <td>
+              ${escapeHTML(
+                item.time || ""
+              )}
+            </td>
+
+
+            <td>
+
+              <span
+                class="status ${statusClass}"
+              >
+                ${statusText}
+              </span>
+
+            </td>
+
+
+            <td>
+
+              <div class="actions">
+
+                ${
+                  status !== "approved"
+                  ?
+                  `
+                    <button
+                      class="approve"
+                      onclick="changeStatus(
+                        '${item.id}',
+                        'approved'
+                      )"
+                    >
+                      ✓ Duyệt
+                    </button>
+                  `
+                  :
+                  ""
+                }
+
+
+                ${
+                  status !== "rejected"
+                  ?
+                  `
+                    <button
+                      class="reject"
+                      onclick="changeStatus(
+                        '${item.id}',
+                        'rejected'
+                      )"
+                    >
+                      ✕ Từ chối
+                    </button>
+                  `
+                  :
+                  ""
+                }
+
+
+                <button
+                  class="delete"
+                  onclick="removeOrder(
+                    '${item.id}'
+                  )"
+                >
+                  🗑 Xóa
+                </button>
+
+              </div>
+
+            </td>
+
+          </tr>
+
+        `;
+
+      }).join("");
+
+  }
+
+
+  /* CHANGE STATUS */
+
+  window.changeStatus =
+    async function(id,status) {
+
+      try {
+
+        await updateDoc(
+
+          doc(
+            db,
+            "exchangeRequests",
+            id
+          ),
+
+          {
+            status: status
+          }
+
+        );
+
+
+        await loadOrders();
+
+
+      } catch (error) {
+
+        console.error(error);
+
+        alert(
+          "Không thể cập nhật trạng thái."
+        );
+
+      }
+
+    };
+
+
+  /* DELETE */
+
+  window.removeOrder =
+    async function(id) {
+
+      const ok =
+        confirm(
+          "Bạn có chắc muốn xóa đơn này?"
+        );
+
+
+      if (!ok) return;
+
+
+      try {
+
+        await deleteDoc(
+
+          doc(
+            db,
+            "exchangeRequests",
+            id
+          )
+
+        );
+
+
+        await loadOrders();
+
+
+      } catch (error) {
+
+        console.error(error);
+
+        alert(
+          "Không thể xóa đơn."
+        );
+
+      }
+
+    };
 
 
   /* ESCAPE HTML */
@@ -833,25 +1301,51 @@
   function escapeHTML(value) {
 
     return String(value)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
+
+      .replace(
+        /&/g,
+        "&amp;"
+      )
+
+      .replace(
+        /</g,
+        "&lt;"
+      )
+
+      .replace(
+        />/g,
+        "&gt;"
+      )
+
+      .replace(
+        /"/g,
+        "&quot;"
+      )
+
+      .replace(
+        /'/g,
+        "&#039;"
+      );
 
   }
 
 
-  /* CLICK RA NGOÀI MODAL */
+  /* ENTER TO LOGIN */
 
-  document.getElementById("exchangeModal")
-    .addEventListener("click", function(e) {
+  document
+    .getElementById("adminPassword")
+    .addEventListener(
+      "keydown",
+      function(e) {
 
-      if (e.target === this) {
-        closeModal();
+        if (e.key === "Enter") {
+
+          login();
+
+        }
+
       }
-
-    });
+    );
 
 </script>
 
