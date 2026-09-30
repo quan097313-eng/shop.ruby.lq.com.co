@@ -1,1353 +1,329 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <title>ADMIN - SHOP NHẬN QUÀ LIÊN QUÂN</title>
-
-
-  <style>
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background:
-        linear-gradient(135deg,#140022,#260044,#12001f);
-      color: white;
-      min-height: 100vh;
-    }
-
-
-    .login-container {
-
-      min-height: 100vh;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      padding: 20px;
-    }
-
-
-    .login-box {
-
-      width: 100%;
-
-      max-width: 400px;
-
-      padding: 30px;
-
-      border-radius: 18px;
-
-      background:
-        linear-gradient(
-          145deg,
-          rgba(255,255,255,.08),
-          rgba(255,255,255,.03)
-        );
-
-      border:
-        1px solid rgba(255,255,255,.1);
-
-      box-shadow:
-        0 20px 70px rgba(0,0,0,.5);
-
-      text-align: center;
-    }
-
-
-    .login-box h1 {
-
-      color: #dc9aff;
-
-      margin-bottom: 25px;
-    }
-
-
-    input {
-
-      width: 100%;
-
-      padding: 13px;
-
-      margin-bottom: 12px;
-
-      border-radius: 9px;
-
-      border:
-        1px solid rgba(255,255,255,.15);
-
-      background:
-        rgba(255,255,255,.07);
-
-      color: white;
-
-      outline: none;
-    }
-
-
-    input:focus {
-
-      border-color: #b94ee8;
-
-    }
-
-
-    button {
-
-      border: none;
-
-      cursor: pointer;
-
-      border-radius: 9px;
-
-      padding: 11px 15px;
-
-      font-weight: bold;
-
-      transition: .2s;
-    }
-
-
-    .login-btn {
-
-      width: 100%;
-
-      background:
-        linear-gradient(90deg,#8c32c9,#bd55ee);
-
-      color: white;
-    }
-
-
-    .login-error {
-
-      color: #ff7777;
-
-      margin-top: 12px;
-
-      display: none;
-    }
-
-
-    /* ADMIN */
-
-    #adminPanel {
-
-      display: none;
-
-    }
-
-
-    header {
-
-      padding: 20px;
-
-      background:
-        rgba(0,0,0,.35);
-
-      border-bottom:
-        1px solid rgba(255,255,255,.1);
-
-    }
-
-
-    header .top {
-
-      max-width: 1400px;
-
-      margin: auto;
-
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: center;
-
-      gap: 15px;
-
-    }
-
-
-    header h1 {
-
-      color: #dc9aff;
-
-      font-size: 25px;
-
-    }
-
-
-    .top-buttons {
-
-      display: flex;
-
-      gap: 8px;
-
-    }
-
-
-    .refresh-btn {
-
-      background: #7130a0;
-
-      color: white;
-
-    }
-
-
-    .logout-btn {
-
-      background: #9d3030;
-
-      color: white;
-
-    }
-
-
-    .container {
-
-      width: 95%;
-
-      max-width: 1400px;
-
-      margin: auto;
-
-      padding: 25px 0 50px;
-
-    }
-
-
-    .connection {
-
-      background:
-        rgba(0,255,100,.08);
-
-      border:
-        1px solid rgba(0,255,100,.2);
-
-      padding: 12px;
-
-      border-radius: 10px;
-
-      margin-bottom: 20px;
-
-      color: #9dffb6;
-
-    }
-
-
-    .stats {
-
-      display: grid;
-
-      grid-template-columns:
-        repeat(auto-fit,minmax(180px,1fr));
-
-      gap: 15px;
-
-      margin-bottom: 25px;
-    }
-
-
-    .stat {
-
-      background:
-        rgba(255,255,255,.06);
-
-      border:
-        1px solid rgba(255,255,255,.1);
-
-      padding: 20px;
-
-      border-radius: 13px;
-
-    }
-
-
-    .stat-title {
-
-      color: #aaa;
-
-      margin-bottom: 8px;
-
-    }
-
-
-    .stat-value {
-
-      font-size: 28px;
-
-      font-weight: bold;
-
-      color: #e1a2ff;
-
-    }
-
-
-    .orders-box {
-
-      background:
-        rgba(255,255,255,.05);
-
-      border:
-        1px solid rgba(255,255,255,.1);
-
-      border-radius: 15px;
-
-      overflow: hidden;
-    }
-
-
-    .orders-title {
-
-      padding: 20px;
-
-      font-size: 21px;
-
-      color: #e1a2ff;
-
-    }
-
-
-    .table-wrapper {
-
-      width: 100%;
-
-      overflow-x: auto;
-    }
-
-
-    table {
-
-      width: 100%;
-
-      border-collapse: collapse;
-
-      min-width: 1050px;
-    }
-
-
-    th {
-
-      background:
-        rgba(168,61,228,.18);
-
-      color: #e4b3ff;
-
-      padding: 13px;
-
-      text-align: left;
-
-      white-space: nowrap;
-    }
-
-
-    td {
-
-      padding: 12px;
-
-      border-top:
-        1px solid rgba(255,255,255,.07);
-
-      color: #ddd;
-
-    }
-
-
-    tr:hover td {
-
-      background:
-        rgba(255,255,255,.03);
-
-    }
-
-
-    .order-code {
-
-      color: #e19aff;
-
-      font-weight: bold;
-
-      white-space: nowrap;
-
-    }
-
-
-    .status {
-
-      display: inline-block;
-
-      padding: 6px 9px;
-
-      border-radius: 20px;
-
-      font-size: 13px;
-
-      font-weight: bold;
-
-    }
-
-
-    .status-pending {
-
-      background:
-        rgba(255,193,7,.15);
-
-      color: #ffd45e;
-
-    }
-
-
-    .status-approved {
-
-      background:
-        rgba(0,255,120,.12);
-
-      color: #70ffac;
-
-    }
-
-
-    .status-rejected {
-
-      background:
-        rgba(255,50,50,.12);
-
-      color: #ff8585;
-
-    }
-
-
-    .actions {
-
-      display: flex;
-
-      gap: 6px;
-
-    }
-
-
-    .approve {
-
-      background: #248d53;
-
-      color: white;
-    }
-
-
-    .reject {
-
-      background: #a33b3b;
-
-      color: white;
-    }
-
-
-    .delete {
-
-      background: #555;
-
-      color: white;
-    }
-
-
-    .empty {
-
-      text-align: center;
-
-      padding: 40px;
-
-      color: #999;
-    }
-
-
-    .loading {
-
-      text-align: center;
-
-      padding: 40px;
-
-      color: #bbb;
-    }
-
-
-    @media(max-width:700px) {
-
-      header .top {
-
-        flex-direction: column;
-
-        align-items: stretch;
-
-      }
-
-      .top-buttons {
-
-        justify-content: center;
-
-      }
-
-    }
-
-  </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADMIN - SHOP NHẬN QUÀ LIÊN QUÂN</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:linear-gradient(135deg,#140022,#260044,#12001f);color:#fff;min-height:100vh}
+button,input{font:inherit}
+button{border:0;cursor:pointer;border-radius:9px;padding:11px 15px;font-weight:bold}
+.login-container{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.login-box{width:100%;max-width:400px;padding:30px;border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.1);box-shadow:0 20px 70px rgba(0,0,0,.5);text-align:center}
+.login-box h1{color:#dc9aff;margin-bottom:25px}
+.login-box input{width:100%;padding:13px;margin-bottom:12px;border-radius:9px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.07);color:#fff;outline:none}
+.login-btn{width:100%;background:linear-gradient(90deg,#8c32c9,#bd55ee);color:#fff}
+.login-error{color:#ff7777;margin-top:12px;display:none}
+#adminPanel{display:none}
+header{padding:20px;background:rgba(0,0,0,.35);border-bottom:1px solid rgba(255,255,255,.1)}
+header .top{max-width:1400px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:15px}
+header h1{color:#dc9aff;font-size:25px}
+.top-buttons{display:flex;gap:8px;flex-wrap:wrap}
+.refresh-btn{background:#7130a0;color:#fff}
+.export-btn{background:#3666a8;color:#fff}
+.logout-btn{background:#9d3030;color:#fff}
+.container{width:95%;max-width:1400px;margin:auto;padding:25px 0 50px}
+.connection{background:rgba(0,255,100,.08);border:1px solid rgba(0,255,100,.2);padding:12px;border-radius:10px;margin-bottom:20px;color:#9dffb6}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px;margin-bottom:25px}
+.stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:20px;border-radius:13px}
+.stat-title{color:#aaa;margin-bottom:8px}
+.stat-value{font-size:28px;font-weight:bold;color:#e1a2ff}
+.orders-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:15px;overflow:hidden}
+.orders-title{padding:20px;font-size:21px;color:#e1a2ff}
+.table-wrapper{width:100%;overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:1100px}
+th{background:rgba(168,61,228,.18);color:#e4b3ff;padding:13px;text-align:left;white-space:nowrap}
+td{padding:12px;border-top:1px solid rgba(255,255,255,.07);color:#ddd}
+tr:hover td{background:rgba(255,255,255,.03)}
+.order-code{color:#e19aff;font-weight:bold;white-space:nowrap}
+.status{display:inline-block;padding:6px 9px;border-radius:20px;font-size:13px;font-weight:bold}
+.status-pending{background:rgba(255,193,7,.15);color:#ffd45e}
+.status-approved{background:rgba(0,255,120,.12);color:#70ffac}
+.status-rejected{background:rgba(255,50,50,.12);color:#ff8585}
+.actions{display:flex;gap:6px;flex-wrap:wrap}
+.approve{background:#248d53;color:#fff}
+.reject{background:#a33b3b;color:#fff}
+.delete{background:#555;color:#fff}
+.empty,.loading{text-align:center;padding:40px;color:#aaa}
+@media(max-width:700px){
+header .top{flex-direction:column;align-items:stretch}
+.top-buttons{justify-content:center}
+}
+</style>
 </head>
-
-
 <body>
 
-
-<!-- LOGIN -->
-
-<div
-  class="login-container"
-  id="loginContainer"
->
-
+<div class="login-container" id="loginContainer">
   <div class="login-box">
-
     <h1>🔐 ADMIN</h1>
-
-    <input
-      type="text"
-      id="adminUsername"
-      placeholder="Tên đăng nhập"
-    >
-
-    <input
-      type="password"
-      id="adminPassword"
-      placeholder="Mật khẩu"
-    >
-
-    <button
-      class="login-btn"
-      onclick="login()"
-    >
-      Đăng nhập
-    </button>
-
-    <div
-      class="login-error"
-      id="loginError"
-    >
-      Sai tài khoản hoặc mật khẩu.
-    </div>
-
+    <input type="text" id="adminUsername" placeholder="Tên đăng nhập" autocomplete="username">
+    <input type="password" id="adminPassword" placeholder="Mật khẩu" autocomplete="current-password">
+    <button class="login-btn" onclick="login()">Đăng nhập</button>
+    <div class="login-error" id="loginError">Sai tài khoản hoặc mật khẩu.</div>
   </div>
-
 </div>
-
-
-<!-- ADMIN PANEL -->
 
 <div id="adminPanel">
-
-  <header>
-
-    <div class="top">
-
-      <h1>🎁 SHOP NHẬN QUÀ LIÊN QUÂN - ADMIN</h1>
-
-      <div class="top-buttons">
-
-        <button
-          class="refresh-btn"
-          onclick="loadOrders()"
-        >
-          🔄 Làm mới
-        </button>
-
-        <button
-          class="logout-btn"
-          onclick="logout()"
-        >
-          Đăng xuất
-        </button>
-
-      </div>
-
+<header>
+  <div class="top">
+    <h1>🎁 SHOP NHẬN QUÀ LIÊN QUÂN - ADMIN</h1>
+    <div class="top-buttons">
+      <button class="refresh-btn" onclick="loadOrders()">🔄 Làm mới</button>
+      <button class="export-btn" onclick="exportCSV()">⬇️ Tải lịch sử</button>
+      <button class="logout-btn" onclick="logout()">Đăng xuất</button>
     </div>
+  </div>
+</header>
 
-  </header>
+<div class="container">
+  <div class="connection" id="connectionStatus">🟡 Đang kết nối Firebase...</div>
 
-
-  <div class="container">
-
-    <div class="connection" id="connectionStatus">
-      🟢 Đã kết nối hệ thống
-    </div>
-
-
-    <!-- STATS -->
-
-    <div class="stats">
-
-      <div class="stat">
-
-        <div class="stat-title">
-          Tổng đơn
-        </div>
-
-        <div
-          class="stat-value"
-          id="totalOrders"
-        >
-          0
-        </div>
-
-      </div>
-
-
-      <div class="stat">
-
-        <div class="stat-title">
-          Đang chờ
-        </div>
-
-        <div
-          class="stat-value"
-          id="pendingOrders"
-        >
-          0
-        </div>
-
-      </div>
-
-
-      <div class="stat">
-
-        <div class="stat-title">
-          Đã duyệt
-        </div>
-
-        <div
-          class="stat-value"
-          id="approvedOrders"
-        >
-          0
-        </div>
-
-      </div>
-
-
-      <div class="stat">
-
-        <div class="stat-title">
-          Từ chối
-        </div>
-
-        <div
-          class="stat-value"
-          id="rejectedOrders"
-        >
-          0
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- ORDERS -->
-
-    <div class="orders-box">
-
-      <div class="orders-title">
-        📋 Danh sách đơn hàng
-      </div>
-
-      <div class="table-wrapper">
-
-        <table>
-
-          <thead>
-
-            <tr>
-
-              <th>#</th>
-
-              <th>Mã đơn</th>
-
-              <th>Tên</th>
-
-              <th>Phần thưởng</th>
-
-              <th>Giá</th>
-
-              <th>Loại tiền</th>
-
-              <th>Thời gian</th>
-
-              <th>Trạng thái</th>
-
-              <th>Thao tác</th>
-
-            </tr>
-
-          </thead>
-
-          <tbody id="ordersTable">
-
-            <tr>
-
-              <td
-                colspan="9"
-                class="loading"
-              >
-                Đang tải dữ liệu...
-              </td>
-
-            </tr>
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-    </div>
-
+  <div class="stats">
+    <div class="stat"><div class="stat-title">Tổng đơn</div><div class="stat-value" id="totalOrders">0</div></div>
+    <div class="stat"><div class="stat-title">Đang chờ</div><div class="stat-value" id="pendingOrders">0</div></div>
+    <div class="stat"><div class="stat-title">Đã duyệt</div><div class="stat-value" id="approvedOrders">0</div></div>
+    <div class="stat"><div class="stat-title">Từ chối</div><div class="stat-value" id="rejectedOrders">0</div></div>
   </div>
 
+  <div class="orders-box">
+    <div class="orders-title">📋 Lịch sử đơn hàng</div>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th><th>Mã đơn</th><th>Tên tài khoản</th><th>Phần thưởng</th>
+            <th>Giá</th><th>Loại tiền</th><th>Thời gian</th><th>Trạng thái</th><th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="ordersTable">
+          <tr><td colspan="9" class="loading">Đang tải dữ liệu...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 </div>
 
-
 <script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+import {
+  getFirestore, collection, getDocs, updateDoc, deleteDoc, doc
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
-  import {
-    initializeApp
-  } from
-  "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+const firebaseConfig={
+  apiKey:"AIzaSyD28nAKhfVQHF_I134R0YyaWQuGw2FMliY",
+  authDomain:"admin-shopcuaquan.firebaseapp.com",
+  projectId:"admin-shopcuaquan",
+  storageBucket:"admin-shopcuaquan.firebasestorage.app",
+  messagingSenderId:"608228191463",
+  appId:"1:608228191463:web:52298a53e0f0a829874642"
+};
 
+const app=initializeApp(firebaseConfig);
+const db=getFirestore(app);
 
-  import {
-    getFirestore,
-    collection,
-    getDocs,
-    query,
-    orderBy,
-    doc,
-    updateDoc,
-    deleteDoc
-  } from
-  "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+const ADMIN_USERNAME="adminquan";
+const ADMIN_PASSWORD="AnhQuan_123";
 
+let currentOrders=[];
 
-  /* FIREBASE CONFIG */
+if(sessionStorage.getItem("adminLogged")==="true") showAdmin();
 
-  const firebaseConfig = {
+window.login=function(){
+  const u=document.getElementById("adminUsername").value.trim();
+  const p=document.getElementById("adminPassword").value;
+  const e=document.getElementById("loginError");
 
-    apiKey:
-      "AIzaSyD28nAKhfVQHF_I134R0YyaWQuGw2FMliY",
-
-    authDomain:
-      "admin-shopcuaquan.firebaseapp.com",
-
-    projectId:
-      "admin-shopcuaquan",
-
-    storageBucket:
-      "admin-shopcuaquan.firebasestorage.app",
-
-    messagingSenderId:
-      "608228191463",
-
-    appId:
-      "1:608228191463:web:52298a53e0f0a829874642"
-
-  };
-
-
-  const app =
-    initializeApp(firebaseConfig);
-
-  const db =
-    getFirestore(app);
-
-
-  /* ADMIN LOGIN */
-
-  const ADMIN_USERNAME =
-    "adminquan";
-
-  const ADMIN_PASSWORD =
-    "AnhQuan_123";
-
-
-  /* KIỂM TRA SESSION */
-
-  if (
-    sessionStorage.getItem("adminLogged")
-    === "true"
-  ) {
-
+  if(u===ADMIN_USERNAME && p===ADMIN_PASSWORD){
+    sessionStorage.setItem("adminLogged","true");
+    e.style.display="none";
     showAdmin();
-
+  }else{
+    e.style.display="block";
   }
-
-
-  /* LOGIN */
-
-  window.login = function() {
-
-    const username =
-      document.getElementById(
-        "adminUsername"
-      ).value.trim();
-
-
-    const password =
-      document.getElementById(
-        "adminPassword"
-      ).value;
-
-
-    const error =
-      document.getElementById(
-        "loginError"
-      );
-
-
-    if (
-      username === ADMIN_USERNAME &&
-      password === ADMIN_PASSWORD
-    ) {
-
-      sessionStorage.setItem(
-        "adminLogged",
-        "true"
-      );
-
-      showAdmin();
-
-    } else {
-
-      error.style.display =
-        "block";
-
-    }
-
-  };
-
-
-  /* SHOW ADMIN */
-
-  function showAdmin() {
-
-    document.getElementById(
-      "loginContainer"
-    ).style.display = "none";
-
-
-    document.getElementById(
-      "adminPanel"
-    ).style.display = "block";
-
-
-    loadOrders();
-
-  }
-
-
-  /* LOGOUT */
-
-  window.logout = function() {
-
-    sessionStorage.removeItem(
-      "adminLogged"
-    );
-
-    location.reload();
-
-  };
-
-
-  /* LOAD ORDERS */
-
-  window.loadOrders = async function() {
-
-    const table =
-      document.getElementById(
-        "ordersTable"
-      );
-
-
-    table.innerHTML = `
-      <tr>
-        <td colspan="9" class="loading">
-          Đang tải dữ liệu...
-        </td>
-      </tr>
-    `;
-
-
-    try {
-
-      const q = query(
-        collection(
-          db,
-          "exchangeRequests"
-        ),
-        orderBy(
-          "createdAt",
-          "desc"
-        )
-      );
-
-
-      const snapshot =
-        await getDocs(q);
-
-
-      const orders = [];
-
-
-      snapshot.forEach(item => {
-
-        orders.push({
-
-          id: item.id,
-
-          ...item.data()
-
-        });
-
-      });
-
-
-      renderOrders(orders);
-
-
-      document.getElementById(
-        "connectionStatus"
-      ).textContent =
-        "🟢 Đã kết nối Firebase";
-
-
-    } catch (error) {
-
-      console.error(error);
-
-
-      document.getElementById(
-        "connectionStatus"
-      ).textContent =
-        "🔴 Không thể tải dữ liệu Firebase";
-
-
-      table.innerHTML = `
-        <tr>
-          <td colspan="9" class="empty">
-            Không thể tải danh sách đơn hàng.
-            <br>
-            Kiểm tra Firestore và Security Rules.
-          </td>
-        </tr>
-      `;
-
-    }
-
-  };
-
-
-  /* RENDER */
-
-  function renderOrders(orders) {
-
-    const table =
-      document.getElementById(
-        "ordersTable"
-      );
-
-
-    let pending = 0;
-    let approved = 0;
-    let rejected = 0;
-
-
-    orders.forEach(order => {
-
-      if (order.status === "pending")
-        pending++;
-
-      if (order.status === "approved")
-        approved++;
-
-      if (order.status === "rejected")
-        rejected++;
-
+};
+
+function showAdmin(){
+  document.getElementById("loginContainer").style.display="none";
+  document.getElementById("adminPanel").style.display="block";
+  loadOrders();
+}
+
+window.logout=function(){
+  sessionStorage.removeItem("adminLogged");
+  location.reload();
+};
+
+window.loadOrders=async function(){
+  const table=document.getElementById("ordersTable");
+  const connection=document.getElementById("connectionStatus");
+
+  table.innerHTML='<tr><td colspan="9" class="loading">Đang tải lịch sử...</td></tr>';
+  connection.textContent="🟡 Đang tải dữ liệu Firebase...";
+
+  try{
+    // Không dùng orderBy() => không cần tạo Firestore index.
+    const snap=await getDocs(collection(db,"exchangeRequests"));
+
+    currentOrders=[];
+    snap.forEach(d=>{
+      currentOrders.push({id:d.id,...d.data()});
     });
 
+    currentOrders.sort((a,b)=>{
+      const am=Number(a.createdAtMs||0);
+      const bm=Number(b.createdAtMs||0);
 
-    document.getElementById(
-      "totalOrders"
-    ).textContent =
-      orders.length;
+      if(am || bm) return bm-am;
 
+      const at=a.createdAt?.seconds||0;
+      const bt=b.createdAt?.seconds||0;
+      return bt-at;
+    });
 
-    document.getElementById(
-      "pendingOrders"
-    ).textContent =
-      pending;
+    renderOrders(currentOrders);
+    connection.textContent="🟢 Đã kết nối Firebase - Lịch sử đã tải";
+  }catch(err){
+    console.error(err);
+    connection.textContent="🔴 Không thể tải dữ liệu Firebase";
+    table.innerHTML=`
+      <tr><td colspan="9" class="empty">
+        Không thể tải lịch sử đơn hàng.<br><br>
+        Kiểm tra Firestore collection <b>exchangeRequests</b> và Security Rules.
+      </td></tr>`;
+  }
+};
 
+function renderOrders(orders){
+  let pending=0,approved=0,rejected=0;
 
-    document.getElementById(
-      "approvedOrders"
-    ).textContent =
-      approved;
+  orders.forEach(o=>{
+    if(o.status==="pending")pending++;
+    if(o.status==="approved")approved++;
+    if(o.status==="rejected")rejected++;
+  });
 
+  document.getElementById("totalOrders").textContent=orders.length;
+  document.getElementById("pendingOrders").textContent=pending;
+  document.getElementById("approvedOrders").textContent=approved;
+  document.getElementById("rejectedOrders").textContent=rejected;
 
-    document.getElementById(
-      "rejectedOrders"
-    ).textContent =
-      rejected;
+  const table=document.getElementById("ordersTable");
 
+  if(!orders.length){
+    table.innerHTML='<tr><td colspan="9" class="empty">Chưa có đơn hàng nào.</td></tr>';
+    return;
+  }
 
-    if (!orders.length) {
+  table.innerHTML=orders.map((item,index)=>{
+    const status=item.status||"pending";
 
-      table.innerHTML = `
-        <tr>
-          <td colspan="9" class="empty">
-            Chưa có đơn hàng nào.
-          </td>
-        </tr>
-      `;
+    let statusText="Đang chờ";
+    let statusClass="status-pending";
 
-      return;
-
+    if(status==="approved"){
+      statusText="Đã duyệt";
+      statusClass="status-approved";
     }
 
+    if(status==="rejected"){
+      statusText="Từ chối";
+      statusClass="status-rejected";
+    }
 
-    table.innerHTML =
-      orders.map((item,index) => {
+    const orderCode=item.orderCode||item.id;
+    const price=Number(item.price||0).toLocaleString("vi-VN");
 
-        const status =
-          item.status || "pending";
+    return `
+      <tr>
+        <td>${index+1}</td>
+        <td><span class="order-code">${escapeHTML(orderCode)}</span></td>
+        <td>${escapeHTML(item.name||"")}</td>
+        <td>${escapeHTML(item.reward||"")}</td>
+        <td>${price}</td>
+        <td>${escapeHTML(item.currency||"")}</td>
+        <td>${escapeHTML(item.time||"")}</td>
+        <td><span class="status ${statusClass}">${statusText}</span></td>
+        <td>
+          <div class="actions">
+            ${status!=="approved"?`<button class="approve" onclick="changeStatus('${item.id}','approved')">✓ Duyệt</button>`:""}
+            ${status!=="rejected"?`<button class="reject" onclick="changeStatus('${item.id}','rejected')">✕ Từ chối</button>`:""}
+            <button class="delete" onclick="removeOrder('${item.id}')">🗑 Xóa</button>
+          </div>
+        </td>
+      </tr>`;
+  }).join("");
+}
 
+window.changeStatus=async function(id,status){
+  try{
+    await updateDoc(doc(db,"exchangeRequests",id),{status});
+    await loadOrders();
+  }catch(err){
+    console.error(err);
+    alert("Không thể cập nhật trạng thái. Kiểm tra Firestore Rules.");
+  }
+};
 
-        let statusText =
-          "Đang chờ";
+window.removeOrder=async function(id){
+  if(!confirm("Bạn có chắc muốn xóa đơn này?"))return;
 
-        let statusClass =
-          "status-pending";
+  try{
+    await deleteDoc(doc(db,"exchangeRequests",id));
+    await loadOrders();
+  }catch(err){
+    console.error(err);
+    alert("Không thể xóa đơn. Kiểm tra Firestore Rules.");
+  }
+};
 
-
-        if (
-          status === "approved"
-        ) {
-
-          statusText =
-            "Đã duyệt";
-
-          statusClass =
-            "status-approved";
-
-        }
-
-
-        if (
-          status === "rejected"
-        ) {
-
-          statusText =
-            "Từ chối";
-
-          statusClass =
-            "status-rejected";
-
-        }
-
-
-        /*
-          Mã đơn do người dùng tự nhập.
-          Nếu đơn cũ chưa có mã thì dùng ID
-          Firestore để vẫn hiển thị được.
-        */
-
-        const orderCode =
-          item.orderCode ||
-          item.id;
-
-
-        return `
-
-          <tr>
-
-            <td>
-              ${index + 1}
-            </td>
-
-
-            <td>
-
-              <span class="order-code">
-
-                ${escapeHTML(orderCode)}
-
-              </span>
-
-            </td>
-
-
-            <td>
-              ${escapeHTML(
-                item.name || ""
-              )}
-            </td>
-
-
-            <td>
-              ${escapeHTML(
-                item.reward || ""
-              )}
-            </td>
-
-
-            <td>
-              ${Number(
-                item.price || 0
-              ).toLocaleString("vi-VN")}
-            </td>
-
-
-            <td>
-              ${escapeHTML(
-                item.currency || ""
-              )}
-            </td>
-
-
-            <td>
-              ${escapeHTML(
-                item.time || ""
-              )}
-            </td>
-
-
-            <td>
-
-              <span
-                class="status ${statusClass}"
-              >
-                ${statusText}
-              </span>
-
-            </td>
-
-
-            <td>
-
-              <div class="actions">
-
-                ${
-                  status !== "approved"
-                  ?
-                  `
-                    <button
-                      class="approve"
-                      onclick="changeStatus(
-                        '${item.id}',
-                        'approved'
-                      )"
-                    >
-                      ✓ Duyệt
-                    </button>
-                  `
-                  :
-                  ""
-                }
-
-
-                ${
-                  status !== "rejected"
-                  ?
-                  `
-                    <button
-                      class="reject"
-                      onclick="changeStatus(
-                        '${item.id}',
-                        'rejected'
-                      )"
-                    >
-                      ✕ Từ chối
-                    </button>
-                  `
-                  :
-                  ""
-                }
-
-
-                <button
-                  class="delete"
-                  onclick="removeOrder(
-                    '${item.id}'
-                  )"
-                >
-                  🗑 Xóa
-                </button>
-
-              </div>
-
-            </td>
-
-          </tr>
-
-        `;
-
-      }).join("");
-
+window.exportCSV=function(){
+  if(!currentOrders.length){
+    alert("Chưa có lịch sử để tải.");
+    return;
   }
 
+  const rows=[
+    ["STT","Mã đơn","Tên tài khoản","Phần thưởng","Giá","Loại tiền","Thời gian","Trạng thái"],
+    ...currentOrders.map((o,i)=>[
+      i+1,
+      o.orderCode||o.id,
+      o.name||"",
+      o.reward||"",
+      o.price||0,
+      o.currency||"",
+      o.time||"",
+      o.status==="approved"?"Đã duyệt":o.status==="rejected"?"Từ chối":"Đang chờ"
+    ])
+  ];
 
-  /* CHANGE STATUS */
+  const csv="\uFEFF"+rows.map(row=>row.map(v=>{
+    const s=String(v).replace(/"/g,'""');
+    return `"${s}"`;
+  }).join(",")).join("\r\n");
 
-  window.changeStatus =
-    async function(id,status) {
+  const blob=new Blob([csv],{type:"text/csv;charset=utf-8"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;
+  a.download="lich-su-don-hang.csv";
+  a.click();
+  URL.revokeObjectURL(url);
+};
 
-      try {
+function escapeHTML(value){
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
 
-        await updateDoc(
-
-          doc(
-            db,
-            "exchangeRequests",
-            id
-          ),
-
-          {
-            status: status
-          }
-
-        );
-
-
-        await loadOrders();
-
-
-      } catch (error) {
-
-        console.error(error);
-
-        alert(
-          "Không thể cập nhật trạng thái."
-        );
-
-      }
-
-    };
-
-
-  /* DELETE */
-
-  window.removeOrder =
-    async function(id) {
-
-      const ok =
-        confirm(
-          "Bạn có chắc muốn xóa đơn này?"
-        );
-
-
-      if (!ok) return;
-
-
-      try {
-
-        await deleteDoc(
-
-          doc(
-            db,
-            "exchangeRequests",
-            id
-          )
-
-        );
-
-
-        await loadOrders();
-
-
-      } catch (error) {
-
-        console.error(error);
-
-        alert(
-          "Không thể xóa đơn."
-        );
-
-      }
-
-    };
-
-
-  /* ESCAPE HTML */
-
-  function escapeHTML(value) {
-
-    return String(value)
-
-      .replace(
-        /&/g,
-        "&amp;"
-      )
-
-      .replace(
-        /</g,
-        "&lt;"
-      )
-
-      .replace(
-        />/g,
-        "&gt;"
-      )
-
-      .replace(
-        /"/g,
-        "&quot;"
-      )
-
-      .replace(
-        /'/g,
-        "&#039;"
-      );
-
-  }
-
-
-  /* ENTER TO LOGIN */
-
-  document
-    .getElementById("adminPassword")
-    .addEventListener(
-      "keydown",
-      function(e) {
-
-        if (e.key === "Enter") {
-
-          login();
-
-        }
-
-      }
-    );
-
+document.getElementById("adminPassword").addEventListener("keydown",e=>{
+  if(e.key==="Enter")login();
+});
 </script>
-
 </body>
 </html>
