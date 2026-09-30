@@ -782,7 +782,9 @@
           time: new Date()
             .toLocaleString("vi-VN"),
 
-          createdAt: serverTimestamp()
+          createdAt: serverTimestamp(),
+
+          createdAtMs: Date.now()
 
         }
       );
@@ -799,6 +801,8 @@
       document.getElementById("successPanel")
         .classList.add("show");
 
+
+      localStorage.setItem("lastOrderCode", orderCode);
 
       document.getElementById("historyBox").innerHTML = `
         Yêu cầu của bạn đã được gửi thành công.<br>
@@ -841,6 +845,22 @@
 
   }
 
+
+  /* KHÔI PHỤC MÃ ĐƠN GẦN NHẤT */
+  const lastOrderCode = localStorage.getItem("lastOrderCode");
+  if (lastOrderCode) {
+    document.getElementById("historyBox").innerHTML = `
+      Mã đơn gần nhất:
+      <strong style="color:#d895ff">
+        ${escapeHTML(lastOrderCode)}
+      </strong>
+      <br><br>
+      Trạng thái:
+      <strong style="color:#ffd45e">
+        Đang chờ xác nhận
+      </strong>
+    `;
+  }
 
   /* CLICK RA NGOÀI MODAL */
 
