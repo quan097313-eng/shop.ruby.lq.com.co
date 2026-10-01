@@ -529,16 +529,6 @@
 
   <!-- THÔNG BÁO -->
   <section class="section">
-    <h2 class="section-title">📢 Thông báo</h2>
-
-    <div class="notice">
-      <strong>Lưu ý:</strong><br>
-      Khi tạo yêu cầu, bạn cần tự nhập <b>mã đơn</b>.
-      Hãy lưu lại mã đơn để tiện kiểm tra với quản trị viên.
-      <br><br>
-      Yêu cầu sau khi gửi sẽ ở trạng thái <b>Đang chờ xác nhận</b>.
-    </div>
-
     <div class="history-box" id="historyBox">
       Yêu cầu của bạn đã được gửi và đang chờ xác nhận.
     </div>
@@ -805,12 +795,7 @@
       localStorage.setItem("lastOrderCode", orderCode);
 
       document.getElementById("historyBox").innerHTML = `
-        Yêu cầu của bạn đã được gửi thành công.<br>
-        Mã đơn của bạn:
-        <strong style="color:#d895ff">
-          ${escapeHTML(orderCode)}
-        </strong>
-        <br><br>
+        Yêu cầu của bạn đã được gửi thành công.<br><br>
         Trạng thái:
         <strong style="color:#ffd45e">
           Đang chờ xác nhận
@@ -846,15 +831,11 @@
   }
 
 
-  /* KHÔI PHỤC MÃ ĐƠN GẦN NHẤT */
+  /* KHÔI PHỤC TRẠNG THÁI GẦN NHẤT */
   const lastOrderCode = localStorage.getItem("lastOrderCode");
   if (lastOrderCode) {
     document.getElementById("historyBox").innerHTML = `
-      Mã đơn gần nhất:
-      <strong style="color:#d895ff">
-        ${escapeHTML(lastOrderCode)}
-      </strong>
-      <br><br>
+      Yêu cầu của bạn đã được gửi thành công.<br><br>
       Trạng thái:
       <strong style="color:#ffd45e">
         Đang chờ xác nhận
